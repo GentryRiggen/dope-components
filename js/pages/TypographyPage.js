@@ -3,7 +3,7 @@ import {
   View,
 } from 'react-native';
 import Page from '../native-components/layout/Page';
-import Text from '../native-components/typography/Text';
+import Text from '../components/Text';
 import theme from '../native-components/common/theme';
 
 class TypographyPage extends React.Component {
@@ -18,13 +18,9 @@ class TypographyPage extends React.Component {
             padding: 16,
           }}
         >
-          <Text size="H1">H1 Display</Text>
-          <Text size="H2">H2 Headline</Text>
-          <Text size="H3">H3 Title</Text>
-          <Text size="H4">H4 Subhead</Text>
-          <Text size="H5">H5 Body 2 / Menu</Text>
-          <Text size="H6">H6 Body 1</Text>
-          <Text size="H7">H7 Caption</Text>
+          <Text size="Title">Title Display</Text>
+          <Text size="Body">Body Body 1</Text>
+          <Text size="Subheading">Subheading Caption</Text>
         </View>
 
         <View
