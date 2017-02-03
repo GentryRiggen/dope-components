@@ -4,7 +4,9 @@ import {
   List,
 } from 'native-base';
 import Page from '../native-components/layout/Page';
-import StyleSheet from '../native-components/common/StyleSheet';
+import {
+  StyleSheet,
+} from '../components';
 import ListItem from '../native-components/elements/ListItem';
 import { executeSaga } from '../ducks/saga';
 import { navigateTo } from '../sagas/navigation';

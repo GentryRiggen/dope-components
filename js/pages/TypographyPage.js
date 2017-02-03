@@ -3,8 +3,10 @@ import {
   View,
 } from 'react-native';
 import Page from '../native-components/layout/Page';
-import Text from '../components/Text';
-import theme from '../native-components/common/theme';
+import {
+  Text,
+  theme,
+} from '../components';
 
 class TypographyPage extends React.Component {
   render() {
@@ -25,7 +27,7 @@ class TypographyPage extends React.Component {
 
         <View
           style={{
-              backgroundColor: theme.grey200,
+              backgroundColor: theme.colors.grey200,
               padding: 16,
             }}
         >
@@ -38,7 +40,7 @@ class TypographyPage extends React.Component {
 
         <View
           style={{
-              backgroundColor: theme.grey900,
+              backgroundColor: theme.colors.grey900,
               marginTop: 8,
               padding: 16,
             }}

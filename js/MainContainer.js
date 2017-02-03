@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import TabBar from './native-components/layout/TabBar';
-import Tab from './native-components/layout/Tab';
+import {
+  Tab,
+  TabBar,
+} from './components';
 import ComponentsNavigator from './Navigator';
 import TypographyPage from './pages/TypographyPage';
 
