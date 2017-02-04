@@ -75,13 +75,31 @@ export default {
     grey800: '#424242',
     grey900: '#212121',
 
+    blueGrey50: '#ECEFF1',
+    blueGrey100: '#CFD8DC',
+    blueGrey200: '#B0BEC5',
+    blueGrey300: '#90A4AE',
+    blueGrey400: '#78909C',
+    blueGrey500: '#607D8B',
+    blueGrey600: '#546E7A',
+    blueGrey700: '#455A64',
+    blueGrey800: '#37474F',
+    blueGrey900: '#263238',
+
     indigo100: '#C5CAE9',
     indigo500: '#3F51B5',
     indigo700: '#303F9F',
 
-    pink100: '#FF4081',
-    pink200: '#FF80AB',
-    pink400: '#F50057',
+    pink50: '#FCE4EC',
+    pink100: '#F8BBD0',
+    pink200: '#F48FB1',
+    pink300: '#F06292',
+    pink400: '#EC407A',
+    pink500: '#E91E63',
+    pink600: '#D81B60',
+    pink700: '#C2185B',
+    pink800: '#AD1457',
+    pink900: '#880E4F',
 
     darkTextColor: 'rgba(0,0,0,0.87)',
     secondaryDarkTextColor: 'rgba(0,0,0,0.54)',
@@ -94,10 +112,10 @@ export default {
     dividerLightColor: 'rgba(255,255,255,0.12)',
 
     get primaryColor () {
-      return this.indigo500;
+      return this.blueGrey700;
     },
     get accentColor () {
-      return this.pink200;
+      return this.pink500;
     },
     get successColor () {
       return this.green500;

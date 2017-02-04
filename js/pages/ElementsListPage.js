@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import {
   List,
 } from 'native-base';
-import Page from '../native-components/layout/Page';
 import {
+  Page,
   StyleSheet,
 } from '../components';
 import ListItem from '../native-components/elements/ListItem';
@@ -35,8 +35,9 @@ class ElementsListPage extends React.Component {
   render() {
     return (
       <Page
-        navTitle="Elements"
-        navigation={this.props.componentsNavigation}
+        navBar={{
+          title: "Components",
+        }}
       >
         <List>
           {ElementsListPage.elements.map((element, index) => (

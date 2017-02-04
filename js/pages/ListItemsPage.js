@@ -1,16 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  List,
-} from 'native-base';
-import {
-  View,
-} from 'react-native';
-import Page from '../native-components/layout/Page';
+import { List } from 'native-base';
+import { View } from 'react-native';
+import { navigateBack } from '../ducks/navigationReducer';
 import ListItem from '../native-components/elements/ListItem';
 import Avatar from '../native-components/elements/Avatar';
-import theme from '../native-components/common/theme';
-import StyleSheet from '../native-components/common/StyleSheet';
+
+import {
+  Page,
+  StyleSheet,
+} from '../components';
 
 class ListItemsPage extends React.Component {
   constructor(props) {
@@ -36,11 +35,16 @@ class ListItemsPage extends React.Component {
 
 
   render() {
+    const {
+      dispatch,
+      navigation,
+    } = this.props;
     return (
       <Page
-        navTitle="List Item"
-        navigation={this.props.navigation}
-        backButton
+        navBar={{
+          title: 'List Items',
+          onBackButtonPress: () => dispatch(navigateBack(navigation.key)),
+        }}
       >
         <List>
           {this.state.items.map((item, index) => (

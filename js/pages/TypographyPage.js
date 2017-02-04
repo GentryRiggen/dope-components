@@ -2,8 +2,8 @@ import React from 'react';
 import {
   View,
 } from 'react-native';
-import Page from '../native-components/layout/Page';
 import {
+  Page,
   Text,
   theme,
 } from '../components';
@@ -12,8 +12,9 @@ class TypographyPage extends React.Component {
   render() {
     return (
       <Page
-        navTitle="Typography"
-        navigation={{}}
+        navBar={{
+          title: 'Typography',
+         }}
       >
         <View
           style={{

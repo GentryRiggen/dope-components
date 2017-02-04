@@ -3,8 +3,8 @@ import {
   Dimensions,
   View,
 } from 'react-native';
-import StyleSheet from './StyleSheet';
-import theme from './theme';
+import StyleSheet from './lib/StyleSheet';
+import theme from './lib/theme';
 
 const windowHeight = Dimensions.get('window').height;
 

@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { View } from 'react-native';
 import {
-  View,
-} from 'react-native';
-import Page from '../native-components/layout/Page';
+  Page,
+  StyleSheet,
+  theme,
+} from '../components';
+import { navigateBack } from '../ducks/navigationReducer';
 import Button from '../native-components/elements/Button';
-import theme from '../native-components/common/theme';
-import StyleSheet from '../native-components/common/StyleSheet';
 
 class ButtonsPage extends React.Component {
   getButtons() {
@@ -43,15 +44,20 @@ class ButtonsPage extends React.Component {
   }
 
   render() {
+    const {
+      dispatch,
+      navigation,
+    } = this.props;
     return (
       <Page
-        navTitle="Buttons"
-        navigation={this.props.navigation}
-        backButton
+        navBar={{
+          title: 'Buttons',
+          onBackButtonPress: () => dispatch(navigateBack(navigation.key)),
+        }}
       >
         <View
           style={{
-            backgroundColor: theme.grey200,
+            backgroundColor: theme.colors.grey200,
             padding: 16,
           }}
         >
@@ -60,7 +66,7 @@ class ButtonsPage extends React.Component {
 
         <View
           style={{
-            backgroundColor: theme.grey900,
+            backgroundColor: theme.colors.grey900,
             padding: 16,
           }}
         >

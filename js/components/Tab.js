@@ -5,8 +5,8 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-import StyleSheet from './StyleSheet';
-import theme from './theme';
+import StyleSheet from './lib/StyleSheet';
+import theme from './lib/theme';
 
 class Tab extends React.Component {
   static propTypes = {
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerTabText: {
-    color: theme.colors.darkTextColor,
+    color: theme.colors.disabledLightTextColor,
     fontSize: 12,
     marginTop: 4,
   },
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
     color: theme.colors.white,
   },
   footerTabImage: {
-    tintColor: theme.colors.darkTextColor,
+    tintColor: theme.colors.disabledLightTextColor,
   },
   footerTabImageSelected: {
     tintColor: theme.colors.white,
