@@ -1,3 +1,4 @@
+import Avatar from './Avatar';
 import Icon from './Icon';
 import List from './List';
 import ListItem from './ListItem';
@@ -11,6 +12,7 @@ import Text from './Text';
 import theme from './lib/theme';
 
 export {
+  Avatar,
   Icon,
   List,
   ListItem,

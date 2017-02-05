@@ -8,6 +8,7 @@ import {
 import { connect } from 'react-redux';
 import { actions } from 'react-native-navigation-redux-helpers';
 import ComponentsListPage from './pages/ComponentsListPage';
+import AvatarsPage from './pages/AvatarsPage';
 import ButtonsPage from './pages/ButtonsPage';
 import ListItemsPage from './pages/ListItemsPage';
 import SpinnersPage from './pages/SpinnersPage';
@@ -53,6 +54,9 @@ class Navigator extends React.Component {
       switch (props.scene.route.key) {
         case routes.ROUTE_COMPONENTS_HOME:
           page = <ComponentsListPage />;
+          break;
+        case routes.ROUTE_AVATARS:
+          page = <AvatarsPage />;
           break;
         case routes.ROUTE_BUTTON:
           page = <ButtonsPage />;

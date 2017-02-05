@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import { navigateBack } from '../ducks/navigationReducer';
-import List from '../components/List';
-import Avatar from '../native-components/elements/Avatar';
-
+import {
+  Avatar,
+  List,
+} from '../components';
 import {
   Page,
   StyleSheet,

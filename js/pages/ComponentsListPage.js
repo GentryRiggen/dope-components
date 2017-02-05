@@ -20,6 +20,13 @@ class ComponentsListPage extends React.Component {
     this.setState({
       components: [
         {
+          headerText: 'Avatars',
+          headerLines: 1,
+          secondaryText: 'An icon representing something. People, etc. Initials for people when no image is available.',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_AVATARS),
+        },
+        {
           headerText: 'Buttons',
           headerLines: 1,
           secondaryText: 'Buttons... What more is there to say.',
