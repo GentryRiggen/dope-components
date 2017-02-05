@@ -58,7 +58,6 @@ class ListItemsPage extends React.Component {
       >
         <List
           dataSource={this.state.items}
-          style={{marginBottom: 48}}
         />
       </Page>
     );
@@ -66,17 +65,6 @@ class ListItemsPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  buttonGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8,
-  },
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
 });
 
 function mapStateToProps(state) {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  ScrollView,
   StatusBar,
   TouchableHighlight,
   View,
@@ -18,11 +19,13 @@ class Page extends React.Component {
       rightPress: React.PropTypes.func,
       rightDisabled: React.PropTypes.bool,
     }),
+    scrollable: React.PropTypes.bool,
     statusBarStyle: React.PropTypes.oneOf(['default', 'light-content', 'dark-content'])
   };
 
   static defaultProps = {
     navBar: false,
+    scrollable: false,
     statusBarStyle: 'light-content',
   };
 
@@ -32,19 +35,38 @@ class Page extends React.Component {
     }
   }
 
-  render() {
+  renderContent() {
     const {
       children,
-      statusBarStyle,
+      scrollable,
     } = this.props;
+
+    if (scrollable) {
+      return (
+        <ScrollView contentContainerStyle={[
+            styles.content,
+            styles.scrollableContent,
+          ]}
+        >
+          {children}
+        </ScrollView>
+      );
+    }
+
+    return children;
+  }
+
+  render() {
+    const { statusBarStyle } = this.props;
     StatusBar.setBarStyle(statusBarStyle, false);
+
     return (
       <View
         theme={theme}
         style={styles.container}
       >
         {this.renderHeader()}
-        {children}
+        {this.renderContent()}
       </View>
     );
   }
@@ -52,31 +74,16 @@ class Page extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.grey200,
+    backgroundColor: theme.colors.white,
     flex: 1,
     flexDirection: 'column',
   },
   content: {
-    backgroundColor: '#FFF',
+    flex: 1,
+    backgroundColor: theme.colors.white,
   },
-  footerContent: {
-    backgroundColor: '#FFF',
-    marginBottom: 48,
-  },
-  headerBackButton: {
-    color: '#FFF',
-  },
-  headerTitle: {
-    color: '#FFF',
-  },
-  headerButtonText: {
-    color: theme.brandPrimary,
-  },
-  headerButtonTextDisabled: {
-    color: '#888888',
-  },
-  bannerContainer: {
-    marginTop: 164,
+  scrollableContent: {
+    paddingBottom: theme.tabBarHeight,
   },
 });
 

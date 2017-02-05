@@ -60,7 +60,6 @@ class ComponentsListPage extends React.Component {
       >
         <List
           dataSource={this.state.components}
-          style={{marginBottom: 48}}
         />
       </Page>
     );

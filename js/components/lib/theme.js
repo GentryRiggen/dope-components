@@ -138,4 +138,6 @@ export default {
       return this.orange500;
     },
   },
+
+  tabBarHeight: 48,
 }

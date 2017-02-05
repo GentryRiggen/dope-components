@@ -19,7 +19,7 @@ class TabBar extends React.Component {
     if (index !== this.props.selectedIndex) {
       return {
         position: 'absolute',
-        bottom: -windowHeight,
+        bottom: -windowHeight * 2,
       };
     }
 
@@ -53,17 +53,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: '#FFF',
+    backgroundColor: theme.colors.white,
   },
   content: {
     flex: 1,
-    backgroundColor: '#FFF',
+    backgroundColor: theme.colors.white,
+    paddingBottom: theme.tabBarHeight,
   },
   footer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
-    height: 48,
+    height: theme.tabBarHeight,
     position: 'absolute',
     bottom: 0,
     left: 0,

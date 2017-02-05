@@ -47,7 +47,6 @@ class SpinnersPage extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 48,
   },
   spinnerContainer: {
     flex: 1,

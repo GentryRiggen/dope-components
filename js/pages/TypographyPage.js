@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  View,
-} from 'react-native';
+import { View } from 'react-native';
 import {
   Page,
   Text,
@@ -21,22 +19,17 @@ class TypographyPage extends React.Component {
             padding: 16,
           }}
         >
-          <Text size="Title">Title Display</Text>
-          <Text size="Body">Body Body 1</Text>
-          <Text size="Subheading">Subheading Caption</Text>
-        </View>
+          <Text size="Title" weight="Bold">Title Display BOLD</Text>
+          <Text size="Title" weight="Regular">Title Display REGULAR</Text>
+          <Text size="Title" weight="Light">Title Display LIGHT</Text>
 
-        <View
-          style={{
-              backgroundColor: theme.colors.grey200,
-              padding: 16,
-            }}
-        >
-          <Text type="regular">Selected</Text>
-          <Text type="secondary">Secondary</Text>
-          <Text type="disabled">Disabled</Text>
-          <Text type="primary">Button/Hyperlink</Text>
-          <Text type="error">Error</Text>
+          <Text size="Subheading" weight="Bold">Subheading Caption BOLD</Text>
+          <Text size="Subheading" weight="Regular">Subheading Caption REGULAR</Text>
+          <Text size="Subheading" weight="Light">Subheading Caption LIGHT</Text>
+
+          <Text size="Body" weight="Bold">Body Body 1 BOLD</Text>
+          <Text size="Body" weight="Regular">Body Body 1 REGULAR</Text>
+          <Text size="Body" weight="Light">Body Body 1 LIGHT</Text>
         </View>
 
         <View
