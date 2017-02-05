@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { List } from 'native-base';
 import { View } from 'react-native';
 import { navigateBack } from '../ducks/navigationReducer';
-import ListItem from '../native-components/elements/ListItem';
+import List from '../components/List';
 import Avatar from '../native-components/elements/Avatar';
 
 import {
@@ -22,11 +21,22 @@ class ListItemsPage extends React.Component {
   componentWillMount() {
     const lotsOText = 'Bro! What\'s up?!? Long time no see. How\'s life? Still lifting and getting dem gainz? Yeah me to. Gainz for life. [FIST BUMP]';
     let a = [];
-    for (i = 0; i < 50; ++i) a[i] = i;
+    for (let i = 0; i < 50; ++i) a[i] = i;
     const items = a.map((i, index) => {
+      const headerText = `List Item ${index}`;
       return {
-        header: `List Item ${index}`,
-        body: lotsOText,
+        headerText,
+        secondaryText: lotsOText,
+        headerLines: 1,
+        secondaryLines: 2,
+        onPress: () => null,
+        divider: true,
+        leftContent: (
+          <Avatar
+            kind="person"
+            name={headerText}
+          />
+        )
       };
     });
 
@@ -46,22 +56,10 @@ class ListItemsPage extends React.Component {
           onBackButtonPress: () => dispatch(navigateBack(navigation.key)),
         }}
       >
-        <List>
-          {this.state.items.map((item, index) => (
-            <ListItem
-              key={index}
-              headerText={item.header}
-              secondaryText={item.body}
-              secondaryLines={2}
-              leftContent={(
-                <Avatar
-                  kind="person"
-                  name={item.header}
-                />
-              )}
-            />
-          ))}
-        </List>
+        <List
+          dataSource={this.state.items}
+          style={{marginBottom: 48}}
+        />
       </Page>
     );
   }

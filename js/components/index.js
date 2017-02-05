@@ -1,4 +1,5 @@
 import Icon from './Icon';
+import List from './List';
 import ListItem from './ListItem';
 import NavBar from './NavBar';
 import Page from './Page';
@@ -10,6 +11,7 @@ import theme from './lib/theme';
 
 export {
   Icon,
+  List,
   ListItem,
   NavBar,
   Page,
