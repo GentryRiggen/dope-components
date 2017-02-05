@@ -3,6 +3,7 @@ import List from './List';
 import ListItem from './ListItem';
 import NavBar from './NavBar';
 import Page from './Page';
+import Spinner from './Spinner';
 import StyleSheet from './lib/StyleSheet';
 import Tab from './Tab';
 import TabBar from './TabBar';
@@ -15,6 +16,7 @@ export {
   ListItem,
   NavBar,
   Page,
+  Spinner,
   StyleSheet,
   Tab,
   TabBar,

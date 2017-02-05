@@ -32,7 +32,12 @@ class List extends React.Component {
       <ListView
         dataSource={this.state.dataSource}
         renderRow={(rowData) => <ListItem {...rowData} />}
-        style={this.props.style}
+        style={[
+          {
+            flex: 1,
+          },
+          this.props.style
+        ]}
       />
     );
   }

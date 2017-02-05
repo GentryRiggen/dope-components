@@ -21,7 +21,7 @@ class ListItemsPage extends React.Component {
   componentWillMount() {
     const lotsOText = 'Bro! What\'s up?!? Long time no see. How\'s life? Still lifting and getting dem gainz? Yeah me to. Gainz for life. [FIST BUMP]';
     let a = [];
-    for (let i = 0; i < 50; ++i) a[i] = i;
+    for (let i = 0; i < 9999; ++i) a[i] = i;
     const items = a.map((i, index) => {
       const headerText = `List Item ${index}`;
       return {

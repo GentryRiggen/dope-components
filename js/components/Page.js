@@ -53,6 +53,8 @@ class Page extends React.Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: theme.grey200,
+    flex: 1,
+    flexDirection: 'column',
   },
   content: {
     backgroundColor: '#FFF',
