@@ -36,7 +36,7 @@ class ComponentsListPage extends React.Component {
         {
           headerText: 'Lists & List Items',
           headerLines: 1,
-          secondaryText: 'Long lists and there default views.',
+          secondaryText: 'Lists with pull to refresh and infinite scroll. Also showing off list items.',
           secondaryLines: 2,
           onPress: this.goToRoute(routes.ROUTE_LIST_ITEM),
         },

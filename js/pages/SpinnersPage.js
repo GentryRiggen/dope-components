@@ -35,6 +35,8 @@ class SpinnersPage extends React.Component {
               { backgroundColor: theme.colors.grey900 }
             ]}
           >
+            <Spinner type="primary" inverse={false}/>
+            <Spinner type="accent" inverse={false}/>
             <Spinner type="regular" inverse/>
             <Spinner type="secondary" inverse/>
           </View>
