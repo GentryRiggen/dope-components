@@ -16,24 +16,30 @@ class ListItemsPage extends React.Component {
     super(props);
     this.state = {
       items: [],
-      amount: 9999,
       refreshing: false,
+      fetchingMore: false,
     };
   }
 
   componentWillMount() {
-    this.buildList(0)();
+    this.addToList(true, 0)();
   }
 
-  buildList(timeout = 3000) {
+  addToList(reset, timeout = 3000) {
     return () => {
-      this.setState({ refreshing: true });
+      if (this.state.refreshing || this.state.fetchingMore) {
+        return;
+      }
+      if (reset) {
+        this.setState({ refreshing: true });
+      } else {
+        this.setState({ fetchingMore: true });
+      }
       const self = this;
       setTimeout(() => {
         const lotsOText = 'Bro! What\'s up?!? Long time no see. How\'s life? Still lifting and getting dem gainz? Yeah me to. Gainz for life. [FIST BUMP]';
         let a = [];
-        const amount = Math.floor(Math.random() * 9999);
-        this.setState({ amount });
+        const amount = Math.floor(Math.random() * 50) + 20;
         for (let i = 0; i < amount; ++i) a[i] = i;
         const items = a.map((i, index) => {
           const headerText = `List Item ${index}`;
@@ -54,8 +60,9 @@ class ListItemsPage extends React.Component {
         });
 
         self.setState({
-          items,
+          items: reset ? items : [...this.state.items, ...items],
           refreshing: false,
+          fetchingMore: false,
         });
       }, timeout);
     };
@@ -66,7 +73,7 @@ class ListItemsPage extends React.Component {
       dispatch,
       navigation,
     } = this.props;
-    const title = `${this.state.amount} List Items`;
+    const title = `${this.state.items.length} List Items`;
     return (
       <Page
         navBar={{
@@ -76,8 +83,10 @@ class ListItemsPage extends React.Component {
       >
         <List
           dataSource={this.state.items}
-          onRefreshRequested={this.buildList()}
+          onRefreshRequested={this.addToList(true)}
           isRefreshing={this.state.refreshing}
+          onEndReached={this.addToList()}
+          isFetchingMore={this.state.fetchingMore}
         />
       </Page>
     );

@@ -2,8 +2,11 @@ import React from 'react';
 import {
   ListView,
   RefreshControl,
+  View,
 } from 'react-native';
 import ListItem from './ListItem';
+import Spinner from './Spinner';
+import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
 
 class List extends React.Component {
@@ -11,12 +14,18 @@ class List extends React.Component {
     dataSource: React.PropTypes.any.isRequired,
     onRefreshRequested: React.PropTypes.any,
     isRefreshing: React.PropTypes.bool,
+    onEndReached: React.PropTypes.any,
+    onEndReachedThreshold: React.PropTypes.number,
+    isFetchingMore: React.PropTypes.bool,
   };
 
   static defaultProps = {
     dataSource: [],
     onRefreshRequested: false,
     isRefreshing: false,
+    onEndReached: false,
+    onEndReachedThreshold: 250,
+    isFetchingMore: false,
   };
 
   constructor(props) {
@@ -47,22 +56,53 @@ class List extends React.Component {
     }
   }
 
+  renderFetchingMore() {
+    console.log(this.props.isFetchingMore);
+    if (this.props.isFetchingMore) {
+      return <View style={styles.fetchingMore}><Spinner /></View>
+    }
+
+    return null;
+  }
+
   render() {
+    let {
+      onEndReached,
+      onEndReachedThreshold,
+    } = this.props;
+    onEndReached = onEndReached ? onEndReached : (() => null);
     return (
-      <ListView
-        dataSource={this.state.dataSource}
-        renderRow={(rowData) => <ListItem {...rowData} />}
-        refreshControl={this.getRefreshControl()}
-        enableEmptySections
-        style={[
+      <View style={styles.container}>
+        <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData) => <ListItem {...rowData} />}
+          refreshControl={this.getRefreshControl()}
+          enableEmptySections
+          onEndReached={onEndReached}
+          onEndReachedThreshold={onEndReachedThreshold}
+          style={[
           {
             flex: 1,
           },
           this.props.style
         ]}
-      />
+        />
+        {this.renderFetchingMore()}
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  fetchingMore: {
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default List;
