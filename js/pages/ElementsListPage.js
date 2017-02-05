@@ -4,10 +4,10 @@ import {
   List,
 } from 'native-base';
 import {
+  ListItem,
   Page,
   StyleSheet,
 } from '../components';
-import ListItem from '../native-components/elements/ListItem';
 import { executeSaga } from '../ducks/saga';
 import { navigateTo } from '../sagas/navigation';
 import * as routes from '../ducks/allRoutes';

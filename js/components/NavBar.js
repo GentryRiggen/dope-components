@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   header: {
     minHeight: 64,
     paddingTop: 20,
-    backgroundColor: theme.colors.primaryColor,
+    backgroundColor: theme.colors.blueGrey900,
   },
   headerContent: {
     flex: 1,
@@ -129,11 +129,11 @@ const styles = StyleSheet.create({
   },
   leftHeaderButton: {
     justifyContent: 'flex-start',
-    paddingLeft: 8,
+    paddingLeft: 12,
   },
   rightHeaderButton: {
     justifyContent: 'flex-end',
-    paddingRight: 8,
+    paddingRight: 12,
   },
   headerButtonText: {
     color: theme.colors.white,

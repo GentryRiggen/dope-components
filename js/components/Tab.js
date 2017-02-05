@@ -8,6 +8,8 @@ import {
 import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
 
+const backgroundColor = theme.colors.blueGrey900;
+
 class Tab extends React.Component {
   static propTypes = {
     children: React.PropTypes.any,
@@ -34,7 +36,7 @@ class Tab extends React.Component {
     return (
       <TouchableHighlight
         onPress={onPress}
-        underlayColor={theme.colors.primaryColor}
+        underlayColor={backgroundColor}
         style={styles.footerTab}
       >
         <View style={styles.footerTabContent}>
@@ -61,7 +63,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: theme.colors.primaryColor,
+    backgroundColor,
   },
   footerTab: {
     flex: 1,
@@ -78,13 +80,13 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   footerTabTextSelected: {
-    color: theme.colors.white,
+    color: theme.colors.accentColor,
   },
   footerTabImage: {
     tintColor: theme.colors.disabledLightTextColor,
   },
   footerTabImageSelected: {
-    tintColor: theme.colors.white,
+    tintColor: theme.colors.accentColor,
   },
 });
 

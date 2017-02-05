@@ -4,7 +4,7 @@ import { Platform } from 'react-native';
 
 export default {
   font: {
-    fontFamily: 'Roboto',
+    fontFamily: 'Roboto-Light',
 
     fontSizeTitle: 20,
     fontHeightTitle: 28,
@@ -31,6 +31,17 @@ export default {
     red800: '#C62828',
     red900: '#B71C1C',
 
+    orange50: '#FFF3E0',
+    orange100: '#FFE0B2',
+    orange200: '#FFCC80',
+    orange300: '#FFB74D',
+    orange400: '#FFA726',
+    orange500: '#FF9800',
+    orange600: '#FB8C00',
+    orange700: '#F57C00',
+    orange800: '#EF6C00',
+    orange900: '#E65100',
+
     yellow50: '#FFFDE7',
     yellow100: '#FFF9C4',
     yellow200: '#FFF59D',
@@ -42,16 +53,16 @@ export default {
     yellow800: '#F9A825',
     yellow900: '#F57F17',
 
-    orange50: '#FFF3E0',
-    orange100: '#FFE0B2',
-    orange200: '#FFCC80',
-    orange300: '#FFB74D',
-    orange400: '#FFA726',
-    orange500: '#FF9800',
-    orange600: '#FB8C00',
-    orange700: '#F57C00',
-    orange800: '#EF6C00',
-    orange900: '#E65100',
+    blue50: '#E3F2FD',
+    blue100: '#BBDEFB',
+    blue200: '#90CAF9',
+    blue300: '#64B5F6',
+    blue400: '#42A5F5',
+    blue500: '#2196F3',
+    blue600: '#1E88E5',
+    blue700: '#1976D2',
+    blue800: '#1565C0',
+    blue900: '#0D47A1',
 
     green50: '#E8F5E9',
     green100: '#C8E6C9',
@@ -112,7 +123,7 @@ export default {
     dividerLightColor: 'rgba(255,255,255,0.12)',
 
     get primaryColor () {
-      return this.blueGrey700;
+      return this.blue500;
     },
     get accentColor () {
       return this.pink500;
