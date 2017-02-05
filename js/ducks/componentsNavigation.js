@@ -1,4 +1,4 @@
-import * as routes from './allRoutes';
+import * as routes from './routes';
 import getNavigationReducer from './navigationReducer';
 
 const initialState = {

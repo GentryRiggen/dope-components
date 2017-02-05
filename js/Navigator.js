@@ -10,7 +10,8 @@ import { actions } from 'react-native-navigation-redux-helpers';
 import ComponentsListPage from './pages/ComponentsListPage';
 import ButtonsPage from './pages/ButtonsPage';
 import ListItemsPage from './pages/ListItemsPage';
-import * as routes from './ducks/allRoutes';
+import SpinnersPage from './pages/SpinnersPage';
+import * as routes from './ducks/routes';
 
 const {
   popRoute,
@@ -58,6 +59,9 @@ class Navigator extends React.Component {
           break;
         case routes.ROUTE_LIST_ITEM:
           page = <ListItemsPage />;
+          break;
+        case routes.ROUTE_SPINNERS:
+          page = <SpinnersPage />;
           break;
         default:
           page = <ComponentsListPage />;

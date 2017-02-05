@@ -32,6 +32,7 @@ class NavBar extends React.Component {
         <TouchableHighlight
           onPress={this.props.onBackButtonPress}
           underlayColor="transparent"
+          style={[styles.headerTouchable, styles.left]}
         >
           <Icon
             name='md-arrow-back'
@@ -62,6 +63,7 @@ class NavBar extends React.Component {
           onPress={onPress}
           underlayColor="transparent"
           disabled={rightDisabled}
+          style={[styles.headerTouchable, styles.right]}
         >
           <Text
             size="Body"
@@ -81,7 +83,7 @@ class NavBar extends React.Component {
     return (
       <View style={styles.header}>
         <View style={styles.headerContent}>
-          <View style={[styles.headerButton, styles.leftHeaderButton]}>
+          <View style={styles.headerButton}>
             {this.getLeftHeader()}
           </View>
 
@@ -96,7 +98,7 @@ class NavBar extends React.Component {
             </Text>
           </View>
 
-          <View style={[styles.headerButton, styles.rightHeaderButton]}>
+          <View style={styles.headerButton}>
             {this.getRightHeader()}
           </View>
         </View>
@@ -123,15 +125,19 @@ const styles = StyleSheet.create({
   },
   headerButton: {
     flex: 1,
+  },
+  headerTouchable: {
+    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     minHeight: 28,
+    minWidth: 36,
   },
-  leftHeaderButton: {
+  left: {
     justifyContent: 'flex-start',
     paddingLeft: 12,
   },
-  rightHeaderButton: {
+  right: {
     justifyContent: 'flex-end',
     paddingRight: 12,
   },

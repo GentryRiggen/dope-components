@@ -6,7 +6,7 @@ import {
 } from '../components';
 import { executeSaga } from '../ducks/saga';
 import { navigateTo } from '../sagas/navigation';
-import * as routes from '../ducks/allRoutes';
+import * as routes from '../ducks/routes';
 
 class ComponentsListPage extends React.Component {
   constructor(props) {
@@ -32,6 +32,13 @@ class ComponentsListPage extends React.Component {
           secondaryText: 'Long lists and there default views.',
           secondaryLines: 2,
           onPress: this.goToRoute(routes.ROUTE_LIST_ITEM),
+        },
+        {
+          headerText: 'Spinners',
+          headerLines: 1,
+          secondaryText: 'Activity indicators so the user doesn\'t think the app is stuck.',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_SPINNERS),
         },
       ],
     })
