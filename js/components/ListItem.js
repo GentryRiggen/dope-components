@@ -30,14 +30,14 @@ class ListItem extends React.Component {
       headerLines,
     } = this.props;
     return (
-        <Text
-          size="Subheading"
-          type="regular"
-          numberOfLines={headerLines}
-          ellipsizeMode="tail"
-        >
-          {headerText}
-        </Text>
+      <Text
+        size="Subheading"
+        type="regular"
+        numberOfLines={headerLines}
+        ellipsizeMode="tail"
+      >
+        {headerText}
+      </Text>
     );
   }
 
@@ -95,14 +95,18 @@ class ListItem extends React.Component {
       <TouchableHighlight
         style={styles.listItem}
         onPress={onPress}
-        underlayColor={theme.colors.grey300}
+        underlayColor={theme.colors.grey200}
       >
         <View style={styles.container}>
           <View style={styles.innerContainer}>
             {this.renderLeft()}
             <View style={styles.textContainer}>
-              {this.getHeaderText()}
-              {this.getSecondaryText()}
+              <View style={styles.headerTextContainer}>
+                {this.getHeaderText()}
+              </View>
+              <View style={styles.secondaryTextContainer}>
+                {this.getSecondaryText()}
+              </View>
             </View>
           </View>
           {this.getDivider()}
@@ -118,9 +122,9 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
   },
   innerContainer: {
-    paddingTop: 8,
-    paddingBottom: 8,
-    paddingRight: 8,
+    paddingTop: 12,
+    paddingBottom: 12,
+    paddingRight: 12,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -131,6 +135,10 @@ const styles = StyleSheet.create({
   textContainer: {
     flexDirection: 'column',
     flex: 1,
+  },
+  headerTextContainer: {},
+  secondaryTextContainer: {
+    paddingTop: 4,
   },
   divider: {
     height: 1,

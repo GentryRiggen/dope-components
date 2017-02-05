@@ -16,57 +16,75 @@ class ListItemsPage extends React.Component {
     super(props);
     this.state = {
       items: [],
+      amount: 9999,
+      refreshing: false,
     };
   }
 
   componentWillMount() {
-    const lotsOText = 'Bro! What\'s up?!? Long time no see. How\'s life? Still lifting and getting dem gainz? Yeah me to. Gainz for life. [FIST BUMP]';
-    let a = [];
-    for (let i = 0; i < 9999; ++i) a[i] = i;
-    const items = a.map((i, index) => {
-      const headerText = `List Item ${index}`;
-      return {
-        headerText,
-        secondaryText: lotsOText,
-        headerLines: 1,
-        secondaryLines: 2,
-        onPress: () => null,
-        divider: true,
-        leftContent: (
-          <Avatar
-            kind="person"
-            name={headerText}
-          />
-        )
-      };
-    });
-
-    this.setState({ items });
+    this.buildList(0)();
   }
 
+  buildList(timeout = 3000) {
+    return () => {
+      this.setState({ refreshing: true });
+      const self = this;
+      setTimeout(() => {
+        const lotsOText = 'Bro! What\'s up?!? Long time no see. How\'s life? Still lifting and getting dem gainz? Yeah me to. Gainz for life. [FIST BUMP]';
+        let a = [];
+        const amount = Math.floor(Math.random() * 9999);
+        this.setState({ amount });
+        for (let i = 0; i < amount; ++i) a[i] = i;
+        const items = a.map((i, index) => {
+          const headerText = `List Item ${index}`;
+          return {
+            headerText,
+            secondaryText: lotsOText,
+            headerLines: 1,
+            secondaryLines: 2,
+            onPress: () => null,
+            divider: true,
+            leftContent: (
+              <Avatar
+                kind="person"
+                name={headerText}
+              />
+            )
+          };
+        });
+
+        self.setState({
+          items,
+          refreshing: false,
+        });
+      }, timeout);
+    };
+  }
 
   render() {
     const {
       dispatch,
       navigation,
     } = this.props;
+    const title = `${this.state.amount} List Items`;
     return (
       <Page
         navBar={{
-          title: 'List Items',
+          title,
           onBackButtonPress: () => dispatch(navigateBack(navigation.key)),
         }}
       >
         <List
           dataSource={this.state.items}
+          onRefreshRequested={this.buildList()}
+          isRefreshing={this.state.refreshing}
         />
       </Page>
     );
   }
 }
 
-const styles = StyleSheet.create({
-});
+const styles = StyleSheet.create({});
 
 function mapStateToProps(state) {
   return {
