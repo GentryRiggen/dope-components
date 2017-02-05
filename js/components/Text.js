@@ -21,11 +21,17 @@ class Text extends React.Component {
       'success',
       'primary',
     ]),
+    weight: React.PropTypes.oneOf([
+      'Bold',
+      'Regular',
+      'Light',
+    ]),
   };
 
   static defaultProps = {
     size: 'Body',
     type: 'regular',
+    weight: 'Regular',
   };
 
   setNativeProps(props) {
@@ -38,19 +44,22 @@ class Text extends React.Component {
       inverse,
       size,
       type,
+      weight,
     } = this.props;
     const { font } = theme;
-    const fontSize = R.propOr(theme.fontSizeH6, `fontSize${size}`, font);
-    const lineHeight = R.propOr(theme.lineHeightH6, `fontHeight${size}`, font);
+    const fontFamily = R.propOr(font.fontFamilyRegular, `fontFamily${weight}`, font);
+    const fontSize = R.propOr(font.fontSizeBody, `fontSize${size}`, font);
+    const lineHeight = R.propOr(font.fontSizeBody, `fontHeight${size}`, font);
     const color = getColorFromType(type, inverse);
     const textAlign = center ? 'center' : 'auto';
 
     return {
-      fontFamily: font.fontFamily,
+      fontFamily,
       fontSize,
       lineHeight,
       color,
       textAlign,
+      backgroundColor: 'transparent',
     };
   }
 

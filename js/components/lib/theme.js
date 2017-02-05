@@ -1,10 +1,10 @@
-import Color from 'color';
-
 import { Platform } from 'react-native';
 
 export default {
   font: {
-    fontFamily: 'Roboto-Light',
+    fontFamilyBold: 'Roboto-Bold',
+    fontFamilyRegular: 'Roboto-Regular',
+    fontFamilyLight: 'Roboto-Light',
 
     fontSizeTitle: 20,
     fontHeightTitle: 28,

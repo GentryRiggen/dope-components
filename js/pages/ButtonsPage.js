@@ -7,7 +7,7 @@ import {
   theme,
 } from '../components';
 import { navigateBack } from '../ducks/navigationReducer';
-import Button from '../native-components/elements/Button';
+import Button from '../components/Button';
 
 class ButtonsPage extends React.Component {
   getButtons() {
