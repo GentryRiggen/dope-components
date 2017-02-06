@@ -3,3 +3,4 @@ export const ROUTE_AVATARS = 'ROUTE_AVATARS';
 export const ROUTE_BUTTON = 'ROUTE_BUTTON';
 export const ROUTE_LIST_ITEM = 'ROUTE_LIST_ITEM';
 export const ROUTE_SPINNERS = 'ROUTE_SPINNERS';
+export const ROUTE_TEXT_INPUT = 'ROUTE_TEXT_INPUT';

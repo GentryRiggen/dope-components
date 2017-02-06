@@ -47,6 +47,13 @@ class ComponentsListPage extends React.Component {
           secondaryLines: 2,
           onPress: this.goToRoute(routes.ROUTE_SPINNERS),
         },
+        {
+          headerText: 'Text Inputs',
+          headerLines: 1,
+          secondaryText: 'Text inputs. Single line, TextAreas etc.',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_TEXT_INPUT),
+        },
       ],
     })
   }

@@ -12,6 +12,7 @@ import AvatarsPage from './pages/AvatarsPage';
 import ButtonsPage from './pages/ButtonsPage';
 import ListItemsPage from './pages/ListItemsPage';
 import SpinnersPage from './pages/SpinnersPage';
+import TextInputsPage from './pages/TextInputsPage';
 import * as routes from './ducks/routes';
 
 const {
@@ -66,6 +67,9 @@ class Navigator extends React.Component {
           break;
         case routes.ROUTE_SPINNERS:
           page = <SpinnersPage />;
+          break;
+        case routes.ROUTE_TEXT_INPUT:
+          page = <TextInputsPage />;
           break;
         default:
           page = <ComponentsListPage />;

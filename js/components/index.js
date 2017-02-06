@@ -9,6 +9,7 @@ import StyleSheet from './lib/StyleSheet';
 import Tab from './Tab';
 import TabBar from './TabBar';
 import Text from './Text';
+import TextInput from './TextInput';
 import theme from './lib/theme';
 
 export {
@@ -23,5 +24,6 @@ export {
   Tab,
   TabBar,
   Text,
+  TextInput,
   theme,
 }
