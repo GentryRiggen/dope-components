@@ -75,7 +75,7 @@ class ColorsPage extends React.Component {
         style={[styles.colorBar, { backgroundColor: value }]}
         key={name}
       >
-        <Text>
+        <Text size="Subheading">
           {name}
         </Text>
         <Text>

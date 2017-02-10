@@ -16,12 +16,12 @@ class MainContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 1,
+      selectedTab: 0,
     };
   }
 
   render() {
-    const tabViews = [
+      const tabViews = [
       <ComponentsNavigator
         navigation={this.props.componentsNavigation}
       />,
