@@ -81,11 +81,11 @@ const styles = StyleSheet.create({
   },
   border: {
     height: 1,
-    backgroundColor: theme.colors.grey300,
+    backgroundColor: theme.colors.grey[300],
   },
   focusedBorder: {
     height: 2,
-    backgroundColor: theme.colors.grey600,
+    backgroundColor: theme.colors.grey[600],
   },
 });
 

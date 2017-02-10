@@ -105,7 +105,7 @@ class Avatar extends React.Component {
 
 const styles = StyleSheet.create({
   personAvatar: {
-    backgroundColor: theme.colors.grey400,
+    backgroundColor: theme.colors.grey[400],
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',

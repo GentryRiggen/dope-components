@@ -95,7 +95,7 @@ class ListItem extends React.Component {
       <TouchableHighlight
         style={styles.listItem}
         onPress={onPress}
-        underlayColor={theme.colors.grey200}
+        underlayColor={theme.colors.grey[200]}
       >
         <View style={styles.container}>
           <View style={styles.innerContainer}>

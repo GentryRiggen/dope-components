@@ -5,6 +5,7 @@ import {
   TabBar,
 } from './components';
 import ComponentsNavigator from './Navigator';
+import ColorsPage from './pages/ColorsPage';
 import TypographyPage from './pages/TypographyPage';
 
 class MainContainer extends React.Component {
@@ -15,7 +16,7 @@ class MainContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 0,
+      selectedTab: 1,
     };
   }
 
@@ -24,6 +25,7 @@ class MainContainer extends React.Component {
       <ComponentsNavigator
         navigation={this.props.componentsNavigation}
       />,
+      <ColorsPage />,
       <TypographyPage />,
     ];
 
@@ -40,8 +42,14 @@ class MainContainer extends React.Component {
         />
         <Tab
           onPress={() => this.setState({ selectedTab: 1 })}
-          title="Typography"
+          title="Colors"
           selected={this.state.selectedTab === 1}
+          image={require('./images/color-palette.png')}
+        />
+        <Tab
+          onPress={() => this.setState({ selectedTab: 2 })}
+          title="Typography"
+          selected={this.state.selectedTab === 2}
           image={require('./images/typography.png')}
         />
       </TabBar>

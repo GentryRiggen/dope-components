@@ -8,7 +8,7 @@ import {
 import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
 
-const backgroundColor = theme.colors.blueGrey900;
+const backgroundColor = theme.colors.blueGrey[900];
 
 class Tab extends React.Component {
   static propTypes = {

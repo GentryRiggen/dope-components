@@ -32,7 +32,7 @@ class SpinnersPage extends React.Component {
 
           <View style={[
               styles.spinnerContainer,
-              { backgroundColor: theme.colors.grey900 }
+              { backgroundColor: theme.colors.grey[900] }
             ]}
           >
             <Spinner type="primary" inverse={false}/>

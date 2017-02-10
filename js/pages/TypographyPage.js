@@ -34,7 +34,7 @@ class TypographyPage extends React.Component {
 
         <View
           style={{
-              backgroundColor: theme.colors.grey900,
+              backgroundColor: theme.colors.grey[900],
               marginTop: 8,
               padding: 16,
             }}

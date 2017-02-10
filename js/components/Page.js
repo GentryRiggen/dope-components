@@ -74,13 +74,18 @@ class Page extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: theme.colors.white,
-    flex: 1,
-    flexDirection: 'column',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    height: null,
+    width: null,
+    backgroundColor: theme.colors.white.full,
   },
   content: {
     flex: 1,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.white.full,
   },
   scrollableContent: {
     paddingBottom: theme.tabBarHeight,

@@ -77,7 +77,7 @@ class Button extends React.Component {
           borderRadius: size / 2,
           transform: [{ scale: scaleValue }],
           opacity: opacityValue,
-          backgroundColor: theme.colors.grey900,
+          backgroundColor: theme.colors.grey[900],
         }}
       />
     );
@@ -91,15 +91,15 @@ class Button extends React.Component {
     } = this.props;
 
     if (flat) {
-      return theme.colors.grey50;
+      return theme.colors.grey[50];
     }
     else {
       if (disabled) {
-        return theme.colors.grey700;
+        return theme.colors.grey[700];
       }
       switch (kind) {
         case 'secondary':
-          return theme.colors.white;
+          return theme.colors.white.full;
         default:
           return theme.colors.primaryColor;
       }

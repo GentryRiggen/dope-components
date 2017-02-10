@@ -111,7 +111,7 @@ const styles = StyleSheet.create({
   header: {
     minHeight: 64,
     paddingTop: 20,
-    backgroundColor: theme.colors.blueGrey900,
+    backgroundColor: theme.colors.blueGrey[900],
   },
   headerContent: {
     flex: 1,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     paddingRight: 12,
   },
   headerButtonText: {
-    color: theme.colors.white,
+    color: theme.colors.white.full,
   },
   headerButtonTextDisabled: {
     color: theme.colors.disabledLightTextColor,

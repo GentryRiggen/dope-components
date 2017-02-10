@@ -57,7 +57,7 @@ class ButtonsPage extends React.Component {
       >
         <View
           style={{
-            backgroundColor: theme.colors.grey200,
+            backgroundColor: theme.colors.grey[200],
             padding: 16,
           }}
         >
@@ -66,7 +66,7 @@ class ButtonsPage extends React.Component {
 
         <View
           style={{
-            backgroundColor: theme.colors.grey900,
+            backgroundColor: theme.colors.grey[900],
             padding: 16,
           }}
         >

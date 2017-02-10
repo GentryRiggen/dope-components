@@ -53,11 +53,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.white.full,
   },
   content: {
     flex: 1,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.white.full,
     paddingBottom: theme.tabBarHeight,
   },
   footer: {
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: theme.colors.blueGrey900,
+    backgroundColor: theme.colors.blueGrey[900],
   },
 });
 
