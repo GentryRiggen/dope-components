@@ -14,8 +14,6 @@ import {
 class ColorsPage extends React.Component {
   renderColors() {
     const colors = [
-      { name: 'white', numbers: true, alpha: false, full: true },
-      { name: 'black', numbers: true, alpha: false, full: true },
       { name: 'red', numbers: true, alpha: true, full: false },
       { name: 'pink', numbers: true, alpha: true, full: false },
       { name: 'purple', numbers: true, alpha: true, full: false },
@@ -35,6 +33,8 @@ class ColorsPage extends React.Component {
       { name: 'brown', numbers: true, alpha: false, full: false },
       { name: 'grey', numbers: true, alpha: false, full: false },
       { name: 'blueGrey', numbers: true, alpha: false, full: false },
+      { name: 'black', numbers: true, alpha: false, full: true },
+      { name: 'white', numbers: false, alpha: false, full: true },
     ];
 
     return colors.map(color => this.renderColor(color));
@@ -44,9 +44,8 @@ class ColorsPage extends React.Component {
     const numbers = [100, 200, 300, 400, 500, 600, 700, 800, 900];
     const alphas = ['A100', 'A200', 'A400', 'A700'];
     const themeColor = R.path(['colors', color.name], theme);
-    console.log(numbers, alphas, themeColor);
     const fullBar = color.full ? this.renderColorBar(`${color.name} - Full`, themeColor.full) : null;
-    const numberBars = numbers.map((number) => this.renderColorBar(number, R.prop(number, themeColor)));
+    const numberBars = color.numbers ? numbers.map((number) => this.renderColorBar(number, R.prop(number, themeColor))) : null;
     const alphaBars = color.alpha ? alphas.map((alpha) => this.renderColorBar(alpha, R.prop(alpha, themeColor))) : null;
 
     return (
@@ -92,10 +91,11 @@ class ColorsPage extends React.Component {
         navBar={{
           title: 'Colors',
          }}
+         scrollable
       >
-        <ScrollView style={styles.container}>
+        <View style={styles.container}>
           {this.renderColors()}
-        </ScrollView>
+        </View>
       </Page>
     );
   }

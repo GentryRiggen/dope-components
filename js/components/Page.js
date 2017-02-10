@@ -43,10 +43,7 @@ class Page extends React.Component {
 
     if (scrollable) {
       return (
-        <ScrollView contentContainerStyle={[
-            styles.content,
-            styles.scrollableContent,
-          ]}
+        <ScrollView contentContainerStyle={styles.scrollableContent}
         >
           {children}
         </ScrollView>
@@ -88,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme.colors.white.full,
   },
   scrollableContent: {
-    paddingBottom: theme.tabBarHeight,
+    backgroundColor: theme.colors.white.full,
   },
 });
 
