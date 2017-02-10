@@ -16,7 +16,22 @@ class TextInputsPage extends React.Component {
     this.state = {
       text1: '',
       text2: '',
+      text3: '',
+      text4: '',
+      text5: '',
+      text6: '',
     };
+  }
+
+  renderTextInput(value, placeholder, multiline) {
+    return (
+      <TextInput
+        value={this.state[value]}
+        onChangeText={(value) => this.setState({ [value]: value })}
+        placeholder={placeholder}
+        multiline={multiline}
+      />
+    );
   }
 
   render() {
@@ -30,20 +45,20 @@ class TextInputsPage extends React.Component {
           title: 'Text Inputs',
           onBackButtonPress: () => dispatch(navigateBack(navigation.key)),
         }}
+        scrollable
       >
         <View style={styles.container}>
-          <TextInput
-            value={this.state.text1}
-            onChangeText={(text1) => this.setState({ text1 })}
-            placeholder="TextInput"
-          />
+          <View>
+            {this.renderTextInput('text1', 'Text Input', false)}
+            {this.renderTextInput('text2', 'Text Area', true)}
+            {this.renderTextInput('text3', 'Text Area', true)}
+          </View>
 
-          <TextInput
-            value={this.state.text2}
-            onChangeText={(text2) => this.setState({ text2 })}
-            placeholder="TextArea"
-            multiline
-          />
+          <View style={styles.bottom}>
+            {this.renderTextInput('text4', 'Text Area Keyboard moves page', true)}
+            {this.renderTextInput('text5', 'Text Area Keyboard moves page', true)}
+            {this.renderTextInput('text6', 'Text Area Keyboard moves page', true)}
+          </View>
         </View>
       </Page>
     );
@@ -53,7 +68,13 @@ class TextInputsPage extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'space-between',
     padding: 16,
+  },
+  bottom: {
+    flexDirection: 'column',
+    flex: 1,
+    justifyContent: 'flex-end',
   },
 });
 

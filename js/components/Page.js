@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-  ScrollView,
   StatusBar,
   TouchableHighlight,
   View,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import NavBar from './NavBar';
 import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
@@ -43,10 +43,10 @@ class Page extends React.Component {
 
     if (scrollable) {
       return (
-        <ScrollView contentContainerStyle={styles.scrollableContent}
+        <KeyboardAwareScrollView contentContainerStyle={styles.scrollableContent}
         >
           {children}
-        </ScrollView>
+        </KeyboardAwareScrollView>
       );
     }
 
