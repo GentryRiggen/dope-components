@@ -1,4 +1,5 @@
 import React from 'react';
+import R from 'ramda';
 import {
   TouchableHighlight,
   View,
@@ -133,33 +134,41 @@ class ListItem extends React.Component {
       leftSwipeButtons,
       rightSwipeButtons,
     } = this.props;
-    return (
-      <Swipeout
-        left={leftSwipeButtons}
-        right={rightSwipeButtons}
+    const content = (
+      <TouchableHighlight
+        style={styles.listItem}
+        onPress={onPress}
+        underlayColor={theme.colors.grey[200]}
       >
-        <TouchableHighlight
-          style={styles.listItem}
-          onPress={onPress}
-          underlayColor={theme.colors.grey[200]}
-        >
-          <View style={styles.container}>
-            <View style={styles.innerContainer}>
-              {this.renderLeft()}
-              <View style={styles.textContainer}>
-                <View style={styles.headerTextContainer}>
-                  {this.getHeaderText()}
-                </View>
-                <View style={styles.secondaryTextContainer}>
-                  {this.getSecondaryText()}
-                </View>
+        <View style={styles.container}>
+          <View style={styles.innerContainer}>
+            {this.renderLeft()}
+            <View style={styles.textContainer}>
+              <View style={styles.headerTextContainer}>
+                {this.getHeaderText()}
+              </View>
+              <View style={styles.secondaryTextContainer}>
+                {this.getSecondaryText()}
               </View>
             </View>
-            {this.getDivider()}
           </View>
-        </TouchableHighlight>
-      </Swipeout>
+          {this.getDivider()}
+        </View>
+      </TouchableHighlight>
     );
+
+    if (!R.isEmpty(leftSwipeButtons) || !R.isEmpty(rightSwipeButtons)) {
+      return (
+        <Swipeout
+          left={leftSwipeButtons}
+          right={rightSwipeButtons}
+        >
+          {content}
+        </Swipeout>
+      );
+    }
+
+    return content;
   }
 }
 
