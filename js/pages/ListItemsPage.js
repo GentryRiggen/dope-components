@@ -5,10 +5,10 @@ import { navigateBack } from '../ducks/navigationReducer';
 import {
   Avatar,
   List,
-} from '../components';
-import {
+  ListSwipeButton,
   Page,
   StyleSheet,
+  theme,
 } from '../components';
 
 class ListItemsPage extends React.Component {
@@ -25,7 +25,46 @@ class ListItemsPage extends React.Component {
     this.addToList(true, 0)();
   }
 
-  addToList(reset, timeout = 3000) {
+  addItems(reset) {
+    return () => {
+      const lotsOText = 'Bro! What\'s up?!? Long time no see. How\'s life? Still lifting and getting dem gainz? Yeah me to. Gainz for life. [FIST BUMP]';
+      let a = [];
+      const amount = Math.floor(Math.random() * 50) + 20;
+      const swipeButtons = [
+        { component: <ListSwipeButton text="Item 1" color={theme.colors.successColor} onPress={() => null} /> },
+        { component: <ListSwipeButton text="Item 2" color={theme.colors.warningColor} onPress={() => null} /> },
+        { component: <ListSwipeButton text="Item 3" color={theme.colors.errorColor} onPress={() => null} /> },
+      ];
+      for (let i = 0; i < amount; ++i) a[i] = i;
+      const items = a.map((i, index) => {
+        const headerText = `List Item ${index}`;
+        return {
+          headerText,
+          secondaryText: lotsOText,
+          headerLines: 1,
+          secondaryLines: 2,
+          onPress: () => null,
+          divider: true,
+          leftContent: (
+            <Avatar
+              kind="person"
+              name={headerText}
+            />
+          ),
+          leftSwipeButtons: swipeButtons,
+          rightSwipeButtons: swipeButtons,
+        };
+      });
+
+      this.setState({
+        items: reset ? items : [...this.state.items, ...items],
+        refreshing: false,
+        fetchingMore: false,
+      });
+    };
+  }
+
+  addToList(reset, timeout = 1500) {
     return () => {
       if (this.state.refreshing || this.state.fetchingMore) {
         return;
@@ -35,36 +74,7 @@ class ListItemsPage extends React.Component {
       } else {
         this.setState({ fetchingMore: true });
       }
-      const self = this;
-      setTimeout(() => {
-        const lotsOText = 'Bro! What\'s up?!? Long time no see. How\'s life? Still lifting and getting dem gainz? Yeah me to. Gainz for life. [FIST BUMP]';
-        let a = [];
-        const amount = Math.floor(Math.random() * 50) + 20;
-        for (let i = 0; i < amount; ++i) a[i] = i;
-        const items = a.map((i, index) => {
-          const headerText = `List Item ${index}`;
-          return {
-            headerText,
-            secondaryText: lotsOText,
-            headerLines: 1,
-            secondaryLines: 2,
-            onPress: () => null,
-            divider: true,
-            leftContent: (
-              <Avatar
-                kind="person"
-                name={headerText}
-              />
-            )
-          };
-        });
-
-        self.setState({
-          items: reset ? items : [...this.state.items, ...items],
-          refreshing: false,
-          fetchingMore: false,
-        });
-      }, timeout);
+      setTimeout(this.addItems(reset), timeout);
     };
   }
 

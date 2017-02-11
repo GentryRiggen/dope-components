@@ -9,50 +9,6 @@ import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
 
 const backgroundColor = theme.colors.blueGrey[900];
-
-class Tab extends React.Component {
-  static propTypes = {
-    children: React.PropTypes.any,
-    image: React.PropTypes.any.isRequired,
-    onPress: React.PropTypes.func.isRequired,
-    title: React.PropTypes.string.isRequired,
-    selected: React.PropTypes.bool.isRequired,
-  };
-
-  render() {
-    const {
-      image,
-      onPress,
-      selected,
-      title,
-    } = this.props;
-    const textStyle = [styles.footerTabText];
-    const imageStyle = [styles.footerTabImage];
-    if (selected) {
-      textStyle.push(styles.footerTabTextSelected);
-      imageStyle.push(styles.footerTabImageSelected);
-    }
-
-    return (
-      <TouchableHighlight
-        onPress={onPress}
-        underlayColor={backgroundColor}
-        style={styles.footerTab}
-      >
-        <View style={styles.footerTabContent}>
-          <Image
-            source={image}
-            style={imageStyle}
-          />
-          <Text style={textStyle}>
-            {title}
-          </Text>
-        </View>
-      </TouchableHighlight>
-    );
-  }
-}
-
 const styles = StyleSheet.create({
   footer: {
     flex: 1,
@@ -89,5 +45,44 @@ const styles = StyleSheet.create({
     tintColor: theme.colors.accentColor,
   },
 });
+
+const Tab = ({
+  image,
+  onPress,
+  title,
+  selected,
+}) => {
+  const textStyle = [styles.footerTabText];
+  const imageStyle = [styles.footerTabImage];
+  if (selected) {
+    textStyle.push(styles.footerTabTextSelected);
+    imageStyle.push(styles.footerTabImageSelected);
+  }
+
+  return (
+    <TouchableHighlight
+      onPress={onPress}
+      underlayColor={backgroundColor}
+      style={styles.footerTab}
+    >
+      <View style={styles.footerTabContent}>
+        <Image
+          source={image}
+          style={imageStyle}
+        />
+        <Text style={textStyle}>
+          {title}
+        </Text>
+      </View>
+    </TouchableHighlight>
+  );
+};
+
+Tab.propTypes = {
+  image: React.PropTypes.any.isRequired,
+  onPress: React.PropTypes.func.isRequired,
+  title: React.PropTypes.string.isRequired,
+  selected: React.PropTypes.bool.isRequired,
+};
 
 export default Tab;

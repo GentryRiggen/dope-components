@@ -2,6 +2,7 @@ import Avatar from './Avatar';
 import Icon from './Icon';
 import List from './List';
 import ListItem from './ListItem';
+import ListSwipeButton from './ListSwipeButton';
 import NavBar from './NavBar';
 import Page from './Page';
 import Spinner from './Spinner';
@@ -17,6 +18,7 @@ export {
   Icon,
   List,
   ListItem,
+  ListSwipeButton,
   NavBar,
   Page,
   Spinner,
@@ -26,4 +28,4 @@ export {
   Text,
   TextInput,
   theme,
-}
+};

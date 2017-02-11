@@ -7,12 +7,10 @@ import MainContainer from './MainContainer';
 const store = configureStore();
 store.runSaga(rootSagas);
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <MainContainer />
-      </Provider>
-    );
-  }
-}
+const App = () => (
+  <Provider store={store}>
+    <MainContainer />
+  </Provider>
+);
+
+export default App;

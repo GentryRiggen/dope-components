@@ -7,6 +7,29 @@ import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
 
 const windowHeight = Dimensions.get('window').height;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: theme.colors.white.full,
+  },
+  content: {
+    flex: 1,
+    backgroundColor: theme.colors.white.full,
+    paddingBottom: theme.tabBarHeight,
+  },
+  footer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    height: theme.tabBarHeight,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: theme.colors.blueGrey[900],
+  },
+});
 
 class TabBar extends React.Component {
   static propTypes = {
@@ -48,29 +71,5 @@ class TabBar extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    backgroundColor: theme.colors.white.full,
-  },
-  content: {
-    flex: 1,
-    backgroundColor: theme.colors.white.full,
-    paddingBottom: theme.tabBarHeight,
-  },
-  footer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'flex-end',
-    height: theme.tabBarHeight,
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    backgroundColor: theme.colors.blueGrey[900],
-  },
-});
 
 export default TabBar;

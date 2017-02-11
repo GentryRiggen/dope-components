@@ -21,7 +21,7 @@ class MainContainer extends React.Component {
   }
 
   render() {
-      const tabViews = [
+    const tabViews = [
       <ComponentsNavigator
         navigation={this.props.componentsNavigation}
       />,
