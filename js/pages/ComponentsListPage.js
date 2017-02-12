@@ -48,6 +48,13 @@ class ComponentsListPage extends React.Component {
           onPress: this.goToRoute(routes.ROUTE_MENU),
         },
         {
+          headerText: 'Radio Buttons',
+          headerLines: 1,
+          secondaryText: 'Radio buttons let a user select ONE of a limited number of choices',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_RADIO_BUTTONS),
+        },
+        {
           headerText: 'Spinners',
           headerLines: 1,
           secondaryText: 'Activity indicators so the user doesn\'t think the app is stuck.',

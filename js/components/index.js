@@ -5,6 +5,7 @@ import ListItem from './ListItem';
 import ListSwipeButton from './ListSwipeButton';
 import NavBar from './NavBar';
 import Page from './Page';
+import RadioButton from './RadioButton';
 import Spinner from './Spinner';
 import StyleSheet from './lib/StyleSheet';
 import Tab from './Tab';
@@ -21,6 +22,7 @@ export {
   ListSwipeButton,
   NavBar,
   Page,
+  RadioButton,
   Spinner,
   StyleSheet,
   Tab,

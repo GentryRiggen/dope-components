@@ -12,6 +12,7 @@ import AvatarsPage from './pages/AvatarsPage';
 import ButtonsPage from './pages/ButtonsPage';
 import ListItemsPage from './pages/ListItemsPage';
 import MenuOptionsPage from './pages/MenuOptionsPage';
+import RadioButtonsPage from './pages/RadioButtonsPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TextInputsPage from './pages/TextInputsPage';
 import * as routes from './ducks/routes';
@@ -68,6 +69,9 @@ class Navigator extends React.Component {
           break;
         case routes.ROUTE_MENU:
           page = <MenuOptionsPage />;
+          break;
+        case routes.ROUTE_RADIO_BUTTONS:
+          page = <RadioButtonsPage />;
           break;
         case routes.ROUTE_SPINNERS:
           page = <SpinnersPage />;

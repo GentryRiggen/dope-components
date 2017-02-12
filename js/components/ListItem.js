@@ -9,6 +9,7 @@ import StyleSheet from './lib/StyleSheet';
 import Text from './Text';
 import theme from './lib/theme';
 
+const sideContentWidth = 48;
 const styles = StyleSheet.create({
   listItem: {
     backgroundColor: theme.colors.white.full,
@@ -24,8 +25,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   leftContainer: {
-    width: 48,
+    width: sideContentWidth,
     paddingRight: 8,
+  },
+  rightContainer: {
+    width: sideContentWidth,
+    paddingLeft: 8,
   },
   textContainer: {
     flexDirection: 'column',
@@ -52,6 +57,7 @@ class ListItem extends React.Component {
     leftContent: React.PropTypes.node,
     leftSwipeButtons: React.PropTypes.array,
     rightSwipeButtons: React.PropTypes.array,
+    rightContent: React.PropTypes.node,
   };
 
   static defaultProps = {
@@ -63,6 +69,7 @@ class ListItem extends React.Component {
     leftContent: null,
     leftSwipeButtons: [],
     rightSwipeButtons: [],
+    rightContent: null,
   };
 
   getHeaderText() {
@@ -128,6 +135,19 @@ class ListItem extends React.Component {
     return null;
   }
 
+  renderRight() {
+    const { rightContent } = this.props;
+    if (rightContent) {
+      return (
+        <View style={styles.rightContainer}>
+          {rightContent}
+        </View>
+      );
+    }
+
+    return null;
+  }
+
   render() {
     const {
       onPress,
@@ -143,6 +163,7 @@ class ListItem extends React.Component {
         <View style={styles.container}>
           <View style={styles.innerContainer}>
             {this.renderLeft()}
+
             <View style={styles.textContainer}>
               <View style={styles.headerTextContainer}>
                 {this.getHeaderText()}
@@ -151,6 +172,8 @@ class ListItem extends React.Component {
                 {this.getSecondaryText()}
               </View>
             </View>
+
+            {this.renderRight()}
           </View>
           {this.getDivider()}
         </View>

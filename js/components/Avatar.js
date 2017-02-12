@@ -57,7 +57,7 @@ class Avatar extends React.Component {
               width: avatarSize,
               height: avatarSize,
               borderRadius: avatarSize / 2,
-            }
+            },
           ]}
         >
           <Text
