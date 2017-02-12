@@ -34,6 +34,13 @@ class ComponentsListPage extends React.Component {
           onPress: this.goToRoute(routes.ROUTE_BUTTON),
         },
         {
+          headerText: 'Checkboxes',
+          headerLines: 1,
+          secondaryText: 'Checkboxes let a user select many of a limited number of choices.',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_CHECKBOXES),
+        },
+        {
           headerText: 'Lists & List Items',
           headerLines: 1,
           secondaryText: 'Lists with pull to refresh and infinite scroll. Also showing off list items.',
@@ -50,7 +57,7 @@ class ComponentsListPage extends React.Component {
         {
           headerText: 'Radio Buttons',
           headerLines: 1,
-          secondaryText: 'Radio buttons let a user select ONE of a limited number of choices',
+          secondaryText: 'Radio buttons let a user select ONE of a limited number of choices.',
           secondaryLines: 2,
           onPress: this.goToRoute(routes.ROUTE_RADIO_BUTTONS),
         },

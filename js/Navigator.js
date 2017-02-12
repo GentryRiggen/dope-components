@@ -10,6 +10,7 @@ import { actions } from 'react-native-navigation-redux-helpers';
 import ComponentsListPage from './pages/ComponentsListPage';
 import AvatarsPage from './pages/AvatarsPage';
 import ButtonsPage from './pages/ButtonsPage';
+import CheckBoxesPage from './pages/CheckBoxesPage';
 import ListItemsPage from './pages/ListItemsPage';
 import MenuOptionsPage from './pages/MenuOptionsPage';
 import RadioButtonsPage from './pages/RadioButtonsPage';
@@ -63,6 +64,9 @@ class Navigator extends React.Component {
           break;
         case routes.ROUTE_BUTTON:
           page = <ButtonsPage />;
+          break;
+        case routes.ROUTE_CHECKBOXES:
+          page = <CheckBoxesPage />;
           break;
         case routes.ROUTE_LIST_ITEM:
           page = <ListItemsPage />;

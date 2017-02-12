@@ -361,5 +361,9 @@ export default {
     },
   },
 
-  tabBarHeight: 48,
-}
+  dimensions: {
+    radioButtonSize: 28,
+    checkboxSize: 24,
+    tabBarHeight: 48,
+  },
+};

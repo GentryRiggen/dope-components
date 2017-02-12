@@ -16,13 +16,13 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     backgroundColor: theme.colors.white.full,
-    paddingBottom: theme.tabBarHeight,
+    paddingBottom: theme.dimensions.tabBarHeight,
   },
   footer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-end',
-    height: theme.tabBarHeight,
+    height: theme.dimensions.tabBarHeight,
     position: 'absolute',
     bottom: 0,
     left: 0,

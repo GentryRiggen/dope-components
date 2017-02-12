@@ -1,4 +1,5 @@
 import Avatar from './Avatar';
+import Checkbox from './Checkbox';
 import Icon from './Icon';
 import List from './List';
 import ListItem from './ListItem';
@@ -16,6 +17,7 @@ import theme from './lib/theme';
 
 export {
   Avatar,
+  Checkbox,
   Icon,
   List,
   ListItem,

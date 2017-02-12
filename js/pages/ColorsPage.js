@@ -103,7 +103,7 @@ class ColorsPage extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: theme.tabBarHeight,
+    marginBottom: theme.dimensions.tabBarHeight,
   },
   colorContainer: {
     flex: 1,
