@@ -41,6 +41,13 @@ class ComponentsListPage extends React.Component {
           onPress: this.goToRoute(routes.ROUTE_LIST_ITEM),
         },
         {
+          headerText: 'Menu',
+          headerLines: 1,
+          secondaryText: 'Showing a menu of items hidden until invoked.',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_MENU),
+        },
+        {
           headerText: 'Spinners',
           headerLines: 1,
           secondaryText: 'Activity indicators so the user doesn\'t think the app is stuck.',

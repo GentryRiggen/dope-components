@@ -9,34 +9,49 @@ import {
 import { navigateBack } from '../ducks/navigationReducer';
 import Button from '../components/Button';
 
+const styles = StyleSheet.create({
+  buttonGroup: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 8,
+  },
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
+
 class ButtonsPage extends React.Component {
-  getButtons() {
+  getButtons(inverse = false) {
+    const noOp = () => null;
     return (
       <View>
         <View style={styles.buttonGroup}>
           <View style={styles.button}>
-            <Button kind="primary" text="Primary" flat/>
+            <Button kind="primary" text="Primary" flat onPress={noOp} inverse={inverse} />
           </View>
           <View style={styles.button}>
-            <Button kind="primary" text="Primary"/>
-          </View>
-        </View>
-
-        <View style={styles.buttonGroup}>
-          <View style={styles.button}>
-            <Button kind="secondary" text="secondary" flat/>
-          </View>
-          <View style={styles.button}>
-            <Button kind="secondary" text="secondary"/>
+            <Button kind="primary" text="Primary" onPress={noOp} inverse={inverse} />
           </View>
         </View>
 
         <View style={styles.buttonGroup}>
           <View style={styles.button}>
-            <Button kind="secondary" disabled text="disabled" flat/>
+            <Button kind="secondary" text="secondary" flat onPress={noOp} inverse={inverse} />
           </View>
           <View style={styles.button}>
-            <Button kind="secondary" disabled text="disabled"/>
+            <Button kind="secondary" text="secondary" onPress={noOp} inverse={inverse} />
+          </View>
+        </View>
+
+        <View style={styles.buttonGroup}>
+          <View style={styles.button}>
+            <Button kind="secondary" disabled text="disabled" flat onPress={noOp} inverse={inverse} />
+          </View>
+          <View style={styles.button}>
+            <Button kind="secondary" disabled text="disabled" onPress={noOp} inverse={inverse} />
           </View>
         </View>
       </View>
@@ -70,26 +85,12 @@ class ButtonsPage extends React.Component {
             padding: 16,
           }}
         >
-          {this.getButtons()}
+          {this.getButtons(true)}
         </View>
       </Page>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  buttonGroup: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8,
-  },
-  button: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
 
 function mapStateToProps(state) {
   return {

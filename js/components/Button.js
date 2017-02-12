@@ -8,25 +8,44 @@ import {
 import StyleSheet from './lib/StyleSheet';
 import Text from './Text';
 import theme from './lib/theme';
+import { getColorFromType } from './lib/utils';
 
 const buttonHeight = 48;
+const styles = StyleSheet.create({
+  button: {
+    height: 36,
+    minWidth: 64,
+    paddingLeft: 16,
+    paddingRight: 16,
+    borderRadius: 2,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+});
 
 class Button extends React.Component {
   static propTypes = {
+    disabled: React.PropTypes.bool,
+    flat: React.PropTypes.bool,
+    fullWidth: React.PropTypes.bool,
+    inverse: React.PropTypes.bool,
     kind: React.PropTypes.oneOf([
       'primary',
-      'secondary'
+      'secondary',
     ]).isRequired,
-    flat: React.PropTypes.bool,
-    disabled: React.PropTypes.bool,
-    fullWidth: React.PropTypes.bool,
+    onPress: React.PropTypes.func.isRequired,
     text: React.PropTypes.string,
-    inverse: React.PropTypes.bool,
   };
 
   static defaultProps = {
-    kind: 'primary',
+    disabled: false,
     flat: false,
+    fullWidth: false,
+    inverse: false,
+    kind: 'primary',
+    text: '',
   };
 
   constructor(props, context) {
@@ -62,9 +81,55 @@ class Button extends React.Component {
     });
   }
 
+  getBackgroundColor() {
+    const {
+      flat,
+      kind,
+      disabled,
+    } = this.props;
+
+    if (flat) {
+      return 'transparent';
+    }
+
+    if (disabled) {
+      return theme.colors.grey[700];
+    }
+    switch (kind) {
+      case 'secondary':
+        return theme.colors.grey[50];
+      default:
+        return theme.colors.primaryColor;
+    }
+  }
+
+  getInverse() {
+    const {
+      inverse,
+      flat,
+      kind,
+    } = this.props;
+    let buttonInverse = inverse || (!flat && kind === 'primary');
+    if (buttonInverse && !flat && kind === 'secondary') {
+      buttonInverse = false;
+    }
+
+    return buttonInverse;
+  }
+
   renderRippleView() {
+    const {
+      disabled,
+      kind,
+    } = this.props;
+    if (disabled) {
+      return null;
+    }
+
     const { scaleValue, opacityValue } = this.state;
     const size = buttonHeight * 2;
+    const buttonInverse = this.getInverse();
+    const backgroundColor = getColorFromType(kind, buttonInverse);
 
     return (
       <Animated.View
@@ -77,72 +142,42 @@ class Button extends React.Component {
           borderRadius: size / 2,
           transform: [{ scale: scaleValue }],
           opacity: opacityValue,
-          backgroundColor: theme.colors.grey[900],
+          backgroundColor,
         }}
       />
     );
   }
 
-  getBackgroundColor() {
-    const {
-      flat,
-      kind,
-      disabled,
-    } = this.props;
-
-    if (flat) {
-      return theme.colors.grey[50];
-    }
-    else {
-      if (disabled) {
-        return theme.colors.grey[700];
-      }
-      switch (kind) {
-        case 'secondary':
-          return theme.colors.white.full;
-        default:
-          return theme.colors.primaryColor;
-      }
-    }
-  }
-
   render() {
-    let {
+    const {
       disabled,
+      kind,
       onPress,
       text,
-      flat,
-      kind,
     } = this.props;
-    text = (text || '').toUpperCase();
-    onPress = (onPress && !disabled || (() => null));
+    const buttonOnPress = disabled ? (() => null) : onPress;
     const primary = kind === 'primary';
-    const raised = !flat;
-    const inverse = raised && primary;
-    if (inverse) {
-      kind = inverse ? 'regular' : kind;
-    } else if (disabled) {
-      kind = 'disabled';
-    }
+    const buttonKind = disabled ? 'disabled' : kind;
+    const buttonInverse = this.getInverse();
 
     return (
       <TouchableWithoutFeedback
         onPressIn={this.onPressedIn}
         onPressOut={this.onPressedOut}
-        onPress={onPress}
+        onPress={buttonOnPress}
         underlayColor={this.getBackgroundColor()}
       >
         <View
           style={[
             styles.button,
-            { backgroundColor: this.getBackgroundColor() }
+            { backgroundColor: this.getBackgroundColor() },
           ]}>
           {this.renderRippleView()}
           <Text
             size="Body"
-            type={kind}
+            type={buttonKind}
             weight="Bold"
-            inverse={inverse}
+            inverse={buttonInverse}
           >
             {text.toUpperCase()}
           </Text>
@@ -151,19 +186,5 @@ class Button extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  button: {
-    height: 36,
-    minWidth: 64,
-    paddingLeft: 16,
-    paddingRight: 16,
-    borderRadius: 2,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    overflow: 'hidden',
-  },
-});
 
 export default Button;

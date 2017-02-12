@@ -1,111 +1,13 @@
 import React from 'react';
 import {
-  StatusBar,
   TouchableHighlight,
   View,
 } from 'react-native';
+import ActionSheet from 'react-native-actionsheet';
 import Icon from './Icon';
 import Text from './Text';
 import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
-
-class NavBar extends React.Component {
-  static propTypes = {
-    title: React.PropTypes.string,
-    onBackButtonPress: React.PropTypes.any,
-    rightTitle: React.PropTypes.any,
-    rightPress: React.PropTypes.any,
-    rightDisabled: React.PropTypes.bool,
-  };
-
-  static defaultProps = {
-    title: '',
-    onBackButtonPress: false,
-    rightTitle: false,
-    rightPress: false,
-    rightDisabled: false,
-  };
-
-  getLeftHeader() {
-    if (this.props.onBackButtonPress) {
-      return (
-        <TouchableHighlight
-          onPress={this.props.onBackButtonPress}
-          underlayColor="transparent"
-          style={[styles.headerTouchable, styles.left]}
-        >
-          <Icon
-            name='md-arrow-back'
-            size={24}
-            type="regular"
-            inverse
-          />
-        </TouchableHighlight>
-      );
-    }
-
-    return null;
-  }
-
-  getRightHeader() {
-    const {
-      rightTitle,
-      rightPress,
-      rightDisabled,
-    } = this.props;
-    if (rightTitle) {
-      let text = rightTitle || '';
-      let onPress = rightPress || (() => null);
-      let textType = rightDisabled ? 'disabled' : 'regular';
-
-      return (
-        <TouchableHighlight
-          onPress={onPress}
-          underlayColor="transparent"
-          disabled={rightDisabled}
-          style={[styles.headerTouchable, styles.right]}
-        >
-          <Text
-            size="Body"
-            type={textType}
-            inverse
-          >
-            {text}
-          </Text>
-        </TouchableHighlight>
-      );
-    }
-
-    return null;
-  }
-
-  render() {
-    return (
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <View style={styles.headerButton}>
-            {this.getLeftHeader()}
-          </View>
-
-          <View style={styles.headerTitle}>
-            <Text
-              size="Title"
-              type="regular"
-              inverse
-              center
-            >
-              {this.props.title}
-            </Text>
-          </View>
-
-          <View style={styles.headerButton}>
-            {this.getRightHeader()}
-          </View>
-        </View>
-      </View>
-    );
-  }
-}
 
 const styles = StyleSheet.create({
   header: {
@@ -148,5 +50,143 @@ const styles = StyleSheet.create({
     color: theme.colors.disabledLightTextColor,
   },
 });
+
+const noop = () => null;
+
+class NavBar extends React.Component {
+  static propTypes = {
+    title: React.PropTypes.string,
+    onBackButtonPress: React.PropTypes.any,
+    rightType: React.PropTypes.oneOf(['button', 'menu']),
+    rightMenuOptions: React.PropTypes.shape({
+      options: React.PropTypes.array,
+      cancelButtonIndex: React.PropTypes.number,
+      destructiveButtonIndex: React.PropTypes.number,
+    }),
+    rightMenuItemPress: React.PropTypes.func,
+    rightTitle: React.PropTypes.string,
+    rightPress: React.PropTypes.func,
+    rightDisabled: React.PropTypes.bool,
+  };
+
+  static defaultProps = {
+    title: '',
+    onBackButtonPress: false,
+    rightType: 'button',
+    rightMenuOptions: {},
+    rightMenuItemPress: noop,
+    rightTitle: '',
+    rightPress: noop,
+    rightDisabled: false,
+  };
+
+  getLeftHeader() {
+    if (this.props.onBackButtonPress) {
+      return (
+        <TouchableHighlight
+          onPress={this.props.onBackButtonPress}
+          underlayColor="transparent"
+          style={[styles.headerTouchable, styles.left]}
+        >
+          <Icon
+            name="md-arrow-back"
+            size={24}
+            type="regular"
+            inverse
+          />
+        </TouchableHighlight>
+      );
+    }
+
+    return null;
+  }
+
+  getRightHeader() {
+    const {
+      rightType,
+      rightTitle,
+      rightPress,
+      rightDisabled,
+      rightMenuOptions,
+      rightMenuItemPress,
+    } = this.props;
+    const isButton = rightType === 'button';
+    if (rightTitle || !isButton) {
+      const textType = rightDisabled ? 'disabled' : 'regular';
+      const onPress = isButton ? rightPress : this.OnOpenActionSheet();
+      const content = isButton
+        ? (
+          <Text
+            size="Body"
+            type={textType}
+            inverse
+          >
+            {rightTitle}
+          </Text>
+        ) : (
+          <View>
+            <Icon
+              name="md-more"
+              size={24}
+              type="regular"
+              inverse
+            />
+            <ActionSheet
+              ref={r => this.ActionSheet = r}
+              {...rightMenuOptions}
+              onPress={rightMenuItemPress}
+            />
+          </View>
+        );
+
+      return (
+        <TouchableHighlight
+          onPress={onPress}
+          underlayColor="transparent"
+          disabled={rightDisabled}
+          style={[styles.headerTouchable, styles.right]}
+        >
+          {content}
+        </TouchableHighlight>
+      );
+    }
+
+    return null;
+  }
+
+  OnOpenActionSheet() {
+    return () => {
+      this.ActionSheet.show();
+    };
+  }
+
+
+  render() {
+    return (
+      <View style={styles.header}>
+        <View style={styles.headerContent}>
+          <View style={styles.headerButton}>
+            {this.getLeftHeader()}
+          </View>
+
+          <View style={styles.headerTitle}>
+            <Text
+              size="Title"
+              type="regular"
+              inverse
+              center
+            >
+              {this.props.title}
+            </Text>
+          </View>
+
+          <View style={styles.headerButton}>
+            {this.getRightHeader()}
+          </View>
+        </View>
+      </View>
+    );
+  }
+}
 
 export default NavBar;

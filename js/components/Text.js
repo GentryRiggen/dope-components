@@ -35,7 +35,7 @@ class Text extends React.Component {
   };
 
   setNativeProps(props) {
-    this.refs['TEXT_REF'].setNativeProps(props);
+    this.refs.TEXT_REF.setNativeProps(props);
   }
 
   getStyles() {
@@ -67,7 +67,7 @@ class Text extends React.Component {
     return (
       <NativeText
         ref="TEXT_REF"
-        style={[ this.getStyles(), this.props.style, ]}
+        style={[ this.getStyles(), this.props.style ]}
         {...this.props}
       >
         {this.props.children}

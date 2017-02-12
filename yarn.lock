@@ -3523,6 +3523,14 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
+"react-native-action-sheet@git+https://github.com/exponent/react-native-action-sheet":
+  version "0.3.0"
+  resolved "git+https://github.com/exponent/react-native-action-sheet#5d59088fead6a145d8f8524388eaf60c0c3254e1"
+
+react-native-actionsheet@^2.0.5:
+  version "2.0.5"
+  resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.0.5.tgz#dcb9df969cc44a45d9d5a92aa555ad72fc567201"
+
 react-native-keyboard-aware-scroll-view@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.2.7.tgz#dd344cec25284b6314f1cc9d1b75ba267483c6b6"

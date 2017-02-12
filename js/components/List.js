@@ -57,7 +57,6 @@ class List extends React.Component {
   }
 
   renderFetchingMore() {
-    console.log(this.props.isFetchingMore);
     if (this.props.isFetchingMore) {
       return <View style={styles.fetchingMore}><Spinner /></View>
     }

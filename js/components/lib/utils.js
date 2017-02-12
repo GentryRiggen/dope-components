@@ -20,7 +20,8 @@ export const getColorFromType = (type, inverse = false) => {
       color = colors.successColor;
       break;
     case 'primary':
-      color = colors.primaryColor;
+    default:
+      color = inverse ? colors.white.full : colors.primaryColor;
       break;
   }
 
