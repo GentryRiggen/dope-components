@@ -59,11 +59,13 @@ class CheckBoxesPage extends React.Component {
     return (
       <Page
         navBar={{
-          title: 'Radio Buttons',
+          title: 'Checkboxes',
           onBackButtonPress: () => dispatch(navigateBack(navigation.key)),
         }}
       >
-        <List dataSource={items}/>
+        <List
+          dataSource={items}
+        />
       </Page>
     );
   }

@@ -18,6 +18,8 @@ class ListItemsPage extends React.Component {
       items: [],
       refreshing: false,
       fetchingMore: false,
+      sorting: false,
+      sortOrder: [],
     };
   }
 
@@ -29,7 +31,7 @@ class ListItemsPage extends React.Component {
     return () => {
       const lotsOText = 'Bro! What\'s up?!? Long time no see. How\'s life? Still lifting and getting dem gainz? Yeah me to. Gainz for life. [FIST BUMP]';
       let a = [];
-      const amount = Math.floor(Math.random() * 50) + 20;
+      const amount = Math.floor(Math.random() * 10) + 10;
       const swipeButtons = [
         { component: <ListSwipeButton text="Item 1" color={theme.colors.successColor} onPress={() => null} /> },
         { component: <ListSwipeButton text="Item 2" color={theme.colors.warningColor} onPress={() => null} /> },
@@ -78,25 +80,72 @@ class ListItemsPage extends React.Component {
     };
   }
 
+  toggleSort() {
+    return () => {
+      const doneSorting = this.state.sorting;
+      if (doneSorting) {
+        const items = this.state.sortOrder.map(key => this.state.items[key]);
+        this.setState({
+          sorting: !this.state.sorting,
+          items,
+        });
+      } else {
+        const items = {};
+        this.state.items.forEach((item, index) => {
+          items[index] = item;
+        });
+        const sortOrder = Object.keys(items);
+        this.setState({
+          sorting: !this.state.sorting,
+          items,
+          sortOrder,
+        });
+        this.setState({ sorting: !this.state.sorting });
+      }
+    };
+  }
+
+  onRowMoved() {
+    return (e) => {
+      const sortOrder = [...this.state.sortOrder];
+      sortOrder.splice(e.to, 0, sortOrder.splice(e.from, 1)[0]);
+      console.log('onRowMoved', e, this.state.sortOrder, sortOrder);
+      this.setState({ sortOrder });
+    };
+  }
+
   render() {
     const {
       dispatch,
       navigation,
     } = this.props;
-    const title = `${this.state.items.length} List Items`;
+    const {
+      fetchingMore,
+      items,
+      refreshing,
+      sorting,
+      sortOrder,
+    } = this.state;
+    const title = sorting ? 'Reordering Items' : `${this.state.items.length} List Items`;
+
     return (
       <Page
         navBar={{
           title,
           onBackButtonPress: () => dispatch(navigateBack(navigation.key)),
+          rightTitle: sorting ? 'Done' : 'Reorder',
+          rightPress: this.toggleSort(),
         }}
       >
         <List
-          dataSource={this.state.items}
+          dataSource={items}
           onRefreshRequested={this.addToList(true)}
-          isRefreshing={this.state.refreshing}
+          isRefreshing={refreshing}
           onEndReached={this.addToList()}
-          isFetchingMore={this.state.fetchingMore}
+          isFetchingMore={fetchingMore}
+          isSorting={sorting}
+          sortOrder={sortOrder}
+          onRowMoved={this.onRowMoved()}
         />
       </Page>
     );

@@ -3523,10 +3523,6 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
-"react-native-action-sheet@git+https://github.com/exponent/react-native-action-sheet":
-  version "0.3.0"
-  resolved "git+https://github.com/exponent/react-native-action-sheet#5d59088fead6a145d8f8524388eaf60c0c3254e1"
-
 react-native-actionsheet@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.0.5.tgz#dcb9df969cc44a45d9d5a92aa555ad72fc567201"
@@ -3546,6 +3542,12 @@ react-native-menu@^0.20.2:
 react-native-navigation-redux-helpers@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation-redux-helpers/-/react-native-navigation-redux-helpers-0.5.0.tgz#2cfa39422c5a8973ab8037963473ca89bc7ce0c5"
+
+react-native-sortable-listview@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/react-native-sortable-listview/-/react-native-sortable-listview-0.1.1.tgz#04d96d62f7648da200b6c04b12ef355aedbd3895"
+  dependencies:
+    react-timer-mixin "^0.13.3"
 
 "react-native-swipeout@git+https://github.com/magrinj/react-native-swipeout":
   version "2.0.12"

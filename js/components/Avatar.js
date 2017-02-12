@@ -7,6 +7,17 @@ import Text from './Text';
 import theme from './lib/theme';
 import StyleSheet from './lib/StyleSheet';
 
+const styles = StyleSheet.create({
+  personAvatar: {
+    backgroundColor: theme.colors.grey[400],
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderColor: theme.colors.grey[400],
+    borderWidth: 1,
+  },
+});
+
 class Avatar extends React.Component {
   static propTypes = {
     kind: React.PropTypes.oneOf(['person', 'icon']),
@@ -30,12 +41,15 @@ class Avatar extends React.Component {
     if (image) {
       return (
         <Image
-          style={{
-            width: avatarSize,
-            height: avatarSize,
-            borderRadius: avatarSize / 2,
-          }}
-          source={{uri: image}}
+          style={[
+            styles.personAvatar,
+            {
+              width: avatarSize,
+              height: avatarSize,
+              borderRadius: avatarSize / 2,
+            },
+          ]}
+          source={{ uri: image }}
         />
       );
     } else {
@@ -102,14 +116,5 @@ class Avatar extends React.Component {
     return this.renderIconAvatar(avatarSize);
   }
 }
-
-const styles = StyleSheet.create({
-  personAvatar: {
-    backgroundColor: theme.colors.grey[400],
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-});
 
 export default Avatar;

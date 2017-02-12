@@ -156,9 +156,11 @@ class ListItem extends React.Component {
     } = this.props;
     const content = (
       <TouchableHighlight
+        {...this.props.sortHandlers}
         style={styles.listItem}
         onPress={onPress}
         underlayColor={theme.colors.grey[200]}
+        delayLongPress={0}
       >
         <View style={styles.container}>
           <View style={styles.innerContainer}>
