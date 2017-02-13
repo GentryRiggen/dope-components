@@ -14,6 +14,14 @@ const styles = StyleSheet.create({
     minHeight: 64,
     paddingTop: 20,
     backgroundColor: theme.colors.navBarBackgroundColor,
+    shadowColor: theme.colors.grey[500],
+    shadowOpacity: 0.1,
+    shadowRadius: 1,
+    shadowOffset: {
+      height: 1,
+      width: 0,
+    },
+    zIndex: 3,
   },
   headerContent: {
     flex: 1,
@@ -44,7 +52,7 @@ const styles = StyleSheet.create({
     paddingRight: 12,
   },
   headerButtonText: {
-    color: theme.colors.white.full,
+    color: theme.colors.darkTextColor,
   },
   headerButtonTextDisabled: {
     color: theme.colors.disabledLightTextColor,
@@ -99,13 +107,11 @@ class NavBar extends React.Component {
           name="md-arrow-back"
           size={24}
           type="regular"
-          inverse
         />
       ) : (
         <Text
           size="Body"
           type="regular"
-          inverse
           weight="Bold"
         >
           {leftTitle}
@@ -141,10 +147,8 @@ class NavBar extends React.Component {
     const isButton = rightType === 'button';
     if (rightTitle || !isButton) {
       let textType = rightDisabled ? 'disabled' : 'regular';
-      let inverse = true;
       if (rightIsPrimary && !rightDisabled) {
         textType = 'primary';
-        inverse = false;
       }
       const onPress = isButton ? rightPress : this.OnOpenActionSheet();
       const content = isButton
@@ -152,7 +156,6 @@ class NavBar extends React.Component {
           <Text
             size="Body"
             type={textType}
-            inverse={inverse}
             weight="Bold"
           >
             {rightTitle}
@@ -163,7 +166,6 @@ class NavBar extends React.Component {
               name="md-more"
               size={28}
               type="regular"
-              inverse
               style={{
                 paddingRight: 8,
               }}
@@ -210,7 +212,6 @@ class NavBar extends React.Component {
             <Text
               size="Title"
               type="regular"
-              inverse
               center
             >
               {this.props.title}

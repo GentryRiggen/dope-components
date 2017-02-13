@@ -335,7 +335,7 @@ export default {
     },
 
     get darkTextColor() {
-      return this.black[800];
+      return this.black[700];
     },
     get secondaryDarkTextColor() {
       return this.black[600];
@@ -378,12 +378,15 @@ export default {
 
     // NAVBAR
     get navBarBackgroundColor() {
-      return this.blueGrey[900];
+      return this.grey[50];
     },
 
     // TABBAR
     get tabBarBackgroundColor() {
-      return this.blueGrey[900];
+      return this.grey[50];
+    },
+    get tabBarUnSelectedColor() {
+      return this.grey[500];
     },
   },
 

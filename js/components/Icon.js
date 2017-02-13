@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { getColorFromType } from './lib/utils';
 
-class Text extends React.Component {
+class MyIcon extends React.Component {
   static propTypes = {
     inverse: React.PropTypes.bool,
     size: React.PropTypes.number,
@@ -46,4 +46,4 @@ class Text extends React.Component {
   }
 }
 
-export default Text;
+export default MyIcon;

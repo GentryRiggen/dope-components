@@ -55,7 +55,6 @@ class TopTabs extends React.Component {
         >
           <Text
             size="Body"
-            inverse
             weight="Bold"
           >
             {name}

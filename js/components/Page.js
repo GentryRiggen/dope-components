@@ -53,7 +53,7 @@ class Page extends React.Component {
   static defaultProps = {
     navBar: false,
     scrollable: false,
-    statusBarStyle: 'light-content',
+    statusBarStyle: 'dark-content',
   };
 
   renderHeader() {

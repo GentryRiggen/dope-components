@@ -31,18 +31,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   footerTabText: {
-    color: theme.colors.disabledLightTextColor,
+    color: theme.colors.tabBarUnSelectedColor,
     fontSize: 12,
     marginTop: 4,
   },
   footerTabTextSelected: {
-    color: theme.colors.accentColor,
+    color: theme.colors.primaryColor,
   },
   footerTabImage: {
-    tintColor: theme.colors.disabledLightTextColor,
+    tintColor: theme.colors.tabBarUnSelectedColor,
   },
   footerTabImageSelected: {
-    tintColor: theme.colors.accentColor,
+    tintColor: theme.colors.primaryColor,
   },
 });
 
