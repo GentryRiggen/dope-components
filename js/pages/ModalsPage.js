@@ -53,9 +53,9 @@ class ModalsPage extends React.Component {
         <Modal
           title="Dope Modal"
           visible={this.state[1]}
-          secondaryTitle="Cancel"
+          secondaryTitle="CANCEL"
           secondaryAction={this.toggleModal(1)}
-          primaryTitle="Done"
+          primaryTitle="DONE"
           primaryAction={this.toggleModal(1)}
         >
           <View style={{ padding: 16 }}>

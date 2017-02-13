@@ -106,6 +106,7 @@ class NavBar extends React.Component {
           size="Body"
           type="regular"
           inverse
+          weight="Bold"
         >
           {leftTitle}
         </Text>
@@ -152,6 +153,7 @@ class NavBar extends React.Component {
             size="Body"
             type={textType}
             inverse={inverse}
+            weight="Bold"
           >
             {rightTitle}
           </Text>
@@ -159,9 +161,12 @@ class NavBar extends React.Component {
           <View>
             <Icon
               name="md-more"
-              size={24}
+              size={28}
               type="regular"
               inverse
+              style={{
+                paddingRight: 8,
+              }}
             />
             <ActionSheet
               ref={r => this.ActionSheet = r}

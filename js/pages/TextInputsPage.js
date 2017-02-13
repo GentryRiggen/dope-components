@@ -27,7 +27,7 @@ class TextInputsPage extends React.Component {
     return (
       <TextInput
         value={this.state[value]}
-        onChangeText={(value) => this.setState({ [value]: value })}
+        onChangeText={text => this.setState({ [value]: text })}
         placeholder={placeholder}
         multiline={multiline}
       />
