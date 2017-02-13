@@ -51,13 +51,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const noop = () => null;
+const noOp = () => null;
 
 class NavBar extends React.Component {
   static propTypes = {
     title: React.PropTypes.string,
-    onBackButtonPress: React.PropTypes.any,
+    onBackButtonPress: React.PropTypes.func,
+    leftTitle: React.PropTypes.string,
+    leftPress: React.PropTypes.func,
     rightType: React.PropTypes.oneOf(['button', 'menu']),
+    rightIsPrimary: React.PropTypes.bool,
     rightMenuOptions: React.PropTypes.shape({
       options: React.PropTypes.array,
       cancelButtonIndex: React.PropTypes.number,
@@ -71,29 +74,52 @@ class NavBar extends React.Component {
 
   static defaultProps = {
     title: '',
-    onBackButtonPress: false,
+    onBackButtonPress: noOp,
+    leftTitle: '',
+    leftPress: noOp,
     rightType: 'button',
+    rightIsPrimary: false,
     rightMenuOptions: {},
-    rightMenuItemPress: noop,
+    rightMenuItemPress: noOp,
     rightTitle: '',
-    rightPress: noop,
+    rightPress: noOp,
     rightDisabled: false,
   };
 
   getLeftHeader() {
-    if (this.props.onBackButtonPress) {
+    const {
+      leftTitle,
+      leftPress,
+      onBackButtonPress,
+    } = this.props;
+    const backButton = onBackButtonPress !== noOp;
+    const content = backButton
+      ? (
+        <Icon
+          name="md-arrow-back"
+          size={24}
+          type="regular"
+          inverse
+        />
+      ) : (
+        <Text
+          size="Body"
+          type="regular"
+          inverse
+        >
+          {leftTitle}
+        </Text>
+      );
+    const onPress = backButton ? onBackButtonPress : leftPress;
+
+    if (leftTitle || backButton) {
       return (
         <TouchableHighlight
-          onPress={this.props.onBackButtonPress}
+          onPress={onPress}
           underlayColor="transparent"
           style={[styles.headerTouchable, styles.left]}
         >
-          <Icon
-            name="md-arrow-back"
-            size={24}
-            type="regular"
-            inverse
-          />
+          {content}
         </TouchableHighlight>
       );
     }
@@ -106,20 +132,26 @@ class NavBar extends React.Component {
       rightType,
       rightTitle,
       rightPress,
+      rightIsPrimary,
       rightDisabled,
       rightMenuOptions,
       rightMenuItemPress,
     } = this.props;
     const isButton = rightType === 'button';
     if (rightTitle || !isButton) {
-      const textType = rightDisabled ? 'disabled' : 'regular';
+      let textType = rightDisabled ? 'disabled' : 'regular';
+      let inverse = true;
+      if (rightIsPrimary && !rightDisabled) {
+        textType = 'primary';
+        inverse = false;
+      }
       const onPress = isButton ? rightPress : this.OnOpenActionSheet();
       const content = isButton
         ? (
           <Text
             size="Body"
             type={textType}
-            inverse
+            inverse={inverse}
           >
             {rightTitle}
           </Text>

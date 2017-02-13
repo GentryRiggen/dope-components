@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 import {
+  Button,
   Page,
   StyleSheet,
   theme,
 } from '../components';
 import { navigateBack } from '../ducks/navigationReducer';
-import Button from '../components/Button';
 
 const styles = StyleSheet.create({
   buttonGroup: {

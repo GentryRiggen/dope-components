@@ -1,9 +1,11 @@
 import Avatar from './Avatar';
+import Button from './Button';
 import Checkbox from './Checkbox';
 import Icon from './Icon';
 import List from './List';
 import ListItem from './ListItem';
 import ListSwipeButton from './ListSwipeButton';
+import Modal from './Modal';
 import NavBar from './NavBar';
 import Page from './Page';
 import RadioButton from './RadioButton';
@@ -17,11 +19,13 @@ import theme from './lib/theme';
 
 export {
   Avatar,
+  Button,
   Checkbox,
   Icon,
   List,
   ListItem,
   ListSwipeButton,
+  Modal,
   NavBar,
   Page,
   RadioButton,

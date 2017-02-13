@@ -55,6 +55,13 @@ class ComponentsListPage extends React.Component {
           onPress: this.goToRoute(routes.ROUTE_MENU),
         },
         {
+          headerText: 'Modals',
+          headerLines: 1,
+          secondaryText: 'Views that popover the content often asking for more information.',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_MODALS),
+        },
+        {
           headerText: 'Radio Buttons',
           headerLines: 1,
           secondaryText: 'Radio buttons let a user select ONE of a limited number of choices.',

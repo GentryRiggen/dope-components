@@ -22,14 +22,15 @@ class Avatar extends React.Component {
   static propTypes = {
     kind: React.PropTypes.oneOf(['person', 'icon']),
     size: React.PropTypes.oneOf(['small', 'large']),
-    image: React.PropTypes.any,
+    image: React.PropTypes.string,
     name: React.PropTypes.string,
   };
 
   static defaultProps = {
     kind: 'person',
     size: 'small',
-    image: false,
+    image: '',
+    name: '',
   };
 
   renderPersonAvatar(avatarSize) {
