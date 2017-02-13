@@ -14,8 +14,15 @@ const styles = StyleSheet.create({
   tabBarUnderline: {
     backgroundColor: theme.colors.primaryColor,
   },
-  tab: {
+  fixedTab: {
     flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: theme.colors.tabBarBackgroundColor,
+  },
+  scrollableTab: {
+    minWidth: 100,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
@@ -35,33 +42,44 @@ class TopTabs extends React.Component {
     scrollable: false,
   };
 
-  renderTab(name, page, isTabActive, onPressHandler, onLayoutHandler) {
-    return (
-      <TouchableHighlight
-        key={`${name}_${page}`}
-        onPress={() => onPressHandler(page)}
-        onLayout={onLayoutHandler}
-        style={styles.tab}
-        underlayColor="#aaaaaa"
-      >
-        <Text
-          size="Body"
-          inverse
-          weight="Bold"
+  renderTab() {
+    return (name, page, isTabActive, onPressHandler, onLayoutHandler) => {
+      const style = this.props.scrollable ? styles.scrollableTab : styles.fixedTab;
+      return (
+        <TouchableHighlight
+          key={`${name}_${page}`}
+          onPress={() => onPressHandler(page)}
+          onLayout={onLayoutHandler}
+          style={style}
+          underlayColor={theme.colors.tabBarBackgroundColor}
         >
-          {name}
-        </Text>
-      </TouchableHighlight>
-    );
+          <Text
+            size="Body"
+            inverse
+            weight="Bold"
+          >
+            {name}
+          </Text>
+        </TouchableHighlight>
+      );
+    };
   }
 
   renderTabBar() {
     return () => {
       if (this.props.scrollable) {
-        return <ScrollableTabBar renderTab={this.renderTab}/>;
+        return (
+          <ScrollableTabBar
+            renderTab={this.renderTab()}
+          />
+        );
       }
 
-      return <DefaultTabBar renderTab={this.renderTab}/>;
+      return (
+        <DefaultTabBar
+          renderTab={this.renderTab()}
+        />
+      );
     };
   }
 
