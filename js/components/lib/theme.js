@@ -334,30 +334,56 @@ export default {
       900: '#263238',
     },
 
-    get darkTextColor () { return this.black[800] },
-    get secondaryDarkTextColor () { return this.black[600] },
-    get disabledDarkTextColor () { return this.black[400] },
-    get dividerDarkColor () { return this.black[100] },
+    get darkTextColor() {
+      return this.black[800];
+    },
+    get secondaryDarkTextColor() {
+      return this.black[600];
+    },
+    get disabledDarkTextColor() {
+      return this.black[400];
+    },
+    get dividerDarkColor() {
+      return this.black[100];
+    },
 
-    get lightTextColor () { return this.white.full },
-    get secondaryLightTextColor () { return this.white[700] },
-    get disabledLightTextColor () { return this.white[500] },
-    get dividerLightColor () { return this.white[100] },
+    get lightTextColor() {
+      return this.white.full;
+    },
+    get secondaryLightTextColor() {
+      return this.white[700];
+    },
+    get disabledLightTextColor() {
+      return this.white[500];
+    },
+    get dividerLightColor() {
+      return this.white[100];
+    },
 
-    get primaryColor () {
+    get primaryColor() {
       return this.blue[500];
     },
-    get accentColor () {
+    get accentColor() {
       return this.pink[500];
     },
-    get successColor () {
+    get successColor() {
       return this.green[500];
     },
-    get errorColor () {
+    get errorColor() {
       return this.red[500];
     },
-    get warningColor () {
+    get warningColor() {
       return this.orange[500];
+    },
+
+    // NAVBAR
+    get navBarBackgroundColor() {
+      return this.blueGrey[900];
+    },
+
+    // TABBAR
+    get tabBarBackgroundColor() {
+      return this.blueGrey[900];
     },
   },
 

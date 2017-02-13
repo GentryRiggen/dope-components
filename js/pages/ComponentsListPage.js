@@ -89,8 +89,15 @@ class ComponentsListPage extends React.Component {
           secondaryLines: 2,
           onPress: this.goToRoute(routes.ROUTE_TEXT_INPUT),
         },
+        {
+          headerText: 'Top Tabs',
+          headerLines: 1,
+          secondaryText: 'Tabs on the top of the page like a web browser.',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_TOP_TABS),
+        },
       ],
-    })
+    });
   }
 
 

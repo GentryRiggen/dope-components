@@ -8,7 +8,7 @@ import {
 import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
 
-const backgroundColor = theme.colors.blueGrey[900];
+const backgroundColor = theme.colors.tabBarBackgroundColor;
 const styles = StyleSheet.create({
   footer: {
     flex: 1,

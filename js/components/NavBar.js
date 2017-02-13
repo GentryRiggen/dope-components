@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   header: {
     minHeight: 64,
     paddingTop: 20,
-    backgroundColor: theme.colors.blueGrey[900],
+    backgroundColor: theme.colors.navBarBackgroundColor,
   },
   headerContent: {
     flex: 1,

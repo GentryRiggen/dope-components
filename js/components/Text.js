@@ -35,7 +35,7 @@ class Text extends React.Component {
   };
 
   setNativeProps(props) {
-    this.refs.TEXT_REF.setNativeProps(props);
+    this.refs['TEXT_REF'].setNativeProps(props);
   }
 
   getStyles() {

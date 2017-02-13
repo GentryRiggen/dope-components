@@ -18,6 +18,7 @@ import PickersPage from './pages/PickersPage';
 import RadioButtonsPage from './pages/RadioButtonsPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TextInputsPage from './pages/TextInputsPage';
+import TopTabsPage from './pages/TopTabsPage';
 import * as routes from './ducks/routes';
 
 const {
@@ -90,6 +91,9 @@ class Navigator extends React.Component {
           break;
         case routes.ROUTE_TEXT_INPUT:
           page = <TextInputsPage />;
+          break;
+        case routes.ROUTE_TOP_TABS:
+          page = <TopTabsPage />;
           break;
         default:
           page = <ComponentsListPage />;

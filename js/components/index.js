@@ -17,6 +17,7 @@ import TabBar from './TabBar';
 import Text from './Text';
 import TextInput from './TextInput';
 import theme from './lib/theme';
+import TopTabs from './TopTabs';
 
 export {
   Avatar,
@@ -38,4 +39,5 @@ export {
   Text,
   TextInput,
   theme,
+  TopTabs,
 };

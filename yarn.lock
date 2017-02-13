@@ -3543,6 +3543,12 @@ react-native-navigation-redux-helpers@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation-redux-helpers/-/react-native-navigation-redux-helpers-0.5.0.tgz#2cfa39422c5a8973ab8037963473ca89bc7ce0c5"
 
+react-native-scrollable-tab-view@^0.7.2:
+  version "0.7.2"
+  resolved "https://registry.yarnpkg.com/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.7.2.tgz#8d35bfdcd922d22beb8cbb079be277e09e86978a"
+  dependencies:
+    react-timer-mixin "^0.13.3"
+
 react-native-sortable-listview@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/react-native-sortable-listview/-/react-native-sortable-listview-0.1.1.tgz#04d96d62f7648da200b6c04b12ef355aedbd3895"
