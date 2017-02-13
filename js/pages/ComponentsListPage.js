@@ -62,6 +62,13 @@ class ComponentsListPage extends React.Component {
           onPress: this.goToRoute(routes.ROUTE_MODALS),
         },
         {
+          headerText: 'Pickers',
+          headerLines: 1,
+          secondaryText: 'It\'s like a select list in html. Maybe it should be called that... meh.',
+          secondaryLines: 2,
+          onPress: this.goToRoute(routes.ROUTE_PICKERS),
+        },
+        {
           headerText: 'Radio Buttons',
           headerLines: 1,
           secondaryText: 'Radio buttons let a user select ONE of a limited number of choices.',

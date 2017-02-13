@@ -22,8 +22,12 @@ const MenuOptionsPage = ({ dispatch, navigation }) => (
       rightMenuItemPress: index => alert(`Menu item ${options[index]} clicked!`),
     }}
   >
-    <View>
-      <Text>Press the menu on the right in the nav bar.</Text>
+    <View style={{ padding: 16 }}>
+      <Text
+        size="Title"
+      >
+        Press the menu on the right in the nav bar.
+      </Text>
     </View>
   </Page>
 );

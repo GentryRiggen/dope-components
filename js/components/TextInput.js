@@ -6,6 +6,24 @@ import {
 import StyleSheet from './lib/StyleSheet';
 import theme from './lib/theme';
 
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+  },
+  input: {
+    fontFamily: theme.font.fontFamilyRegular,
+    fontSize: theme.font.fontSizeBody,
+  },
+  border: {
+    height: 1,
+    backgroundColor: theme.colors.grey[300],
+  },
+  focusedBorder: {
+    height: 2,
+    backgroundColor: theme.colors.grey[600],
+  },
+});
+
 class TextInput extends React.Component {
   static propTypes = {
     value: React.PropTypes.string.isRequired,
@@ -70,23 +88,5 @@ class TextInput extends React.Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-  },
-  input: {
-    fontFamily: theme.font.fontFamilyRegular,
-    fontSize: theme.font.fontSizeBody,
-  },
-  border: {
-    height: 1,
-    backgroundColor: theme.colors.grey[300],
-  },
-  focusedBorder: {
-    height: 2,
-    backgroundColor: theme.colors.grey[600],
-  },
-});
 
 export default TextInput;

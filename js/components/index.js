@@ -8,6 +8,7 @@ import ListSwipeButton from './ListSwipeButton';
 import Modal from './Modal';
 import NavBar from './NavBar';
 import Page from './Page';
+import Picker from './Picker';
 import RadioButton from './RadioButton';
 import Spinner from './Spinner';
 import StyleSheet from './lib/StyleSheet';
@@ -28,6 +29,7 @@ export {
   Modal,
   NavBar,
   Page,
+  Picker,
   RadioButton,
   Spinner,
   StyleSheet,

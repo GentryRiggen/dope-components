@@ -3,12 +3,7 @@ import {
   Modal as NativeModal,
 } from 'react-native';
 import NavBar from './NavBar';
-import Text from './Text';
-import theme from './lib/theme';
-import StyleSheet from './lib/StyleSheet';
 
-const styles = StyleSheet.create({
-});
 const noOp = () => null;
 
 class Modal extends React.Component {
