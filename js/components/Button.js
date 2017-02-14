@@ -5,14 +5,15 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import { connectStyle } from '@shoutem/theme';
 import StyleSheet from './lib/StyleSheet';
 import Text from './Text';
 import theme from './lib/theme';
 import { getColorFromType } from './lib/utils';
 
 const buttonHeight = 48;
-const styles = StyleSheet.create({
-  button: {
+const styles = {
+  container: {
     height: 36,
     minWidth: 64,
     paddingLeft: 16,
@@ -22,8 +23,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     overflow: 'hidden',
+    backgroundColor: 'transparent',
   },
-});
+};
 
 class Button extends React.Component {
   static propTypes = {
@@ -37,6 +39,7 @@ class Button extends React.Component {
     ]).isRequired,
     onPress: React.PropTypes.func.isRequired,
     text: React.PropTypes.string,
+    style: React.PropTypes.any.isRequired,
   };
 
   static defaultProps = {
@@ -89,18 +92,25 @@ class Button extends React.Component {
     } = this.props;
 
     if (flat) {
-      return 'transparent';
+      return 'flat';
     }
 
+    let styleName = 'raised-';
     if (disabled) {
-      return theme.colors.grey[700];
+      styleName += 'disabled';
+      return styleName;
     }
     switch (kind) {
       case 'secondary':
-        return theme.colors.grey[50];
+        styleName += 'secondary';
+        break;
       default:
-        return theme.colors.primaryColor;
+        styleName += 'primary';
+        break;
     }
+
+    console.log('styleName', styleName);
+    return styleName;
   }
 
   getInverse() {
@@ -154,6 +164,7 @@ class Button extends React.Component {
       kind,
       onPress,
       text,
+      style,
     } = this.props;
     const buttonOnPress = disabled ? (() => null) : onPress;
     const primary = kind === 'primary';
@@ -165,13 +176,13 @@ class Button extends React.Component {
         onPressIn={this.onPressedIn}
         onPressOut={this.onPressedOut}
         onPress={buttonOnPress}
-        underlayColor={this.getBackgroundColor()}
+        underlayColor="transparent"
+        styleName="dark"
+        style={style}
       >
         <View
-          style={[
-            styles.button,
-            { backgroundColor: this.getBackgroundColor() },
-          ]}>
+          style={style.container}
+        >
           {this.renderRippleView()}
           <Text
             size="Body"
@@ -187,4 +198,4 @@ class Button extends React.Component {
   }
 }
 
-export default Button;
+export default connectStyle('dope-components.Button', styles)(Button);
