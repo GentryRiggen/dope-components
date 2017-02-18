@@ -1,6 +1,7 @@
 import Avatar from './Avatar';
 import Button from './Button';
 import Checkbox from './Checkbox';
+import * as Constants from './lib/constants';
 import Icon from './Icon';
 import List from './List';
 import ListItem from './ListItem';
@@ -23,6 +24,7 @@ export {
   Avatar,
   Button,
   Checkbox,
+  Constants,
   Icon,
   List,
   ListItem,

@@ -79,8 +79,7 @@ class ListItem extends React.Component {
     } = this.props;
     return (
       <Text
-        size="Subheading"
-        type="regular"
+        styleName="regular subheading"
         numberOfLines={headerLines}
         ellipsizeMode="tail"
       >
@@ -98,8 +97,7 @@ class ListItem extends React.Component {
     if (secondaryText) {
       text = (
         <Text
-          size="Body"
-          type="secondary"
+          styleName="body secondary"
           numberOfLines={secondaryLines}
           ellipsizeMode="tail"
         >

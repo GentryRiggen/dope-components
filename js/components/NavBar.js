@@ -209,11 +209,7 @@ class NavBar extends React.Component {
           </View>
 
           <View style={styles.headerTitle}>
-            <Text
-              size="Title"
-              type="regular"
-              center
-            >
+            <Text styleName="regular title center">
               {this.props.title}
             </Text>
           </View>

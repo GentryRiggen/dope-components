@@ -3,8 +3,8 @@ import { Platform } from 'react-native';
 export default {
   font: {
     fontFamilyBold: 'Roboto-Bold',
-    fontFamilyRegular: 'Roboto-Regular',
-    fontFamilyLight: 'Roboto-Light',
+    fontFamilyRegular: 'Roboto-Light',
+    fontFamilyLight: 'Roboto-Thin',
 
     fontSizeTitle: 20,
     fontHeightTitle: 28,

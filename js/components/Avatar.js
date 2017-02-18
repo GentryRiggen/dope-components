@@ -62,7 +62,7 @@ class Avatar extends React.Component {
           initials += nameParts[nameParts.length - 1].charAt(0);
         }
       }
-      const textSize = avatarSize > 50 ? 'Title' : 'Body';
+      const textSize = avatarSize > 50 ? 'title' : 'body';
 
       return (
         <View
@@ -75,12 +75,7 @@ class Avatar extends React.Component {
             },
           ]}
         >
-          <Text
-            size={textSize}
-            type="regular"
-            weight="Bold"
-            inverse
-          >
+          <Text styleName={`bold inverse ${textSize}`}>
             {initials.toUpperCase()}
           </Text>
         </View>

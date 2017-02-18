@@ -1,79 +1,80 @@
 import React from 'react';
-import R from 'ramda';
-import { Text as NativeText } from 'react-native';
+import { Text as RNText } from 'react-native';
+import { connectStyle } from '@shoutem/theme';
+import * as Constants from './lib/constants';
 import theme from './lib/theme';
-import { getColorFromType } from './lib/utils';
 
-class Text extends React.Component {
-  static propTypes = {
-    center: React.PropTypes.bool,
-    inverse: React.PropTypes.bool,
-    size: React.PropTypes.oneOf([
-      'Title',
-      'Subheading',
-      'Body',
-    ]),
-    type: React.PropTypes.oneOf([
-      'regular',
-      'secondary',
-      'disabled',
-      'error',
-      'success',
-      'primary',
-    ]),
-    weight: React.PropTypes.oneOf([
-      'Bold',
-      'Regular',
-      'Light',
-    ]),
-  };
+const styles = {
+  '.regular': {
+    fontFamily: theme.font.fontFamilyRegular,
+    color: theme.colors.darkTextColor,
+    '.inverse': {
+      color: theme.colors.lightTextColor,
+    },
+  },
+  '.bold': {
+    fontFamily: theme.font.fontFamilyBold,
+    '.inverse': {
+      color: theme.colors.lightTextColor,
+    },
+  },
+  '.light': {
+    fontFamily: theme.font.fontFamilyLight,
+    '.inverse': {
+      color: theme.colors.lightTextColor,
+    },
+  },
+  '.title': {
+    fontSize: theme.font.fontSizeTitle,
+    lineHeight: theme.font.fontHeightTitle,
+  },
+  '.subheading': {
+    fontSize: theme.font.fontSizeSubheading,
+    lineHeight: theme.font.fontHeightSubheading,
+  },
+  '.body': {
+    fontSize: theme.font.fontSizeBody,
+    lineHeight: theme.font.fontHeightBody,
+  },
+  '.secondary': {
+    color: theme.colors.secondaryDarkTextColor,
+    '.inverse': {
+      color: theme.colors.secondaryLightTextColor,
+    },
+  },
+  '.disabled': {
+    color: theme.colors.disabledDarkTextColor,
+    '.inverse': {
+      color: theme.colors.disabledLightTextColor,
+    },
+  },
+  '.primary': {
+    color: theme.colors.primaryColor,
+    '.inverse': {
+      color: theme.colors.primaryColor,
+    },
+  },
+  '.error': {
+    color: theme.colors.errorColor,
+    '.inverse': {
+      color: theme.colors.errorColor,
+    },
+  },
+  '.center': {
+    textAlign: 'center',
+  },
 
-  static defaultProps = {
-    size: 'Body',
-    type: 'regular',
-    weight: 'Regular',
-  };
+  fontFamily: theme.font.fontFamilyRegular,
+  color: theme.colors.darkTextColor,
+  fontSize: theme.font.fontSizeBody,
+  lineHeight: theme.font.fontHeightBody,
+  textAlign: 'auto',
+  backgroundColor: 'transparent',
+};
 
-  setNativeProps(props) {
-    this.refs['TEXT_REF'].setNativeProps(props);
-  }
+const Text = props => <RNText {...props}>{props.children}</RNText>;
+Text.propTypes = {
+  ...RNText.propTypes,
+};
 
-  getStyles() {
-    const {
-      center,
-      inverse,
-      size,
-      type,
-      weight,
-    } = this.props;
-    const { font } = theme;
-    const fontFamily = R.propOr(font.fontFamilyRegular, `fontFamily${weight}`, font);
-    const fontSize = R.propOr(font.fontSizeBody, `fontSize${size}`, font);
-    const lineHeight = R.propOr(font.fontSizeBody, `fontHeight${size}`, font);
-    const color = getColorFromType(type, inverse);
-    const textAlign = center ? 'center' : 'auto';
-
-    return {
-      fontFamily,
-      fontSize,
-      lineHeight,
-      color,
-      textAlign,
-      backgroundColor: 'transparent',
-    };
-  }
-
-  render() {
-    return (
-      <NativeText
-        ref="TEXT_REF"
-        style={[ this.getStyles(), this.props.style ]}
-        {...this.props}
-      >
-        {this.props.children}
-      </NativeText>
-    );
-  }
-}
-
-export default Text;
+export default connectStyle(`${Constants.domain}.Text`, styles)(Text);

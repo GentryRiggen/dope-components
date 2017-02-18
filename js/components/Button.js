@@ -3,17 +3,18 @@ import {
   Animated,
   Easing,
   TouchableWithoutFeedback,
-  View,
 } from 'react-native';
 import { connectStyle } from '@shoutem/theme';
+import View from './View';
 import StyleSheet from './lib/StyleSheet';
 import Text from './Text';
 import theme from './lib/theme';
+import * as Constants from './lib/constants';
 import { getColorFromType } from './lib/utils';
 
 const buttonHeight = 48;
 const styles = {
-  container: {
+  [`${Constants.domain}.View`]: {
     height: 36,
     minWidth: 64,
     paddingLeft: 16,
@@ -31,7 +32,6 @@ class Button extends React.Component {
   static propTypes = {
     disabled: React.PropTypes.bool,
     flat: React.PropTypes.bool,
-    fullWidth: React.PropTypes.bool,
     inverse: React.PropTypes.bool,
     kind: React.PropTypes.oneOf([
       'primary',
@@ -47,7 +47,6 @@ class Button extends React.Component {
     flat: false,
     fullWidth: false,
     inverse: false,
-    kind: 'primary',
     text: '',
   };
 
@@ -109,7 +108,6 @@ class Button extends React.Component {
         break;
     }
 
-    console.log('styleName', styleName);
     return styleName;
   }
 
@@ -119,12 +117,11 @@ class Button extends React.Component {
       flat,
       kind,
     } = this.props;
-    let buttonInverse = inverse || (!flat && kind === 'primary');
-    if (buttonInverse && !flat && kind === 'secondary') {
-      buttonInverse = false;
+    if ((!flat && kind !== 'secondary') || (inverse || kind === 'primary')) {
+      return 'inverse';
     }
 
-    return buttonInverse;
+    return '';
   }
 
   renderRippleView() {
@@ -161,6 +158,7 @@ class Button extends React.Component {
   render() {
     const {
       disabled,
+      flat,
       kind,
       onPress,
       text,
@@ -168,7 +166,10 @@ class Button extends React.Component {
     } = this.props;
     const buttonOnPress = disabled ? (() => null) : onPress;
     const primary = kind === 'primary';
-    const buttonKind = disabled ? 'disabled' : kind;
+    let buttonKind = disabled ? 'disabled' : kind;
+    if (!flat && primary && !disabled) {
+      buttonKind = '';
+    }
     const buttonInverse = this.getInverse();
 
     return (
@@ -182,13 +183,11 @@ class Button extends React.Component {
       >
         <View
           style={style.container}
+          styleName={this.getBackgroundColor()}
         >
           {this.renderRippleView()}
           <Text
-            size="Body"
-            type={buttonKind}
-            weight="Bold"
-            inverse={buttonInverse}
+            styleName={`body bold ${buttonKind} ${buttonInverse}`}
           >
             {text.toUpperCase()}
           </Text>
@@ -198,4 +197,4 @@ class Button extends React.Component {
   }
 }
 
-export default connectStyle('dope-components.Button', styles)(Button);
+export default connectStyle(`${Constants.domain}.Button`, styles)(Button);

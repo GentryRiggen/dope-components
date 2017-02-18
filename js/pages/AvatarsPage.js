@@ -23,43 +23,29 @@ class AvatarsPage extends React.Component {
         }}
       >
         <View style={styles.container}>
-          <View style={styles.item}>
-            <Avatar
-              kind="person"
-              size="small"
-              name="gentry ryan riggen"
-            />
-            <Text style={styles.text}>Gentry Ryan Riggen</Text>
-          </View>
+          <Avatar
+            kind="person"
+            size="small"
+            name="gentry ryan riggen"
+          />
+          <Avatar
+            kind="person"
+            size="large"
+            name="gentry ryan riggen"
+          />
 
-          <View style={styles.item}>
-            <Avatar
-              kind="person"
-              size="small"
-              name="Gentry Ryan Riggen"
-              image="https://unsplash.it/100/100/?random"
-            />
-            <Text style={styles.text}>Gentry Ryan Riggen</Text>
-          </View>
-
-          <View style={styles.item}>
-            <Avatar
-              kind="person"
-              size="large"
-              name="gentry ryan riggen"
-            />
-            <Text style={styles.text}>Gentry Ryan Riggen</Text>
-          </View>
-
-          <View style={styles.item}>
-            <Avatar
-              kind="person"
-              size="large"
-              name="gentry ryan riggen"
-              image="https://unsplash.it/100/100/?random"
-            />
-            <Text style={styles.text}>gentry ryan riggen</Text>
-          </View>
+          <Avatar
+            kind="person"
+            size="small"
+            name="Gentry Ryan Riggen"
+            image="https://unsplash.it/100/100/?random"
+          />
+          <Avatar
+            kind="person"
+            size="large"
+            name="gentry ryan riggen"
+            image="https://unsplash.it/100/100/?random"
+          />
         </View>
       </Page>
     );
@@ -70,13 +56,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-  },
-  item: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
-  },
-  text: {
-    marginLeft: 8,
+    justifyContent: 'space-between',
   },
 });
 
