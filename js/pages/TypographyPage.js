@@ -16,6 +16,7 @@ class TypographyPage extends React.Component {
       >
         <View
           style={{
+            flex: 1,
             padding: 16,
           }}
         >
@@ -34,12 +35,15 @@ class TypographyPage extends React.Component {
 
         <View
           style={{
+            flex: 1,
             backgroundColor: theme.colors.grey[900],
-            marginTop: 8,
             padding: 16,
           }}
         >
-          <Text styleName="regular inverse">Selected</Text>
+          <Text styleName="bold body inverse">Body Body 1 BOLD</Text>
+          <Text styleName="regular body inverse">Body Body 1 REGULAR</Text>
+          <Text styleName="light body inverse">Body Body 1 LIGHT</Text>
+
           <Text styleName="secondary inverse">Secondary</Text>
           <Text styleName="disabled inverse">Disabled</Text>
           <Text styleName="primary inverse">Button/Hyperlink</Text>

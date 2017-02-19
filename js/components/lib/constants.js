@@ -1,1 +1,3 @@
-export const domain = 'dope-components';
+export default {
+  domain: 'com.dope-components',
+};

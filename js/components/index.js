@@ -1,3 +1,4 @@
+import AnimatedView from './AnimatedView';
 import Avatar from './Avatar';
 import Button from './Button';
 import Checkbox from './Checkbox';
@@ -17,14 +18,16 @@ import Tab from './Tab';
 import TabBar from './TabBar';
 import Text from './Text';
 import TextInput from './TextInput';
-import theme from './lib/theme';
+import theme, { getTheme } from './lib/theme';
 import TopTabs from './TopTabs';
 
 export {
+  AnimatedView,
   Avatar,
   Button,
   Checkbox,
   Constants,
+  getTheme,
   Icon,
   List,
   ListItem,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text as RNText } from 'react-native';
 import { connectStyle } from '@shoutem/theme';
-import * as Constants from './lib/constants';
+import Constants from './lib/constants';
 import theme from './lib/theme';
 
 const styles = {

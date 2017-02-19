@@ -1,12 +1,17 @@
 import {
-  Constants,
   theme,
+  getTheme,
 } from '../components';
 
-const initialState = {
+const myTheme = {
   ...theme,
-  [`${Constants.domain}.View`]: {
+  colors: {
+    ...theme.colors,
   },
+};
+
+const initialState = {
+  ...getTheme(myTheme),
 };
 
 const componentsTheme = (state = initialState, action) => {
