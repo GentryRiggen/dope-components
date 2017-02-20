@@ -29,6 +29,7 @@
 		2CC0BAFD1E1D546100E09444 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC0BAFB1E1D546100E09444 /* Fabric.framework */; };
 		2CC0BAFE1E1D546100E09444 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2CC0BAFC1E1D546100E09444 /* Crashlytics.framework */; };
 		3206B4C68ED14ADBA655F71E /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FFCCA843B114CA497A30DE8 /* FontAwesome.ttf */; };
+		4E4AD9D71E58CE30004CDBD6 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4E4AD9D61E58CE30004CDBD6 /* Roboto-Thin.ttf */; };
 		4EDFF0441E46E2000024C704 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EDFF0411E46E2000024C704 /* Roboto-Bold.ttf */; };
 		4EDFF0451E46E2000024C704 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EDFF0421E46E2000024C704 /* Roboto-Light.ttf */; };
 		4EDFF0461E46E2000024C704 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4EDFF0431E46E2000024C704 /* Roboto-Regular.ttf */; };
@@ -160,6 +161,48 @@
 			remoteGlobalIDString = 5DBEB1501B18CEA900B34395;
 			remoteInfo = RNVectorIcons;
 		};
+		4E4AD9C91E58CD82004CDBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3C059A1DE3340900C268FA;
+			remoteInfo = yoga;
+		};
+		4E4AD9CB1E58CD82004CDBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3C06751DE3340C00C268FA;
+			remoteInfo = "yoga-tvOS";
+		};
+		4E4AD9CD1E58CD82004CDBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD9251DE5FBEC00167DC4;
+			remoteInfo = cxxreact;
+		};
+		4E4AD9CF1E58CD82004CDBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD9321DE5FBEE00167DC4;
+			remoteInfo = "cxxreact-tvOS";
+		};
+		4E4AD9D11E58CD82004CDBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD90B1DE5FBD600167DC4;
+			remoteInfo = jschelpers;
+		};
+		4E4AD9D31E58CD82004CDBD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
+			remoteInfo = "jschelpers-tvOS";
+		};
 		5E9157321DD0AC6500FF2AA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
@@ -218,6 +261,7 @@
 		2CC0BAFC1E1D546100E09444 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		318D20366BF746868875AE1E /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		3D1E188050664B13BB63D63B /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		4E4AD9D61E58CE30004CDBD6 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		4EDFF0411E46E2000024C704 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		4EDFF0421E46E2000024C704 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		4EDFF0431E46E2000024C704 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -343,6 +387,7 @@
 		13B07FAE1A68108700A75B9A /* dopecomponents */ = {
 			isa = PBXGroup;
 			children = (
+				4E4AD9D61E58CE30004CDBD6 /* Roboto-Thin.ttf */,
 				4EDFF0411E46E2000024C704 /* Roboto-Bold.ttf */,
 				4EDFF0421E46E2000024C704 /* Roboto-Light.ttf */,
 				4EDFF0431E46E2000024C704 /* Roboto-Regular.ttf */,
@@ -361,7 +406,13 @@
 			isa = PBXGroup;
 			children = (
 				146834041AC3E56700842450 /* libReact.a */,
-				2C8AA4A71E0B9E9B00A3A10F /* libReact-tvOS.a */,
+				2C8AA4A71E0B9E9B00A3A10F /* libReact.a */,
+				4E4AD9CA1E58CD82004CDBD6 /* libyoga.a */,
+				4E4AD9CC1E58CD82004CDBD6 /* libyoga.a */,
+				4E4AD9CE1E58CD82004CDBD6 /* libcxxreact.a */,
+				4E4AD9D01E58CD82004CDBD6 /* libcxxreact.a */,
+				4E4AD9D21E58CD82004CDBD6 /* libjschelpers.a */,
+				4E4AD9D41E58CD82004CDBD6 /* libjschelpers.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -686,10 +737,10 @@
 			remoteRef = 2C8AA4A21E0B9E9B00A3A10F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		2C8AA4A71E0B9E9B00A3A10F /* libReact-tvOS.a */ = {
+		2C8AA4A71E0B9E9B00A3A10F /* libReact.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
-			path = "libReact-tvOS.a";
+			path = libReact.a;
 			remoteRef = 2C8AA4A61E0B9E9B00A3A10F /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
@@ -698,6 +749,48 @@
 			fileType = archive.ar;
 			path = libRNVectorIcons.a;
 			remoteRef = 2C8AA4A91E0B9E9B00A3A10F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4E4AD9CA1E58CD82004CDBD6 /* libyoga.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libyoga.a;
+			remoteRef = 4E4AD9C91E58CD82004CDBD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4E4AD9CC1E58CD82004CDBD6 /* libyoga.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libyoga.a;
+			remoteRef = 4E4AD9CB1E58CD82004CDBD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4E4AD9CE1E58CD82004CDBD6 /* libcxxreact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcxxreact.a;
+			remoteRef = 4E4AD9CD1E58CD82004CDBD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4E4AD9D01E58CD82004CDBD6 /* libcxxreact.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libcxxreact.a;
+			remoteRef = 4E4AD9CF1E58CD82004CDBD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4E4AD9D21E58CD82004CDBD6 /* libjschelpers.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjschelpers.a;
+			remoteRef = 4E4AD9D11E58CD82004CDBD6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4E4AD9D41E58CD82004CDBD6 /* libjschelpers.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libjschelpers.a;
+			remoteRef = 4E4AD9D31E58CD82004CDBD6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
@@ -742,6 +835,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E4AD9D71E58CE30004CDBD6 /* Roboto-Thin.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				4EDFF0451E46E2000024C704 /* Roboto-Light.ttf in Resources */,

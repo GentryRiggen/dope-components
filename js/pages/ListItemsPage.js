@@ -33,9 +33,9 @@ class ListItemsPage extends React.Component {
       let a = [];
       const amount = Math.floor(Math.random() * 10) + 10;
       const swipeButtons = [
-        { component: <ListSwipeButton text="Item 1" color={theme.colors.successColor} onPress={() => null} /> },
-        { component: <ListSwipeButton text="Item 2" color={theme.colors.warningColor} onPress={() => null} /> },
-        { component: <ListSwipeButton text="Item 3" color={theme.colors.errorColor} onPress={() => null} /> },
+        { component: <ListSwipeButton text="Primary" styleName="primary" onPress={() => null} /> },
+        { component: <ListSwipeButton text="Accent" styleName="accent" onPress={() => null} /> },
+        { component: <ListSwipeButton text="Success" styleName="success" onPress={() => null} /> },
       ];
       for (let i = 0; i < amount; ++i) a[i] = i;
       const items = a.map((i, index) => {

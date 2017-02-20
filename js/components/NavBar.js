@@ -1,63 +1,13 @@
 import React from 'react';
 import {
-  TouchableHighlight,
   View,
 } from 'react-native';
 import ActionSheet from 'react-native-actionsheet';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 import Icon from './Icon';
+import Button from './Button';
 import Text from './Text';
-import StyleSheet from './lib/StyleSheet';
-import theme from './lib/theme';
-
-const styles = StyleSheet.create({
-  header: {
-    minHeight: 64,
-    paddingTop: 20,
-    backgroundColor: theme.colors.navBarBackgroundColor,
-    shadowColor: theme.colors.grey[500],
-    shadowOpacity: 0.1,
-    shadowRadius: 1,
-    shadowOffset: {
-      height: 1,
-      width: 0,
-    },
-    zIndex: 3,
-  },
-  headerContent: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  headerTitle: {
-    flex: 2,
-    flexDirection: 'column',
-    justifyContent: 'center',
-  },
-  headerButton: {
-    flex: 1,
-  },
-  headerTouchable: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    minHeight: 28,
-    minWidth: 36,
-  },
-  left: {
-    justifyContent: 'flex-start',
-    paddingLeft: 12,
-  },
-  right: {
-    justifyContent: 'flex-end',
-    paddingRight: 12,
-  },
-  headerButtonText: {
-    color: theme.colors.darkTextColor,
-  },
-  headerButtonTextDisabled: {
-    color: theme.colors.disabledLightTextColor,
-  },
-});
 
 const noOp = () => null;
 
@@ -78,6 +28,7 @@ class NavBar extends React.Component {
     rightTitle: React.PropTypes.string,
     rightPress: React.PropTypes.func,
     rightDisabled: React.PropTypes.bool,
+    style: React.PropTypes.any,
   };
 
   static defaultProps = {
@@ -99,6 +50,7 @@ class NavBar extends React.Component {
       leftTitle,
       leftPress,
       onBackButtonPress,
+      style,
     } = this.props;
     const backButton = onBackButtonPress !== noOp;
     const content = backButton
@@ -106,13 +58,13 @@ class NavBar extends React.Component {
         <Icon
           name="md-arrow-back"
           size={24}
-          type="regular"
+          styleName="regular"
+          style={style.headerTouchableText}
         />
       ) : (
         <Text
-          size="Body"
-          type="regular"
-          weight="Bold"
+          styleName="regular body"
+          style={style.headerTouchableText}
         >
           {leftTitle}
         </Text>
@@ -121,13 +73,14 @@ class NavBar extends React.Component {
 
     if (leftTitle || backButton) {
       return (
-        <TouchableHighlight
+        <Button
           onPress={onPress}
-          underlayColor="transparent"
-          style={[styles.headerTouchable, styles.left]}
+          style={style.headerTouchableLeft}
+          styleName="narrow flex-start"
+          noRipple
         >
           {content}
-        </TouchableHighlight>
+        </Button>
       );
     }
 
@@ -143,6 +96,7 @@ class NavBar extends React.Component {
       rightDisabled,
       rightMenuOptions,
       rightMenuItemPress,
+      style,
     } = this.props;
     const isButton = rightType === 'button';
     if (rightTitle || !isButton) {
@@ -154,21 +108,20 @@ class NavBar extends React.Component {
       const content = isButton
         ? (
           <Text
-            size="Body"
-            type={textType}
-            weight="Bold"
+            styleName={`body ${textType}`}
+            style={style.headerTouchableText}
           >
             {rightTitle}
           </Text>
         ) : (
-          <View>
+          <View
+            style={{paddingRight: 8}}
+          >
             <Icon
               name="md-more"
               size={28}
-              type="regular"
-              style={{
-                paddingRight: 8,
-              }}
+              styleName="regular"
+              style={style.headerTouchableText}
             />
             <ActionSheet
               ref={r => this.ActionSheet = r}
@@ -179,14 +132,15 @@ class NavBar extends React.Component {
         );
 
       return (
-        <TouchableHighlight
+        <Button
           onPress={onPress}
-          underlayColor="transparent"
           disabled={rightDisabled}
-          style={[styles.headerTouchable, styles.right]}
+          style={style.headerTouchableRight}
+          styleName="narrow flex-end"
+          noRipple
         >
           {content}
-        </TouchableHighlight>
+        </Button>
       );
     }
 
@@ -201,24 +155,26 @@ class NavBar extends React.Component {
 
 
   render() {
+    const { style } = this.props;
     return (
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <View style={styles.headerButton}>
+      <View style={style.header}>
+        <View style={style.headerContent}>
+          <View style={style.headerButton}>
             {this.getLeftHeader()}
           </View>
 
-          <View style={styles.headerTitle}>
+          <View style={style.headerTitle}>
             <Text
-              size="Title"
-              type="regular"
-              center
+              styleName="regular title center"
+              style={style.headerTitleText}
+              numberOfLines={1}
+              ellipsizeMode="tail"
             >
               {this.props.title}
             </Text>
           </View>
 
-          <View style={styles.headerButton}>
+          <View style={style.headerButton}>
             {this.getRightHeader()}
           </View>
         </View>
@@ -227,4 +183,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default connectStyle(`${Constants.domain}.NavBar`)(NavBar);

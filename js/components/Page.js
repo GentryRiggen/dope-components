@@ -1,33 +1,12 @@
 import React from 'react';
 import {
   StatusBar,
-  TouchableHighlight,
   View,
 } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 import NavBar from './NavBar';
-import StyleSheet from './lib/StyleSheet';
-import theme from './lib/theme';
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-    height: null,
-    width: null,
-    backgroundColor: theme.colors.white.full,
-  },
-  content: {
-    flex: 1,
-    backgroundColor: theme.colors.white.full,
-  },
-  scrollableContent: {
-    backgroundColor: theme.colors.white.full,
-  },
-});
 
 class Page extends React.Component {
   static propTypes = {
@@ -48,6 +27,7 @@ class Page extends React.Component {
     }),
     scrollable: React.PropTypes.bool,
     statusBarStyle: React.PropTypes.oneOf(['default', 'light-content', 'dark-content']),
+    style: React.PropTypes.any,
   };
 
   static defaultProps = {
@@ -68,11 +48,12 @@ class Page extends React.Component {
     const {
       children,
       scrollable,
+      style,
     } = this.props;
 
     if (scrollable) {
       return (
-        <KeyboardAwareScrollView contentContainerStyle={styles.scrollableContent}>
+        <KeyboardAwareScrollView contentContainerStyle={style.scrollableContent}>
           {children}
         </KeyboardAwareScrollView>
       );
@@ -82,13 +63,15 @@ class Page extends React.Component {
   }
 
   render() {
-    const { statusBarStyle } = this.props;
+    const {
+      statusBarStyle,
+      style,
+    } = this.props;
     StatusBar.setBarStyle(statusBarStyle, false);
 
     return (
       <View
-        theme={theme}
-        style={styles.container}
+        style={style.container}
       >
         {this.renderHeader()}
         {this.renderContent()}
@@ -97,4 +80,4 @@ class Page extends React.Component {
   }
 }
 
-export default Page;
+export default connectStyle(`${Constants.domain}.Page`)(Page);

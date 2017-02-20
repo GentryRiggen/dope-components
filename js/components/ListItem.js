@@ -1,50 +1,12 @@
 import React from 'react';
 import R from 'ramda';
-import {
-  TouchableHighlight,
-  View,
-} from 'react-native';
 import Swipeout from 'react-native-swipeout';
-import StyleSheet from './lib/StyleSheet';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 import Text from './Text';
+import TouchableHighlight from './TouchableHighlight';
+import View from './View';
 import theme from './lib/theme';
-
-const sideContentWidth = 48;
-const styles = StyleSheet.create({
-  listItem: {
-    backgroundColor: theme.colors.white.full,
-  },
-  container: {
-    paddingLeft: 16,
-  },
-  innerContainer: {
-    paddingTop: 12,
-    paddingBottom: 12,
-    paddingRight: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  leftContainer: {
-    width: sideContentWidth,
-    paddingRight: 8,
-  },
-  rightContainer: {
-    width: sideContentWidth,
-    paddingLeft: 8,
-  },
-  textContainer: {
-    flexDirection: 'column',
-    flex: 1,
-  },
-  headerTextContainer: {},
-  secondaryTextContainer: {
-    paddingTop: 4,
-  },
-  divider: {
-    height: 1,
-    backgroundColor: theme.colors.dividerDarkColor,
-  },
-});
 
 class ListItem extends React.Component {
   static propTypes = {
@@ -58,6 +20,7 @@ class ListItem extends React.Component {
     leftSwipeButtons: React.PropTypes.array,
     rightSwipeButtons: React.PropTypes.array,
     rightContent: React.PropTypes.node,
+    style: React.PropTypes.any,
   };
 
   static defaultProps = {
@@ -79,8 +42,7 @@ class ListItem extends React.Component {
     } = this.props;
     return (
       <Text
-        size="Subheading"
-        type="regular"
+        styleName="regular subheading"
         numberOfLines={headerLines}
         ellipsizeMode="tail"
       >
@@ -93,13 +55,13 @@ class ListItem extends React.Component {
     const {
       secondaryText,
       secondaryLines,
+      style,
     } = this.props;
     let text = null;
     if (secondaryText) {
       text = (
         <Text
-          size="Body"
-          type="secondary"
+          styleName="body secondary"
           numberOfLines={secondaryLines}
           ellipsizeMode="tail"
         >
@@ -108,25 +70,32 @@ class ListItem extends React.Component {
       );
     }
     return (
-      <View style={styles.textContent}>
+      <View style={style.textContent}>
         {text}
       </View>
     );
   }
 
   getDivider() {
-    if (this.props.divider) {
-      return <View style={styles.divider}/>;
+    const {
+      divider,
+      style,
+    } = this.props;
+    if (divider) {
+      return <View style={style.divider}/>;
     }
 
     return null;
   }
 
   renderLeft() {
-    const { leftContent } = this.props;
+    const {
+      leftContent,
+      style,
+    } = this.props;
     if (leftContent) {
       return (
-        <View style={styles.leftContainer}>
+        <View style={style.leftContainer}>
           {leftContent}
         </View>
       );
@@ -136,10 +105,13 @@ class ListItem extends React.Component {
   }
 
   renderRight() {
-    const { rightContent } = this.props;
+    const {
+      rightContent,
+      style,
+    } = this.props;
     if (rightContent) {
       return (
-        <View style={styles.rightContainer}>
+        <View style={style.rightContainer}>
           {rightContent}
         </View>
       );
@@ -153,24 +125,26 @@ class ListItem extends React.Component {
       onPress,
       leftSwipeButtons,
       rightSwipeButtons,
+      sortHandlers,
+      style,
     } = this.props;
     const content = (
       <TouchableHighlight
-        {...this.props.sortHandlers}
-        style={styles.listItem}
+        {...sortHandlers}
+        style={style.listItem}
         onPress={onPress}
         underlayColor={theme.colors.grey[200]}
         delayLongPress={0}
       >
-        <View style={styles.container}>
-          <View style={styles.innerContainer}>
+        <View style={style.container}>
+          <View style={style.innerContainer}>
             {this.renderLeft()}
 
-            <View style={styles.textContainer}>
-              <View style={styles.headerTextContainer}>
+            <View style={style.textContainer}>
+              <View style={style.headerTextContainer}>
                 {this.getHeaderText()}
               </View>
-              <View style={styles.secondaryTextContainer}>
+              <View style={style.secondaryTextContainer}>
                 {this.getSecondaryText()}
               </View>
             </View>
@@ -197,4 +171,4 @@ class ListItem extends React.Component {
   }
 }
 
-export default ListItem;
+export default connectStyle(`${Constants.domain}.ListItem`)(ListItem);

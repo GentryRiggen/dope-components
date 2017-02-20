@@ -31,8 +31,7 @@ const CheckBox = ({ checked, onPress }) => {
       <Icon
         name="md-checkmark"
         size={20}
-        type="regular"
-        inverse
+        styleName="regular inverse"
       />
     )
     : <View />;

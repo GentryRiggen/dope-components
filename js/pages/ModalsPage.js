@@ -27,7 +27,7 @@ class ModalsPage extends React.Component {
 
   toggleModal(id) {
     return () => {
-      this.setState({ [id]: !this.state[id] });
+      // this.setState({ [id]: !this.state[id] });
     };
   }
 
@@ -45,6 +45,7 @@ class ModalsPage extends React.Component {
       >
         <View style={styles.container}>
           <Button
+            styleName="raised primary"
             text="Open"
             onPress={this.toggleModal(1)}
           />

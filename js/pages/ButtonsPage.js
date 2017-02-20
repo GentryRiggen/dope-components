@@ -26,32 +26,77 @@ const styles = StyleSheet.create({
 class ButtonsPage extends React.Component {
   getButtons(inverse = false) {
     const noOp = () => null;
+    const inverseStyleName = inverse ? 'inverse-' : '';
+
     return (
       <View>
         <View style={styles.buttonGroup}>
           <View style={styles.button}>
-            <Button kind="primary" text="Primary" flat onPress={noOp} inverse={inverse} />
+            <Button
+              styleName={`flat primary ${inverseStyleName}`}
+              text="Primary"
+              onPress={noOp}
+            />
           </View>
           <View style={styles.button}>
-            <Button kind="primary" text="Primary" onPress={noOp} inverse={inverse} />
+            <Button
+              styleName={`raised primary ${inverseStyleName}`}
+              text="Primary"
+              onPress={noOp}
+            />
           </View>
         </View>
 
         <View style={styles.buttonGroup}>
           <View style={styles.button}>
-            <Button kind="secondary" text="secondary" flat onPress={noOp} inverse={inverse} />
+            <Button
+              styleName={`flat accent ${inverseStyleName}`}
+              text="Accent"
+              onPress={noOp}
+            />
           </View>
           <View style={styles.button}>
-            <Button kind="secondary" text="secondary" onPress={noOp} inverse={inverse} />
+            <Button
+              styleName={`raised accent ${inverseStyleName}`}
+              text="Accent"
+              onPress={noOp}
+            />
           </View>
         </View>
 
         <View style={styles.buttonGroup}>
           <View style={styles.button}>
-            <Button kind="secondary" disabled text="disabled" flat onPress={noOp} inverse={inverse} />
+            <Button
+              styleName={`flat ${inverseStyleName}secondary`}
+              text="Secondary"
+              onPress={noOp}
+            />
           </View>
           <View style={styles.button}>
-            <Button kind="secondary" disabled text="disabled" onPress={noOp} inverse={inverse} />
+            <Button
+              styleName={`raised secondary ${inverseStyleName}`}
+              text="Secondary"
+              onPress={noOp}
+            />
+          </View>
+        </View>
+
+        <View style={styles.buttonGroup}>
+          <View style={styles.button}>
+            <Button
+              styleName={`flat ${inverseStyleName}disabled`}
+              text="Disabled"
+              onPress={noOp}
+              disabled
+            />
+          </View>
+          <View style={styles.button}>
+            <Button
+              styleName={`raised disabled ${inverseStyleName}`}
+              text="Disabled"
+              onPress={noOp}
+              disabled
+            />
           </View>
         </View>
       </View>
@@ -72,8 +117,10 @@ class ButtonsPage extends React.Component {
       >
         <View
           style={{
-            backgroundColor: theme.colors.grey[200],
-            padding: 16,
+            flex: 1,
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            justifyContent: 'center',
           }}
         >
           {this.getButtons()}
@@ -81,8 +128,11 @@ class ButtonsPage extends React.Component {
 
         <View
           style={{
+            flex: 1,
+            flexDirection: 'column',
+            alignItems: 'stretch',
+            justifyContent: 'center',
             backgroundColor: theme.colors.grey[900],
-            padding: 16,
           }}
         >
           {this.getButtons(true)}
