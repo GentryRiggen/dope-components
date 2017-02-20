@@ -1,49 +1,39 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { getColorFromType } from './lib/utils';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 
 class MyIcon extends React.Component {
   static propTypes = {
-    inverse: React.PropTypes.bool,
+    name: React.PropTypes.string.isRequired,
     size: React.PropTypes.number,
-    type: React.PropTypes.oneOf([
-      'regular',
-      'secondary',
-      'disabled',
-      'error',
-      'success',
-      'primary',
-    ]),
+    style: React.PropTypes.any,
   };
 
   static defaultProps = {
     size: 24,
-    type: 'regular',
-    inverse: false,
   };
 
-  setNativeProps(props) {
-    this.refs['ICON_REF'].setNativeProps(props);
+  setNativeProps(nativeProps) {
+    this.component.setNativeProps(nativeProps);
   }
 
   render() {
     const {
-      inverse,
       name,
       size,
-      type,
+      style,
     } = this.props;
-    const color = getColorFromType(type, inverse);
 
     return (
       <Icon
-        ref="ICON_REF"
+        ref={component => this.component = component}
         size={size}
         name={name}
-        style={{ color }}
+        style={style}
       />
     );
   }
 }
 
-export default MyIcon;
+export default connectStyle(`${Constants.domain}.Icon`)(MyIcon);

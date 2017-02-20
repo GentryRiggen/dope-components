@@ -50,6 +50,23 @@ class ButtonsPage extends React.Component {
         <View style={styles.buttonGroup}>
           <View style={styles.button}>
             <Button
+              styleName={`flat accent ${inverseStyleName}`}
+              text="Accent"
+              onPress={noOp}
+            />
+          </View>
+          <View style={styles.button}>
+            <Button
+              styleName={`raised accent ${inverseStyleName}`}
+              text="Accent"
+              onPress={noOp}
+            />
+          </View>
+        </View>
+
+        <View style={styles.buttonGroup}>
+          <View style={styles.button}>
+            <Button
               styleName={`flat ${inverseStyleName}secondary`}
               text="Secondary"
               onPress={noOp}

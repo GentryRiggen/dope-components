@@ -1,4 +1,13 @@
 import Constants from './constants';
+import avatarStyle from '../Avatar.style';
+import buttonStyle from '../Button.style';
+import iconStyle from '../Icon.style';
+import navBarStyle from '../NavBar.style';
+import pageStyle from '../Page.style';
+import tabStyle from '../Tab.style';
+import tabBarStyle from '../TabBar.style';
+import textStyle from '../Text.style';
+import topTabsStyle from '../TopTabs.style';
 
 const colors = {
   white: {
@@ -360,12 +369,23 @@ const colors = {
     return this.orange[500];
   },
 
-  // NAVBAR
+  // PAGE
+  get pageBackgroundColor() {
+    return colors.white.full;
+  },
+
+  // NAV BAR
   get navBarBackgroundColor() {
     return this.grey[50];
   },
+  get headerTitleTextColor() {
+    return this.black[700];
+  },
+  get headerTextColor() {
+    return this.black[700];
+  },
 
-  // TABBAR
+  // TAB BAR
   get tabBarBackgroundColor() {
     return this.grey[50];
   },
@@ -379,12 +399,13 @@ const dimensions = {
   radioButtonSize: 28,
   checkboxSize: 24,
   tabBarHeight: 48,
+  topTabBarHeight: 48,
 };
 
 const font = {
   fontFamilyBold: 'Roboto-Bold',
-  fontFamilyRegular: 'Roboto-Light',
-  fontFamilyLight: 'Roboto-Thin',
+  fontFamilyRegular: 'Roboto-Regular',
+  fontFamilyLight: 'Roboto-Light',
 
   fontSizeTitle: 20,
   fontHeightTitle: 28,
@@ -402,107 +423,17 @@ const theme = {
   font,
 };
 
-export const getTheme = (options = theme) => {
-  return {
-    [`${Constants.domain}.Button`]: {
-      '.flat': {
-        container: {
-          backgroundColor: 'transparent',
-        },
-        '.secondary': {
-          container: {
-            [`${Constants.domain}.AnimatedView`]: {
-              backgroundColor: options.colors.secondaryDarkTextColor,
-            },
-            [`${Constants.domain}.Text`]: {
-              color: options.colors.secondaryDarkTextColor,
-            },
-          },
-        },
-        '.inverse-secondary': {
-          container: {
-            [`${Constants.domain}.AnimatedView`]: {
-              backgroundColor: options.colors.secondaryLightTextColor,
-            },
-            [`${Constants.domain}.Text`]: {
-              color: options.colors.secondaryLightTextColor,
-            },
-          },
-        },
-        '.disabled': {
-          container: {
-            [`${Constants.domain}.Text`]: {
-              color: options.colors.disabledDarkTextColor,
-            },
-          },
-        },
-        '.inverse-disabled': {
-          container: {
-            [`${Constants.domain}.Text`]: {
-              color: options.colors.disabledLightTextColor,
-            },
-          },
-        },
-      },
-
-      '.raised': {
-        container: {
-          backgroundColor: options.colors.primaryColor,
-          [`${Constants.domain}.AnimatedView`]: {
-            backgroundColor: options.colors.white.full,
-          },
-          [`${Constants.domain}.Text`]: {
-            color: options.colors.white.full,
-          },
-        },
-        '.secondary': {
-          container: {
-            backgroundColor: options.colors.grey[200],
-            [`${Constants.domain}.AnimatedView`]: {
-              backgroundColor: options.colors.secondaryDarkTextColor,
-            },
-            [`${Constants.domain}.Text`]: {
-              color: options.colors.secondaryDarkTextColor,
-            },
-          },
-        },
-        '.disabled': {
-          container: {
-            backgroundColor: options.colors.grey[500],
-            [`${Constants.domain}.Text`]: {
-              color: options.colors.disabledLightTextColor,
-            },
-          },
-        },
-      },
-
-      container: {
-        height: 36,
-        minWidth: 64,
-        paddingLeft: 16,
-        paddingRight: 16,
-        borderRadius: 2,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        backgroundColor: 'transparent',
-        [`${Constants.domain}.AnimatedView`]: {
-          backgroundColor: options.colors.primaryColor,
-          position: 'absolute',
-          top: 0,
-          left: 24,
-          width: 64,
-          height: 48,
-          borderRadius: 32,
-        },
-        [`${Constants.domain}.Text`]: {
-          fontFamily: options.font.fontFamilyBold,
-          color: options.colors.primaryColor,
-        },
-      },
-    },
-  };
-};
+const getStyle = (styleFn, options) => styleFn(options.colors, options.font, options.dimensions);
+export const getTheme = (options = theme) => ({
+  [`${Constants.domain}.Avatar`]: getStyle(avatarStyle, options),
+  [`${Constants.domain}.Button`]: getStyle(buttonStyle, options),
+  [`${Constants.domain}.Icon`]: getStyle(iconStyle, options),
+  [`${Constants.domain}.NavBar`]: getStyle(navBarStyle, options),
+  [`${Constants.domain}.Page`]: getStyle(pageStyle, options),
+  [`${Constants.domain}.Tab`]: getStyle(tabStyle, options),
+  [`${Constants.domain}.TabBar`]: getStyle(tabBarStyle, options),
+  [`${Constants.domain}.Text`]: getStyle(textStyle, options),
+  [`${Constants.domain}.TopTabs`]: getStyle(topTabsStyle, options),
+});
 
 export default theme;

@@ -12,7 +12,7 @@ class TypographyPage extends React.Component {
       <Page
         navBar={{
           title: 'Typography',
-         }}
+        }}
       >
         <View
           style={{
@@ -40,14 +40,15 @@ class TypographyPage extends React.Component {
             padding: 16,
           }}
         >
-          <Text styleName="bold body inverse">Body Body 1 BOLD</Text>
           <Text styleName="regular body inverse">Body Body 1 REGULAR</Text>
-          <Text styleName="light body inverse">Body Body 1 LIGHT</Text>
 
           <Text styleName="secondary inverse">Secondary</Text>
           <Text styleName="disabled inverse">Disabled</Text>
-          <Text styleName="primary inverse">Button/Hyperlink</Text>
-          <Text styleName="error inverse">Error</Text>
+          <Text styleName="primary">Button/Hyperlink</Text>
+          <Text styleName="accent">Button/Hyperlink</Text>
+          <Text styleName="success">Success</Text>
+          <Text styleName="warning">Warning</Text>
+          <Text styleName="error">Error</Text>
         </View>
       </Page>
     );

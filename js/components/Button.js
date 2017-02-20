@@ -5,15 +5,15 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 import AnimatedView from './AnimatedView';
 import View from './View';
 import Text from './Text';
-import Constants from './lib/constants';
-import { getColorFromType } from './lib/utils';
 
 class Button extends React.Component {
   static propTypes = {
     disabled: React.PropTypes.bool,
+    noRipple: React.PropTypes.bool,
     onPress: React.PropTypes.func.isRequired,
     text: React.PropTypes.string,
     style: React.PropTypes.any,
@@ -22,6 +22,7 @@ class Button extends React.Component {
   static defaultProps = {
     disabled: false,
     text: '',
+    noripple: false,
   };
 
   constructor(props, context) {
@@ -58,7 +59,7 @@ class Button extends React.Component {
   }
 
   renderRippleView() {
-    if (this.props.disabled) {
+    if (this.props.disabled || this.props.noRipple) {
       return null;
     }
 
@@ -73,14 +74,26 @@ class Button extends React.Component {
     );
   }
 
+  setNativeProps(nativeProps) {
+    this.component.setNativeProps(nativeProps);
+  }
+
   render() {
     const {
+      children,
       disabled,
       onPress,
       text,
       style,
     } = this.props;
     const buttonOnPress = disabled ? (() => null) : onPress;
+    const content = text
+      ? (
+        <Text style={style.text}>
+          {text.toUpperCase()}
+        </Text>
+      )
+      : children;
 
     return (
       <TouchableWithoutFeedback
@@ -90,12 +103,11 @@ class Button extends React.Component {
         underlayColor="transparent"
         styleName="dark"
         style={style}
+        ref={component => this.component = component}
       >
         <View style={style.container}>
           {this.renderRippleView()}
-          <Text style={style.text}>
-            {text.toUpperCase()}
-          </Text>
+          {content}
         </View>
       </TouchableWithoutFeedback>
     );

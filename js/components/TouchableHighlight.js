@@ -1,16 +1,16 @@
 import React from 'react';
-import { View as RNView } from 'react-native';
+import { TouchableHighlight as RNTH } from 'react-native';
 import { connectStyle } from '@shoutem/theme';
 import Constants from './lib/constants';
 
-class View extends React.Component {
+class TouchableHighlight extends React.Component {
   setNativeProps(nativeProps) {
     this.component.setNativeProps(nativeProps);
   }
 
   render() {
     return (
-      <RNView
+      <RNTH
         ref={component => this.component = component}
         {...this.props}
       />
@@ -18,8 +18,8 @@ class View extends React.Component {
   }
 }
 
-View.propTypes = {
-  ...RNView.propTypes,
+TouchableHighlight.propTypes = {
+  ...RNTH.propTypes,
 };
 
-export default connectStyle(`${Constants.domain}.View`)(View);
+export default connectStyle(`${Constants.domain}.TouchableHighlight`)(TouchableHighlight);

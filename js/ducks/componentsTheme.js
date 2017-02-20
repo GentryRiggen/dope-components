@@ -8,6 +8,12 @@ const myTheme = {
   colors: {
     ...theme.colors,
   },
+  font: {
+    ...theme.font,
+  },
+  dimensions: {
+    ...theme.dimensions,
+  },
 };
 
 const initialState = {

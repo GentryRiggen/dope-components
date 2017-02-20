@@ -3,20 +3,9 @@ import {
   View,
   Image,
 } from 'react-native';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 import Text from './Text';
-import theme from './lib/theme';
-import StyleSheet from './lib/StyleSheet';
-
-const styles = StyleSheet.create({
-  personAvatar: {
-    backgroundColor: theme.colors.grey[400],
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderColor: theme.colors.grey[400],
-    borderWidth: 1,
-  },
-});
 
 class Avatar extends React.Component {
   static propTypes = {
@@ -37,13 +26,14 @@ class Avatar extends React.Component {
     const {
       image,
       name,
+      style,
     } = this.props;
 
     if (image) {
       return (
         <Image
           style={[
-            styles.personAvatar,
+            style.personAvatar,
             {
               width: avatarSize,
               height: avatarSize,
@@ -67,7 +57,7 @@ class Avatar extends React.Component {
       return (
         <View
           style={[
-            styles.personAvatar,
+            style.personAvatar,
             {
               width: avatarSize,
               height: avatarSize,
@@ -113,4 +103,4 @@ class Avatar extends React.Component {
   }
 }
 
-export default Avatar;
+export default connectStyle(`${Constants.domain}.Avatar`)(Avatar);

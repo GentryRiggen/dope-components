@@ -1,40 +1,19 @@
 import React from 'react';
-import {
-  TouchableHighlight,
-} from 'react-native';
 import ScrollableTabView, {
   DefaultTabBar,
   ScrollableTabBar,
 } from 'react-native-scrollable-tab-view';
-import StyleSheet from './lib/StyleSheet';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
+import Button from './Button';
 import Text from './Text';
-import theme from './lib/theme';
-
-const styles = StyleSheet.create({
-  tabBarUnderline: {
-    backgroundColor: theme.colors.primaryColor,
-  },
-  fixedTab: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: theme.colors.tabBarBackgroundColor,
-  },
-  scrollableTab: {
-    minWidth: 100,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: theme.colors.tabBarBackgroundColor,
-  },
-});
 
 class TopTabs extends React.Component {
   static propTypes = {
     children: React.PropTypes.any.isRequired,
     initialPage: React.PropTypes.number,
     scrollable: React.PropTypes.bool,
+    style: React.PropTypes.any,
   };
 
   static defaultProps = {
@@ -44,14 +23,18 @@ class TopTabs extends React.Component {
 
   renderTab() {
     return (name, page, isTabActive, onPressHandler, onLayoutHandler) => {
-      const style = this.props.scrollable ? styles.scrollableTab : styles.fixedTab;
+      const {
+        scrollable,
+        style,
+      } = this.props;
+      const tabStyle = scrollable ? style.scrollableTab : style.fixedTab;
       return (
-        <TouchableHighlight
+        <Button
           key={`${name}_${page}`}
           onPress={() => onPressHandler(page)}
           onLayout={onLayoutHandler}
-          style={style}
-          underlayColor={theme.colors.tabBarBackgroundColor}
+          style={tabStyle}
+          noRipple
         >
           <Text
             size="Body"
@@ -59,7 +42,7 @@ class TopTabs extends React.Component {
           >
             {name}
           </Text>
-        </TouchableHighlight>
+        </Button>
       );
     };
   }
@@ -86,13 +69,14 @@ class TopTabs extends React.Component {
     const {
       children,
       initialPage,
+      style,
     } = this.props;
     return (
       <ScrollableTabView
         initialPage={initialPage}
         renderTabBar={this.renderTabBar()}
-        tabBarUnderlineStyle={styles.tabBarUnderline}
-        tabBarBackgroundColor={theme.colors.tabBarBackgroundColor}
+        tabBarUnderlineStyle={style.tabBarUnderline}
+        style={style.tabBar}
       >
         {children}
       </ScrollableTabView>
@@ -100,4 +84,4 @@ class TopTabs extends React.Component {
   }
 }
 
-export default TopTabs;
+export default connectStyle(`${Constants.domain}.TopTabs`)(TopTabs);
