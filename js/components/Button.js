@@ -34,6 +34,7 @@ class Button extends React.Component {
       maxOpacity,
       scaleValue: new Animated.Value(0.01),
       opacityValue: new Animated.Value(maxOpacity),
+      width: 48,
     };
   }
 
@@ -63,15 +64,31 @@ class Button extends React.Component {
       return null;
     }
 
-    const { scaleValue, opacityValue } = this.state;
+    const {
+      scaleValue,
+      opacityValue,
+      width,
+    } = this.state;
     return (
       <AnimatedView
         style={{
           transform: [{ scale: scaleValue }],
           opacity: opacityValue,
+          width,
+          height: width,
+          borderRadius: width / 2,
+          top: -1 * (width / 3.5),
+          left: (width / 12),
         }}
       />
     );
+  }
+
+  onLayout() {
+    return (e) => {
+      const { width } = e.nativeEvent.layout;
+      this.setState({ width });
+    };
   }
 
   setNativeProps(nativeProps) {
@@ -104,8 +121,11 @@ class Button extends React.Component {
         styleName="dark"
         style={style}
         ref={component => this.component = component}
+        onLayout={this.onLayout()}
       >
-        <View style={style.container}>
+        <View
+          style={style.container}
+        >
           {this.renderRippleView()}
           {content}
         </View>

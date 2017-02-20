@@ -1,40 +1,24 @@
 import React from 'react';
-import { TouchableHighlight } from 'react-native';
-import StyleSheet from './lib/StyleSheet';
+import { TouchableWithoutFeedback } from 'react-native';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 import Text from './Text';
+import View from './View';
 
-const styles = StyleSheet.create({
-  swipeButton: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-const SwipeButton = ({ text, color, onPress }) => (
-  <TouchableHighlight
-    style={[
-      styles.swipeButton,
-      {
-        backgroundColor: color,
-      },
-    ]}
-    underlayColor={color}
-    onPress={onPress}
-  >
-    <Text
-      type="regular"
-      inverse
-      weight="Bold"
-    >
-      {text}
-    </Text>
-  </TouchableHighlight>
+const ListSwipeButton = ({ text, onPress, style }) => (
+  <TouchableWithoutFeedback onPress={onPress}>
+    <View style={style}>
+      <Text styleName="regular bold inverse">
+        {text}
+      </Text>
+    </View>
+  </TouchableWithoutFeedback>
 );
-SwipeButton.propTypes = {
+
+ListSwipeButton.propTypes = {
   text: React.PropTypes.string.isRequired,
-  color: React.PropTypes.string.isRequired,
   onPress: React.PropTypes.func.isRequired,
+  style: React.PropTypes.any,
 };
 
-export default SwipeButton;
+export default connectStyle(`${Constants.domain}.ListSwipeButton`)(ListSwipeButton);

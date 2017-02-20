@@ -1,8 +1,8 @@
 const getStyle = (colors, font, dimensions) => ({
   '.regular': {
-    color: colors.secondaryDarkTextColor,
+    color: colors.darkTextColor,
     '.inverse': {
-      color: colors.secondaryLightTextColor,
+      color: colors.lightTextColor,
     },
   },
   '.secondary': {

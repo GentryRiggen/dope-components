@@ -27,7 +27,7 @@ class ModalsPage extends React.Component {
 
   toggleModal(id) {
     return () => {
-      this.setState({ [id]: !this.state[id] });
+      // this.setState({ [id]: !this.state[id] });
     };
   }
 

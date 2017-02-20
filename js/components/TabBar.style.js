@@ -2,7 +2,7 @@ const getStyle = (colors, font, dimensions) => ({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: colors.white.full,
+    backgroundColor: colors.pageBackgroundColor,
   },
   content: {
     flex: 1,

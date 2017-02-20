@@ -41,7 +41,7 @@ class MainContainer extends React.Component {
             onPress={() => this.setState({ selectedTab: 0 })}
             title="Components"
             selected={this.state.selectedTab === 0}
-            image={require('./images/gear-outline.png')}
+            image={require('./images/cog.png')}
           />
           <Tab
             onPress={() => this.setState({ selectedTab: 1 })}

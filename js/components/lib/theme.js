@@ -2,12 +2,16 @@ import Constants from './constants';
 import avatarStyle from '../Avatar.style';
 import buttonStyle from '../Button.style';
 import iconStyle from '../Icon.style';
+import listItemStyle from '../ListItem.style';
+import listSwipeButtonStyle from '../ListSwipeButton.style';
 import navBarStyle from '../NavBar.style';
 import pageStyle from '../Page.style';
 import tabStyle from '../Tab.style';
 import tabBarStyle from '../TabBar.style';
 import textStyle from '../Text.style';
 import topTabsStyle from '../TopTabs.style';
+import touchableHighlightStyle from '../TouchableHighlight.style';
+import viewStyle from '../View.style';
 
 const colors = {
   white: {
@@ -428,12 +432,16 @@ export const getTheme = (options = theme) => ({
   [`${Constants.domain}.Avatar`]: getStyle(avatarStyle, options),
   [`${Constants.domain}.Button`]: getStyle(buttonStyle, options),
   [`${Constants.domain}.Icon`]: getStyle(iconStyle, options),
+  [`${Constants.domain}.ListItem`]: getStyle(listItemStyle, options),
+  [`${Constants.domain}.ListSwipeButton`]: getStyle(listSwipeButtonStyle, options),
   [`${Constants.domain}.NavBar`]: getStyle(navBarStyle, options),
   [`${Constants.domain}.Page`]: getStyle(pageStyle, options),
   [`${Constants.domain}.Tab`]: getStyle(tabStyle, options),
   [`${Constants.domain}.TabBar`]: getStyle(tabBarStyle, options),
   [`${Constants.domain}.Text`]: getStyle(textStyle, options),
   [`${Constants.domain}.TopTabs`]: getStyle(topTabsStyle, options),
+  [`${Constants.domain}.TouchableHighlight`]: getStyle(touchableHighlightStyle, options),
+  [`${Constants.domain}.View`]: getStyle(viewStyle, options),
 });
 
 export default theme;
