@@ -8,16 +8,25 @@ const getStyle = (colors, font) => ({
   innerContainer: {
     paddingTop: 12,
     paddingBottom: 12,
-    paddingRight: 12,
     flexDirection: 'row',
     alignItems: 'center',
   },
   leftContainer: {
-    width: 48,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 48,
+    maxWidth: 48,
     paddingRight: 8,
   },
   rightContainer: {
-    width: 48,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 48,
+    maxWidth: 48,
     paddingLeft: 8,
   },
   textContainer: {

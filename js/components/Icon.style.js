@@ -32,6 +32,8 @@ const getStyle = (colors, font, dimensions) => ({
   '.success': {
     color: colors.successColor,
   },
+
+  color: colors.darkTextColor,
 });
 
 export default getStyle;

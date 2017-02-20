@@ -1,30 +1,17 @@
 import React from 'react';
+import R from 'ramda';
 import {
-  TouchableHighlight,
   View,
 } from 'react-native';
 import Icon from './Icon';
 import List from './List';
+import ListItem from './ListItem';
 import Modal from './Modal';
-import Text from './Text';
-import theme from './lib/theme';
 import StyleSheet from './lib/StyleSheet';
 
 const styles = StyleSheet.create({
   container: {
     height: 36,
-  },
-  buttonContainer: {
-    flex: 1,
-    borderBottomWidth: 1,
-    borderColor: theme.colors.grey[600],
-  },
-  buttonContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingLeft: 8,
-    paddingRight: 8,
   },
 });
 
@@ -35,8 +22,7 @@ class Picker extends React.Component {
     onItemSelected: React.PropTypes.func.isRequired,
   };
 
-  static defaultProps = {
-  };
+  static defaultProps = {};
 
   constructor(props) {
     super(props);
@@ -71,18 +57,21 @@ class Picker extends React.Component {
   }
 
   renderButton() {
+    const {
+      items,
+      selected,
+    } = this.props;
+    const selectedItem = R.propOr({}, selected, items);
+    const headerText = R.propOr('None', 'headerText', selectedItem);
+    const leftContent = R.propOr(false, 'leftContent', selectedItem);
     return (
-      <TouchableHighlight
+      <ListItem
+        headerText={headerText}
+        leftContent={leftContent}
+        rightContent={<Icon name="md-arrow-dropdown" />}
         onPress={this.toggleOpen()}
-        style={styles.buttonContainer}
-        underlayColor={theme.colors.grey[200]}
-      >
-        <View style={styles.buttonContent}>
-          <Text>{this.props.items[this.props.selected].name}</Text>
-
-          <Icon name="md-arrow-dropdown" />
-        </View>
-      </TouchableHighlight>
+        divider
+      />
     );
   }
 
@@ -104,7 +93,7 @@ class Picker extends React.Component {
         >
           <List
             dataSource={Object.keys(items).map(key => ({
-              headerText: items[key].name,
+              ...items[key],
               onPress: this.itemSelected(key),
               divider: true,
               rightContent: this.renderSelected(key),

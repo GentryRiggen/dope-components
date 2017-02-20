@@ -18,7 +18,7 @@ class MainContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 0,
+      selectedTab: 1,
     };
   }
 
@@ -32,7 +32,7 @@ class MainContainer extends React.Component {
     ];
 
     return (
-      <StyleProvider style={this.props.componentsTheme}>
+      <StyleProvider style={this.props.componentsTheme.theme}>
         <TabBar
           tabViews={tabViews}
           selectedIndex={this.state.selectedTab}

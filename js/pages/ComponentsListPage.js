@@ -111,7 +111,7 @@ class ComponentsListPage extends React.Component {
     return (
       <Page
         navBar={{
-          title: "Components",
+          title: 'Components',
         }}
       >
         <List
