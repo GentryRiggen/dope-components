@@ -21,13 +21,13 @@ class ModalsPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      1: false,
+      open: false,
     };
   }
 
-  toggleModal(id) {
+  toggleModal() {
     return () => {
-      // this.setState({ [id]: !this.state[id] });
+      this.setState({ open: !this.state.open });
     };
   }
 
@@ -47,13 +47,13 @@ class ModalsPage extends React.Component {
           <Button
             styleName="raised primary"
             text="Open"
-            onPress={this.toggleModal(1)}
+            onPress={this.toggleModal()}
           />
         </View>
 
         <Modal
           title="Dope Modal"
-          visible={this.state[1]}
+          visible={this.state.open}
           secondaryTitle="CANCEL"
           secondaryAction={this.toggleModal(1)}
           primaryTitle="DONE"
@@ -61,6 +61,12 @@ class ModalsPage extends React.Component {
         >
           <View style={{ padding: 16 }}>
             <Text>This is a dope modal!</Text>
+            <Text>Put whatever you want in here</Text>
+            <Button
+              styleName="raised accent"
+              text="Close"
+              onPress={this.toggleModal()}
+            />
           </View>
         </Modal>
       </Page>

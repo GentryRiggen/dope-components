@@ -6,6 +6,12 @@ const getStyle = (colors, font, dimensions) => ({
   },
   tabBarUnderline: {
     backgroundColor: colors.primaryColor,
+    height: 3,
+  },
+  tabBarTextStyle: {
+    fontFamily: font.fontFamilyRegular,
+    fontSize: font.fontSizeBody,
+    color: colors.primaryColor,
   },
   fixedTab: {
     flex: 1,

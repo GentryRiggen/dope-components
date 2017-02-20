@@ -5,8 +5,6 @@ import ScrollableTabView, {
 } from 'react-native-scrollable-tab-view';
 import { connectStyle } from '@shoutem/theme';
 import Constants from './lib/constants';
-import Button from './Button';
-import Text from './Text';
 
 class TopTabs extends React.Component {
   static propTypes = {
@@ -21,47 +19,13 @@ class TopTabs extends React.Component {
     scrollable: false,
   };
 
-  renderTab() {
-    return (name, page, isTabActive, onPressHandler, onLayoutHandler) => {
-      const {
-        scrollable,
-        style,
-      } = this.props;
-      const tabStyle = scrollable ? style.scrollableTab : style.fixedTab;
-      return (
-        <Button
-          key={`${name}_${page}`}
-          onPress={() => onPressHandler(page)}
-          onLayout={onLayoutHandler}
-          style={tabStyle}
-          noRipple
-        >
-          <Text
-            size="Body"
-            weight="Bold"
-          >
-            {name}
-          </Text>
-        </Button>
-      );
-    };
-  }
-
   renderTabBar() {
     return () => {
       if (this.props.scrollable) {
-        return (
-          <ScrollableTabBar
-            renderTab={this.renderTab()}
-          />
-        );
+        return <ScrollableTabBar />;
       }
 
-      return (
-        <DefaultTabBar
-          renderTab={this.renderTab()}
-        />
-      );
+      return <DefaultTabBar />;
     };
   }
 
@@ -76,6 +40,7 @@ class TopTabs extends React.Component {
         initialPage={initialPage}
         renderTabBar={this.renderTabBar()}
         tabBarUnderlineStyle={style.tabBarUnderline}
+        tabBarTextStyle={style.tabBarTextStyle}
         style={style.tabBar}
       >
         {children}
