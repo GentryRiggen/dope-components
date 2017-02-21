@@ -7,6 +7,7 @@ const getStyle = (colors, font) => ({
   },
   innerContainer: {
     paddingTop: 12,
+    paddingRight: 8,
     paddingBottom: 12,
     flexDirection: 'row',
     alignItems: 'center',

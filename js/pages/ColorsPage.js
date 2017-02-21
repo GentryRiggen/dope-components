@@ -48,6 +48,7 @@ const getColorListItem = (name, value) => {
           backgroundColor: value,
           width: 36,
           height: 36,
+          borderRadius: 18,
         }}
       />
     ),
