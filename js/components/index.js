@@ -1,5 +1,6 @@
 import AnimatedView from './AnimatedView';
 import Avatar from './Avatar';
+import BarChart from './BarChart';
 import Button from './Button';
 import Checkbox from './Checkbox';
 import * as Constants from './lib/constants';
@@ -24,6 +25,7 @@ import TopTabs from './TopTabs';
 export {
   AnimatedView,
   Avatar,
+  BarChart,
   Button,
   Checkbox,
   Constants,

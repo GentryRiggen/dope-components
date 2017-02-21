@@ -30,6 +30,10 @@ const getStyle = (colors, font, dimensions) => ({
     fontSize: font.fontSizeBody,
     lineHeight: font.fontHeightBody,
   },
+  '.small': {
+    fontSize: font.fontSizeSmall,
+    lineHeight: font.fontHeightSmall,
+  },
   '.secondary': {
     color: colors.secondaryDarkTextColor,
     '.inverse': {

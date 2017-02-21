@@ -1,5 +1,6 @@
 import Constants from './constants';
 import avatarStyle from '../Avatar.style';
+import barChartStyle from '../BarChart.style';
 import buttonStyle from '../Button.style';
 import iconStyle from '../Icon.style';
 import listItemStyle from '../ListItem.style';
@@ -419,6 +420,9 @@ const font = {
 
   fontSizeBody: 14,
   fontHeightBody: 18,
+
+  fontSizeSmall: 11,
+  fontHeightSmall: 12,
 };
 
 const theme = {
@@ -430,6 +434,7 @@ const theme = {
 const getStyle = (styleFn, options) => styleFn(options.colors, options.font, options.dimensions);
 export const getTheme = (options = theme) => ({
   [`${Constants.domain}.Avatar`]: getStyle(avatarStyle, options),
+  [`${Constants.domain}.BarChart`]: getStyle(barChartStyle, options),
   [`${Constants.domain}.Button`]: getStyle(buttonStyle, options),
   [`${Constants.domain}.Icon`]: getStyle(iconStyle, options),
   [`${Constants.domain}.ListItem`]: getStyle(listItemStyle, options),
