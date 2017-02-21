@@ -27,36 +27,60 @@ class BarChart extends React.Component {
     super(props, context);
     this.state = {
       largest: 1,
+      data: [],
     };
   }
 
   componentWillMount() {
-    this.calcLargest(this.props.data);
+    const { data } = this.props;
+    const updated = data.map(d => ({
+      ...d,
+      height: new Animated.Value(0),
+    }));
+    this.setState({
+      largest: this.getLargestValue(data),
+      data: updated,
+    }, this.dataUpdated(updated));
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.data.length !== nextProps.data.length) {
-      this.calcLargest(nextProps.data);
+    if (this.props.data !== nextProps.data) {
+      const { data } = nextProps;
+      const updated = data.map(d => ({
+        ...d,
+        height: new Animated.Value(0),
+      }));
+      this.setState({
+        largest: this.getLargestValue(data),
+        data: updated,
+      }, this.dataUpdated(updated));
     }
   }
 
-  calcLargest(data) {
+  getLargestValue(data) {
     let largest = 1;
     data.forEach((d) => {
       if (largest < d.y) {
         largest = d.y;
       }
     });
-    this.setState({ largest });
+    return largest;
+  }
+
+  dataUpdated(data) {
+    return () => {
+      Animated.parallel(data.map((d, index) => {
+        const size = Math.floor((d.y / this.state.largest) * this.props.size);
+        return Animated.timing(this.state.data[index].height, { toValue: size });
+      })).start();
+    };
   }
 
   renderBars() {
     const {
-      data,
       style,
     } = this.props;
-    return data.map((bar, index) => {
-      const size = Math.floor((bar.y / this.state.largest) * this.props.size);
+    return this.state.data.map((bar, index) => {
       return (
         <View
           key={`${bar.x}-${bar.y}-${index}`}
@@ -65,7 +89,7 @@ class BarChart extends React.Component {
           <AnimatedView
             style={{
               width: 36,
-              height: size,
+              height: this.state.data[index].height,
             }}
           />
 

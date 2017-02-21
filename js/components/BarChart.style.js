@@ -16,6 +16,8 @@ const getStyle = (colors, font, dimensions) => ({
   bar: {
     [`${Constants.domain}.AnimatedView`]: {
       backgroundColor: colors.primaryColor,
+      borderTopLeftRadius: 2,
+      borderTopRightRadius: 2,
     },
 
     flexDirection: 'column',
