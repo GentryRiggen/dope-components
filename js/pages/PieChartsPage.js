@@ -19,6 +19,7 @@ class PieChartsPage extends React.Component {
     super(props);
     this.state = {
       data: [],
+      selected: -1,
     };
   }
 
@@ -30,9 +31,9 @@ class PieChartsPage extends React.Component {
     return () => {
       const data = [];
       let amount = 0;
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 8; i++) {
         const name = randomDate(new Date(2016, 0, 1), new Date());
-        const rand = Math.floor(Math.random() * 25);
+        const rand = Math.floor(Math.random() * 8) + 4.5;
         const left = 100 - amount;
         if (rand > left) {
           data.push({ value: left, name });
@@ -42,8 +43,15 @@ class PieChartsPage extends React.Component {
         amount += rand;
       }
 
-      this.setState({ data });
+      this.setState({
+        data,
+        selected: -1,
+      });
     };
+  }
+
+  pieSelected(selected) {
+    return () => this.setState({ selected });
   }
 
   render() {
@@ -57,12 +65,32 @@ class PieChartsPage extends React.Component {
           title: 'Pie Charts',
           onBackButtonPress: () => dispatch(navigateBack(navigation.key)),
         }}
+        scrollable
       >
-        <View style={{ marginTop: 16, marginBottom: 8 }}>
+        <View
+          style={{
+            marginTop: 16,
+            marginBottom: 8,
+            flexDirection: 'row',
+          }}
+        >
 
           <PieChart
             data={this.state.data}
+            selected={this.state.selected}
+            size={220}
           />
+
+          <View>
+            {this.state.data.map((d, i) => (
+              <Button
+                key={i}
+                styleName={`flat ${i === this.state.selected ? 'primary' : 'secondary'}`}
+                text={d.name}
+                onPress={this.pieSelected(i)}
+              />
+            ))}
+          </View>
         </View>
 
         <Button

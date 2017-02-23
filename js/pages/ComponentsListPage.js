@@ -103,7 +103,6 @@ class ComponentsListPage extends React.Component {
         },
       ],
     });
-    this.props.dispatch(executeSaga(navigateTo, this.props.componentsNavigation.key, routes.ROUTE_PIE_CHART));
   }
 
 

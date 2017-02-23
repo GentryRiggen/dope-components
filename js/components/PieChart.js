@@ -23,6 +23,7 @@ class PieChart extends React.Component {
   static propTypes = {
     data: React.PropTypes.array.isRequired,
     innerRadius: React.PropTypes.number,
+    selected: React.PropTypes.number,
     size: React.PropTypes.number,
     style: React.PropTypes.any,
     valueSelector: React.PropTypes.func,
@@ -30,6 +31,7 @@ class PieChart extends React.Component {
 
   static defaultProps = {
     innerRadius: 30,
+    selected: -1,
     size: Math.floor(windowWidth - 36),
     valueSelector: (d) => d.value,
   };
@@ -42,28 +44,34 @@ class PieChart extends React.Component {
   }
 
   componentWillMount() {
-    this.calculate(this.props.data);
+    this.calculate(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.data !== nextProps.data) {
-      this.calculate(nextProps.data);
+    if (this.props !== nextProps) {
+      this.calculate(nextProps);
     }
   }
 
-  calculate(data) {
+  calculate(props) {
     const {
+      data,
       innerRadius,
+      selected,
       size,
       valueSelector,
-    } = this.props;
+    } = props;
+    console.log('calculate', selected, data);
     if (data.length > 0) {
+      const outerRadius = (size / 2);
+      const oRNormal = outerRadius - (innerRadius + 4);
+      const oRSelected = oRNormal + 12;
       this.setState({
         arcs: pie()
           .value(valueSelector)(data)
-          .map(d => (
+          .map((d, i) => (
             arc()
-              .outerRadius((size / 2) - innerRadius)
+              .outerRadius(i === selected ? oRSelected : oRNormal)
               .padAngle(0.1)
               .innerRadius(innerRadius)(d)
           )),
@@ -86,9 +94,9 @@ class PieChart extends React.Component {
           >
             <Group x={halfSize} y={halfSize}>
               {this.state.arcs.map((a, index) => (
-                <ArtAnimatedShape
+                <Shape
                   key={index}
-                  data={a}
+                  d={a}
                   stroke={style.stroke}
                   fill={style.fill}
                 />

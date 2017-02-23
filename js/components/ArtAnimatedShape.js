@@ -26,15 +26,15 @@ export default class ArtAnimatedShape extends React.Component {
   }
 
   componentWillMount() {
-    this.computeNextState(this.props);
+    this.computeNextState();
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.computeNextState(nextProps);
+  componentWillReceiveProps() {
+    this.computeNextState();
   }
 
   // Animations based on: https://github.com/hswolff/BetterWeather
-  computeNextState(nextProps) {
+  computeNextState() {
     const graph = this.props.data;
 
     this.setState({
@@ -49,38 +49,36 @@ export default class ArtAnimatedShape extends React.Component {
 
     // Only animate if our properties change. Typically this is when our
     // yAccessor function changes.
-    if (this.props !== nextProps) {
-      const pathFrom = this.previousGraph;
-      const pathTo = graph;
+    const pathFrom = this.previousGraph;
+    const pathTo = graph;
 
-      cancelAnimationFrame(this.animating);
-      this.animating = null;
+    cancelAnimationFrame(this.animating);
+    this.animating = null;
 
-      // Opt-into layout animations so our y tickLabel's animate.
-      // If we wanted more discrete control over their animation behavior
-      // we could use the Animated component from React Native, however this
-      // was a nice shortcut to get the same effect.
-      LayoutAnimation.configureNext(
-        LayoutAnimation.create(
-          AnimationDurationMs,
-          LayoutAnimation.Types.easeInEaseOut,
-          LayoutAnimation.Properties.opacity
-        )
-      );
+    // Opt-into layout animations so our y tickLabel's animate.
+    // If we wanted more discrete control over their animation behavior
+    // we could use the Animated component from React Native, however this
+    // was a nice shortcut to get the same effect.
+    LayoutAnimation.configureNext(
+      LayoutAnimation.create(
+        AnimationDurationMs,
+        LayoutAnimation.Types.easeInEaseOut,
+        LayoutAnimation.Properties.opacity
+      )
+    );
 
-      this.setState({
-        // Create the ART Morph.Tween instance.
-        path: Morph.Tween(
-          pathFrom,
-          pathTo,
-        ),
-      }, () => {
-        // Kick off our animations!
-        this.animate();
-      });
+    this.setState({
+      // Create the ART Morph.Tween instance.
+      path: Morph.Tween(
+        pathFrom,
+        pathTo,
+      ),
+    }, () => {
+      // Kick off our animations!
+      this.animate();
+    });
 
-      this.previousGraph = graph;
-    }
+    this.previousGraph = graph;
   }
 
   // This is where we animate our graph's path value.
