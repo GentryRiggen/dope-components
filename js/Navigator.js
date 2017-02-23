@@ -16,6 +16,7 @@ import ListItemsPage from './pages/ListItemsPage';
 import MenuOptionsPage from './pages/MenuOptionsPage';
 import ModalsPage from './pages/ModalsPage';
 import PickersPage from './pages/PickersPage';
+import PieChartsPage from './pages/PieChartsPage';
 import RadioButtonsPage from './pages/RadioButtonsPage';
 import SpinnersPage from './pages/SpinnersPage';
 import TextInputsPage from './pages/TextInputsPage';
@@ -86,6 +87,9 @@ class Navigator extends React.Component {
           break;
         case routes.ROUTE_PICKERS:
           page = <PickersPage />;
+          break;
+        case routes.ROUTE_PIE_CHART:
+          page = <PieChartsPage />;
           break;
         case routes.ROUTE_RADIO_BUTTONS:
           page = <RadioButtonsPage />;

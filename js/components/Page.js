@@ -80,4 +80,4 @@ class Page extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.Page`)(Page);
+export default connectStyle(Constants.components.Page)(Page);

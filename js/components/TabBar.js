@@ -55,4 +55,4 @@ class TabBar extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.TabBar`)(TabBar);
+export default connectStyle(Constants.components.TabBar)(TabBar);

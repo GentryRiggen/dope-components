@@ -159,4 +159,4 @@ class BarChart extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.BarChart`)(BarChart);
+export default connectStyle(Constants.components.BarChart)(BarChart);

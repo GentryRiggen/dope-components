@@ -49,4 +49,4 @@ class TopTabs extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.TopTabs`)(TopTabs);
+export default connectStyle(Constants.components.TopTabs)(TopTabs);

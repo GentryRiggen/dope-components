@@ -134,4 +134,4 @@ class Button extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.Button`)(Button);
+export default connectStyle(Constants.components.Button)(Button);

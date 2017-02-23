@@ -22,4 +22,4 @@ TouchableHighlight.propTypes = {
   ...RNTH.propTypes,
 };
 
-export default connectStyle(`${Constants.domain}.TouchableHighlight`)(TouchableHighlight);
+export default connectStyle(Constants.components.TouchableHighlight)(TouchableHighlight);

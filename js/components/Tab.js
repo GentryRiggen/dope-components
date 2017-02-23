@@ -49,4 +49,4 @@ Tab.propTypes = {
   style: React.PropTypes.any,
 };
 
-export default connectStyle(`${Constants.domain}.Tab`)(Tab);
+export default connectStyle(Constants.components.Tab)(Tab);

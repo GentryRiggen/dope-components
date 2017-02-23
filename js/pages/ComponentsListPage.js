@@ -73,6 +73,12 @@ class ComponentsListPage extends React.Component {
         },
         {
           ...defaultProps,
+          headerText: 'Pie Chart',
+          secondaryText: 'A type of graph in which a circle is divided into sectors that each represent a proportion of the whole.',
+          onPress: this.goToRoute(routes.ROUTE_PIE_CHART),
+        },
+        {
+          ...defaultProps,
           headerText: 'Radio Buttons',
           secondaryText: 'Radio buttons let a user select ONE of a limited number of choices.',
           onPress: this.goToRoute(routes.ROUTE_RADIO_BUTTONS),
@@ -97,6 +103,7 @@ class ComponentsListPage extends React.Component {
         },
       ],
     });
+    this.props.dispatch(executeSaga(navigateTo, this.props.componentsNavigation.key, routes.ROUTE_PIE_CHART));
   }
 
 

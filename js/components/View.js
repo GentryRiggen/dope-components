@@ -22,4 +22,4 @@ View.propTypes = {
   ...RNView.propTypes,
 };
 
-export default connectStyle(`${Constants.domain}.View`)(View);
+export default connectStyle(Constants.components.View)(View);

@@ -36,4 +36,4 @@ class MyIcon extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.Icon`)(MyIcon);
+export default connectStyle(Constants.components.Icon)(MyIcon);

@@ -9,4 +9,4 @@ AnimatedView.propTypes = {
   ...Animated.View.propTypes,
 };
 
-export default connectStyle(`${Constants.domain}.AnimatedView`)(AnimatedView);
+export default connectStyle(Constants.components.AnimatedView)(AnimatedView);

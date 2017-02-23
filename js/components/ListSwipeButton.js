@@ -21,4 +21,4 @@ ListSwipeButton.propTypes = {
   style: React.PropTypes.any,
 };
 
-export default connectStyle(`${Constants.domain}.ListSwipeButton`)(ListSwipeButton);
+export default connectStyle(Constants.components.ListSwipeButton)(ListSwipeButton);

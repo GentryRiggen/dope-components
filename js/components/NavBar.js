@@ -183,4 +183,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.NavBar`)(NavBar);
+export default connectStyle(Constants.components.NavBar)(NavBar);

@@ -171,4 +171,4 @@ class ListItem extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.ListItem`)(ListItem);
+export default connectStyle(Constants.components.ListItem)(ListItem);

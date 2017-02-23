@@ -103,4 +103,4 @@ class Avatar extends React.Component {
   }
 }
 
-export default connectStyle(`${Constants.domain}.Avatar`)(Avatar);
+export default connectStyle(Constants.components.Avatar)(Avatar);

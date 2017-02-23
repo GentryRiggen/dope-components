@@ -7,6 +7,7 @@ import listItemStyle from '../ListItem.style';
 import listSwipeButtonStyle from '../ListSwipeButton.style';
 import navBarStyle from '../NavBar.style';
 import pageStyle from '../Page.style';
+import pieChartStyle from '../PieChart.style';
 import tabStyle from '../Tab.style';
 import tabBarStyle from '../TabBar.style';
 import textStyle from '../Text.style';
@@ -433,20 +434,21 @@ const theme = {
 
 const getStyle = (styleFn, options) => styleFn(options.colors, options.font, options.dimensions);
 export const getTheme = (options = theme) => ({
-  [`${Constants.domain}.Avatar`]: getStyle(avatarStyle, options),
-  [`${Constants.domain}.BarChart`]: getStyle(barChartStyle, options),
-  [`${Constants.domain}.Button`]: getStyle(buttonStyle, options),
-  [`${Constants.domain}.Icon`]: getStyle(iconStyle, options),
-  [`${Constants.domain}.ListItem`]: getStyle(listItemStyle, options),
-  [`${Constants.domain}.ListSwipeButton`]: getStyle(listSwipeButtonStyle, options),
-  [`${Constants.domain}.NavBar`]: getStyle(navBarStyle, options),
-  [`${Constants.domain}.Page`]: getStyle(pageStyle, options),
-  [`${Constants.domain}.Tab`]: getStyle(tabStyle, options),
-  [`${Constants.domain}.TabBar`]: getStyle(tabBarStyle, options),
-  [`${Constants.domain}.Text`]: getStyle(textStyle, options),
-  [`${Constants.domain}.TopTabs`]: getStyle(topTabsStyle, options),
-  [`${Constants.domain}.TouchableHighlight`]: getStyle(touchableHighlightStyle, options),
-  [`${Constants.domain}.View`]: getStyle(viewStyle, options),
+  [Constants.components.Avatar]: getStyle(avatarStyle, options),
+  [Constants.components.BarChart]: getStyle(barChartStyle, options),
+  [Constants.components.Button]: getStyle(buttonStyle, options),
+  [Constants.components.Icon]: getStyle(iconStyle, options),
+  [Constants.components.ListItem]: getStyle(listItemStyle, options),
+  [Constants.components.ListSwipeButton]: getStyle(listSwipeButtonStyle, options),
+  [Constants.components.NavBar]: getStyle(navBarStyle, options),
+  [Constants.components.Page]: getStyle(pageStyle, options),
+  [Constants.components.PieChart]: getStyle(pieChartStyle, options),
+  [Constants.components.Tab]: getStyle(tabStyle, options),
+  [Constants.components.TabBar]: getStyle(tabBarStyle, options),
+  [Constants.components.Text]: getStyle(textStyle, options),
+  [Constants.components.TopTabs]: getStyle(topTabsStyle, options),
+  [Constants.components.TouchableHighlight]: getStyle(touchableHighlightStyle, options),
+  [Constants.components.View]: getStyle(viewStyle, options),
 });
 
 export default theme;

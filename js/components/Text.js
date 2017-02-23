@@ -8,4 +8,4 @@ Text.propTypes = {
   ...RNText.propTypes,
 };
 
-export default connectStyle(`${Constants.domain}.Text`)(Text);
+export default connectStyle(Constants.components.Text)(Text);

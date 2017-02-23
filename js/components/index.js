@@ -12,6 +12,7 @@ import Modal from './Modal';
 import NavBar from './NavBar';
 import Page from './Page';
 import Picker from './Picker';
+import PieChart from './PieChart';
 import RadioButton from './RadioButton';
 import Spinner from './Spinner';
 import StyleSheet from './lib/StyleSheet';
@@ -38,6 +39,7 @@ export {
   NavBar,
   Page,
   Picker,
+  PieChart,
   RadioButton,
   Spinner,
   StyleSheet,
