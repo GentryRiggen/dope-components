@@ -31,15 +31,33 @@ class PieChartsPage extends React.Component {
     return () => {
       const data = [];
       let amount = 0;
+      const colors = [
+        '#F44336',
+        '#E91E63',
+        '#9C27B0',
+        '#2196F3',
+        '#00BCD4',
+        '#4CAF50',
+        '#FFC107',
+        '#607D8B',
+      ];
       for (let i = 0; i < 8; i++) {
         const name = randomDate(new Date(2016, 0, 1), new Date());
         const rand = Math.floor(Math.random() * 8) + 4.5;
         const left = 100 - amount;
         if (rand > left) {
-          data.push({ value: left, name });
+          data.push({
+            value: left,
+            name,
+            fill: colors[i],
+          });
           break;
         }
-        data.push({ value: rand, name });
+        data.push({
+          value: rand,
+          name,
+          fill: colors[i],
+        });
         amount += rand;
       }
 
@@ -67,36 +85,19 @@ class PieChartsPage extends React.Component {
         }}
         scrollable
       >
-        <View
-          style={{
-            marginTop: 16,
-            marginBottom: 8,
-            flexDirection: 'row',
-          }}
-        >
-
-          <PieChart
-            data={this.state.data}
-            selected={this.state.selected}
-            size={220}
-          />
-
-          <View>
-            {this.state.data.map((d, i) => (
-              <Button
-                key={i}
-                styleName={`flat ${i === this.state.selected ? 'primary' : 'secondary'}`}
-                text={d.name}
-                onPress={this.pieSelected(i)}
-              />
-            ))}
-          </View>
-        </View>
-
         <Button
           styleName="raised accent"
           text="New Data"
           onPress={this.getData()}
+        />
+        <PieChart
+          data={this.state.data}
+          selected={this.state.selected}
+        />
+        <PieChart
+          data={this.state.data}
+          selected={this.state.selected}
+          innerRadius={100}
         />
       </Page>
     );

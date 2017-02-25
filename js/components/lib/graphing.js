@@ -56,6 +56,28 @@ const createLineGraph = ({
   };
 };
 
+const createPieGraph = ({
+  data,
+  innerRadius,
+  outerRadius,
+  selected,
+  size,
+  valueSelector,
+}) => {
+  const radiusSelected = outerRadius + 12;
+  return d3.shape.pie()
+    .value(valueSelector)(data)
+    .map((d, i) => ({
+      data: data[i],
+      path: d3.shape.arc()
+        .outerRadius(i === selected ? radiusSelected : outerRadius)
+        .padAngle(0.1)
+        .innerRadius(innerRadius)(d),
+
+    }));
+};
+
 export default {
   createLineGraph,
+  createPieGraph,
 };

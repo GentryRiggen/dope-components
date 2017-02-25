@@ -3,26 +3,23 @@ import {
   ART,
   Dimensions,
 } from 'react-native';
-import {
-  arc,
-  pie,
-} from 'd3-shape';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
+import graphing from './lib/graphing';
+import AnimatedArtShape from './AnimatedArtShape';
+import View from './View';
+
 const {
   Surface,
   Group,
-  Shape,
 } = ART;
-import { connectStyle } from '@shoutem/theme';
-import Constants from './lib/constants';
-import View from './View';
-import ArtAnimatedShape from './ArtAnimatedShape';
-
 const windowWidth = Dimensions.get('window').width;
 
 class PieChart extends React.Component {
   static propTypes = {
     data: React.PropTypes.array.isRequired,
     innerRadius: React.PropTypes.number,
+    outerRadius: React.PropTypes.number,
     selected: React.PropTypes.number,
     size: React.PropTypes.number,
     style: React.PropTypes.any,
@@ -30,16 +27,17 @@ class PieChart extends React.Component {
   };
 
   static defaultProps = {
-    innerRadius: 30,
+    innerRadius: 10,
     selected: -1,
-    size: Math.floor(windowWidth - 36),
+    size: Math.floor(windowWidth - 48),
+    outerRadius: Math.floor(windowWidth - 48) / 2,
     valueSelector: d => d.value,
   };
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      arcs: [],
+      data: [],
     };
   }
 
@@ -57,23 +55,21 @@ class PieChart extends React.Component {
     const {
       data,
       innerRadius,
+      outerRadius,
       selected,
       size,
       valueSelector,
     } = props;
     if (data.length > 0) {
-      const outerRadius = (size / 2);
-      const oRNormal = outerRadius - (innerRadius + 4);
-      const oRSelected = oRNormal + 12;
       this.setState({
-        arcs: pie()
-          .value(valueSelector)(data)
-          .map((d, i) => (
-            arc()
-              .outerRadius(i === selected ? oRSelected : oRNormal)
-              .padAngle(0.1)
-              .innerRadius(innerRadius)(d)
-          )),
+        data: graphing.createPieGraph({
+          data,
+          innerRadius,
+          outerRadius,
+          selected,
+          size,
+          valueSelector,
+        }),
       });
     }
   }
@@ -92,12 +88,14 @@ class PieChart extends React.Component {
             height={size}
           >
             <Group x={halfSize} y={halfSize}>
-              {this.state.arcs.map((a, index) => (
-                <Shape
+              {this.state.data.map((a, index) => (
+                <AnimatedArtShape
                   key={index}
-                  d={a}
-                  stroke={style.stroke}
-                  fill={style.fill}
+                  animationDurationMs={250}
+                  d={a.path}
+                  stroke={a.data.fill}
+                  strokeWidth={1}
+                  fill={a.data.fill}
                 />
               ))}
             </Group>

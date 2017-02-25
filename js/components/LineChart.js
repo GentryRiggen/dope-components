@@ -4,18 +4,19 @@ import {
   Dimensions,
   LayoutAnimation,
 } from 'react-native';
+import Morph from 'art/morph/path';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
+import graphing from './lib/graphing';
+import AnimatedArtShape from './AnimatedArtShape';
+import Text from './Text';
+import View from './View';
+
 const {
   Surface,
   Group,
   Shape,
 } = ART;
-import Morph from 'art/morph/path';
-import { connectStyle } from '@shoutem/theme';
-import Constants from './lib/constants';
-import graphing from './lib/graphing';
-import Text from './Text';
-import View from './View';
-
 const dimensionWindow = Dimensions.get('window');
 const xLabelHeight = 48;
 
@@ -91,69 +92,6 @@ class LineChart extends React.Component {
       ticks: lineGraph.ticks,
       scale: lineGraph.scale,
     });
-
-    if (!this.previousGraph) {
-      this.previousGraph = lineGraph;
-    }
-
-    if (this.props !== nextProps) {
-      const pathFrom = this.previousGraph.path;
-      const pathTo = lineGraph.path;
-
-      cancelAnimationFrame(this.animating);
-      this.animating = null;
-
-      // Opt-into layout animations so our y tickLabel's animate.
-      // If we wanted more discrete control over their animation behavior
-      // we could use the Animated component from React Native, however this
-      // was a nice shortcut to get the same effect.
-      LayoutAnimation.configureNext(
-        LayoutAnimation.create(
-          animationDurationMs,
-          LayoutAnimation.Types.easeInEaseOut,
-          LayoutAnimation.Properties.opacity
-        )
-      );
-
-      this.setState({
-        linePath: Morph.Tween(
-          pathFrom,
-          pathTo,
-        ),
-      }, () => {
-        this.animate();
-      });
-
-      this.previousGraph = lineGraph;
-    }
-  }
-
-  animate(start) {
-    const {
-      animationDurationMs,
-    } = this.props;
-    this.animating = requestAnimationFrame((timestamp) => {
-      if (!start) {
-        // eslint-disable-next-line no-param-reassign
-        start = timestamp;
-      }
-
-      // Get the delta on how far long in our animation we are.
-      const delta = (timestamp - start) / animationDurationMs;
-
-      if (delta > 1) {
-        this.animating = null;
-        this.setState({
-          linePath: this.previousGraph.path,
-        });
-        return;
-      }
-
-      this.state.linePath.tween(delta);
-      this.setState(this.state, () => {
-        this.animate(start);
-      });
-    });
   }
 
   render() {
@@ -189,34 +127,14 @@ class LineChart extends React.Component {
       >
         <Surface width={graphWidth} height={graphHeight - xLabelHeight}>
           <Group x={0} y={0}>
-            <Shape
+            <AnimatedArtShape
               d={linePath}
               stroke={style.stroke}
               strokeWidth={strokeWidth}
+              fill="#fff"
             />
           </Group>
         </Surface>
-
-        <View>
-          {ticks.map((tick, index) => {
-            const tickStyles = {
-              ...style.tickLabelX,
-              width: tickWidth,
-              left: tick.x - (tickWidth / 2),
-            };
-
-            return (
-              <Text
-                key={index}
-                style={tickStyles}
-                numberOfLines={1}
-                ellipsizeMode="tail"
-              >
-                {tickXFormat(new Date(tick.datum.time * 1000))}
-              </Text>
-            );
-          })}
-        </View>
 
         <View style={style.ticksYContainer}>
           {ticks.map((tick, index) => {
@@ -256,6 +174,27 @@ class LineChart extends React.Component {
             />
           ))}
         </View>
+
+        <View>
+          {ticks.map((tick, index) => {
+            const tickStyles = {
+              ...style.tickLabelX,
+              width: tickWidth,
+              left: tick.x - (tickWidth / 2),
+            };
+            return (
+              <Text
+                key={index}
+                style={tickStyles}
+                numberOfLines={1}
+                ellipsizeMode="tail"
+              >
+                {tickXFormat(new Date(tick.datum.time * 1000))}
+              </Text>
+            );
+          })}
+        </View>
+
       </View>
     );
   }
