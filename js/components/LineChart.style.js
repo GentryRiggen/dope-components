@@ -16,15 +16,21 @@ const getStyle = (colors, font) => ({
     backgroundColor: 'transparent',
   },
   tickLabelYText: {
-    fontSize: font.fontSizeSmall,
+    fontSize: font.fontSizeBody,
     textAlign: 'center',
   },
   ticksYDot: {
     position: 'absolute',
-    width: 2,
-    height: 2,
-    backgroundColor: colors.darkTextColor,
-    borderRadius: 100,
+    width: 8,
+    height: 8,
+    backgroundColor: colors.accentColor,
+    borderRadius: 4,
+    '.primary': {
+      backgroundColor: colors.primaryColor,
+    },
+    '.accent': {
+      backgroundColor: colors.accentColor,
+    },
   },
   tickLabelX: {
     position: 'absolute',

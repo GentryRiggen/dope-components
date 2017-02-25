@@ -25,7 +25,6 @@ const createLineGraph = ({
   height,
 }) => {
   const lastDatum = data[data.length - 1];
-  console.log(data[0].time, lastDatum.time, width);
   const scaleX = createScaleX(data[0].time, lastDatum.time, width);
   const allYValues = data.reduce((all, datum) => {
     all.push(ySelector(datum));

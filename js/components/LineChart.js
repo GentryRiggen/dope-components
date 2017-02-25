@@ -22,6 +22,7 @@ const xLabelHeight = 48;
 class LineChart extends React.Component {
   static propTypes = {
     animationDurationMs: React.PropTypes.number,
+    dotSize: React.PropTypes.number,
     data: React.PropTypes.array.isRequired,
     paddingSize: React.PropTypes.number,
     width: React.PropTypes.number,
@@ -34,6 +35,7 @@ class LineChart extends React.Component {
 
   static defaultProps = {
     animationDurationMs: 500,
+    dotSize: 8,
     paddingSize: 20,
     strokeWidth: 2,
     ySelector: d => d.y,
@@ -156,6 +158,7 @@ class LineChart extends React.Component {
 
   render() {
     const {
+      dotSize,
       ySelector,
       paddingSize,
       style,
@@ -244,8 +247,11 @@ class LineChart extends React.Component {
               key={index}
               style={{
                 ...style.ticksYDot,
-                left: tick.x,
-                top: tick.y,
+                width: dotSize,
+                height: dotSize,
+                left: tick.x - (dotSize / 2),
+                top: tick.y - (dotSize / 2),
+                borderRadius: (dotSize / 2)
               }}
             />
           ))}
