@@ -7,6 +7,7 @@ export default {
     BarChart: `${domain}.BarChart`,
     Button: `${domain}.Button`,
     Icon: `${domain}.Icon`,
+    LineChart: `${domain}.LineChart`,
     ListItem: `${domain}.ListItem`,
     ListSwipeButton: `${domain}.ListSwipeButton`,
     NavBar: `${domain}.NavBar`,

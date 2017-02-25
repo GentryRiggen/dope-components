@@ -33,7 +33,7 @@ class PieChart extends React.Component {
     innerRadius: 30,
     selected: -1,
     size: Math.floor(windowWidth - 36),
-    valueSelector: (d) => d.value,
+    valueSelector: d => d.value,
   };
 
   constructor(props, context) {
@@ -61,7 +61,6 @@ class PieChart extends React.Component {
       size,
       valueSelector,
     } = props;
-    console.log('calculate', selected, data);
     if (data.length > 0) {
       const outerRadius = (size / 2);
       const oRNormal = outerRadius - (innerRadius + 4);

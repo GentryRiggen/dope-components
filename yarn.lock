@@ -1290,7 +1290,7 @@ cycle@1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/cycle/-/cycle-1.0.3.tgz#21e80b2be8580f98b468f379430662b046c34ad2"
 
-d3-array@1, d3-array@1.0.2:
+d3-array@1, d3-array@1.0.2, d3-array@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.0.2.tgz#174237bf356a852fadd6af87743d928631de7655"
 
@@ -1404,7 +1404,7 @@ d3-request@1.0.3:
     d3-dsv "1"
     xmlhttprequest "1"
 
-d3-scale@1.0.4:
+d3-scale@1.0.4, d3-scale@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/d3-scale/-/d3-scale-1.0.4.tgz#50e28bf6a193b706745528515ed9b3d44205a033"
   dependencies:

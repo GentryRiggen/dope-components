@@ -3,6 +3,7 @@ export const ROUTE_AVATARS = 'ROUTE_AVATARS';
 export const ROUTE_BAR_CHART = 'ROUTE_BAR_CHART';
 export const ROUTE_BUTTON = 'ROUTE_BUTTON';
 export const ROUTE_CHECKBOXES = 'ROUTE_CHECKBOXES';
+export const ROUTE_LINE_CHART = 'ROUTE_LINE_CHART';
 export const ROUTE_LIST_ITEM = 'ROUTE_LIST_ITEM';
 export const ROUTE_MENU = 'ROUTE_MENU';
 export const ROUTE_MODALS = 'ROUTE_MODALS';

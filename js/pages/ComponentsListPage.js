@@ -49,6 +49,12 @@ class ComponentsListPage extends React.Component {
         },
         {
           ...defaultProps,
+          headerText: 'Line Chart',
+          secondaryText: "A line chart or line graph is a type of chart which displays information as a series of data points called 'markers' connected by straight line segments. It is a basic type of chart common in many fields.",
+          onPress: this.goToRoute(routes.ROUTE_LINE_CHART),
+        },
+        {
+          ...defaultProps,
           headerText: 'Lists & List Items',
           secondaryText: 'Lists with pull to refresh and infinite scroll. Also showing off list items.',
           onPress: this.goToRoute(routes.ROUTE_LIST_ITEM),
@@ -103,6 +109,7 @@ class ComponentsListPage extends React.Component {
         },
       ],
     });
+
   }
 
 

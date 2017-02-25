@@ -12,6 +12,7 @@ import AvatarsPage from './pages/AvatarsPage';
 import BarChartsPage from './pages/BarChartsPage';
 import ButtonsPage from './pages/ButtonsPage';
 import CheckBoxesPage from './pages/CheckBoxesPage';
+import LineChartsPage from './pages/LineChartsPage';
 import ListItemsPage from './pages/ListItemsPage';
 import MenuOptionsPage from './pages/MenuOptionsPage';
 import ModalsPage from './pages/ModalsPage';
@@ -75,6 +76,9 @@ class Navigator extends React.Component {
           break;
         case routes.ROUTE_CHECKBOXES:
           page = <CheckBoxesPage />;
+          break;
+        case routes.ROUTE_LINE_CHART:
+          page = <LineChartsPage />;
           break;
         case routes.ROUTE_LIST_ITEM:
           page = <ListItemsPage />;

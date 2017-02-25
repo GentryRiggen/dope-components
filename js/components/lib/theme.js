@@ -3,6 +3,7 @@ import avatarStyle from '../Avatar.style';
 import barChartStyle from '../BarChart.style';
 import buttonStyle from '../Button.style';
 import iconStyle from '../Icon.style';
+import lineChartStyle from '../LineChart.style';
 import listItemStyle from '../ListItem.style';
 import listSwipeButtonStyle from '../ListSwipeButton.style';
 import navBarStyle from '../NavBar.style';
@@ -438,6 +439,7 @@ export const getTheme = (options = theme) => ({
   [Constants.components.BarChart]: getStyle(barChartStyle, options),
   [Constants.components.Button]: getStyle(buttonStyle, options),
   [Constants.components.Icon]: getStyle(iconStyle, options),
+  [Constants.components.LineChart]: getStyle(lineChartStyle, options),
   [Constants.components.ListItem]: getStyle(listItemStyle, options),
   [Constants.components.ListSwipeButton]: getStyle(listSwipeButtonStyle, options),
   [Constants.components.NavBar]: getStyle(navBarStyle, options),

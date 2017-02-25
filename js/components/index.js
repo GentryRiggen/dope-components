@@ -5,6 +5,7 @@ import Button from './Button';
 import Checkbox from './Checkbox';
 import * as Constants from './lib/constants';
 import Icon from './Icon';
+import LineChart from './LineChart';
 import List from './List';
 import ListItem from './ListItem';
 import ListSwipeButton from './ListSwipeButton';
@@ -32,6 +33,7 @@ export {
   Constants,
   getTheme,
   Icon,
+  LineChart,
   List,
   ListItem,
   ListSwipeButton,
