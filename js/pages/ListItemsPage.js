@@ -51,6 +51,7 @@ class ListItemsPage extends React.Component {
             <Avatar
               kind="person"
               name={headerText}
+              image="https://unsplash.it/1920/1080/?random"
             />
           ),
           leftSwipeButtons: swipeButtons,

@@ -1,4 +1,15 @@
 const getStyle = (colors, font, dimensions) => ({
+  '.small': {
+    size: 24,
+  },
+  '.normal': {
+    size: 48,
+  },
+  '.big': {
+    size: 64,
+  },
+
+  size: 48,
   personAvatar: {
     backgroundColor: colors.grey[400],
     flexDirection: 'column',

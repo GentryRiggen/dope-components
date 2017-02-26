@@ -1,28 +1,45 @@
 import React from 'react';
 import {
   View,
-  Image,
 } from 'react-native';
+import Image from 'react-native-image-progress';
 import { connectStyle } from '@shoutem/theme';
 import Constants from './lib/constants';
+import Spinner from './Spinner';
 import Text from './Text';
 
 class Avatar extends React.Component {
   static propTypes = {
     kind: React.PropTypes.oneOf(['person', 'icon']),
-    size: React.PropTypes.oneOf(['small', 'large']),
     image: React.PropTypes.string,
     name: React.PropTypes.string,
+    style: React.PropTypes.any.isRequired,
   };
 
   static defaultProps = {
     kind: 'person',
-    size: 'small',
     image: '',
     name: '',
   };
 
-  renderPersonAvatar(avatarSize) {
+  getSpinner() {
+    let sizeName;
+    const { size } = this.props.style;
+    if (size < 40) {
+      sizeName = 'small';
+    } else if (size < 55) {
+      sizeName = 'normal';
+    } else {
+      sizeName = 'big';
+    }
+    return () => (
+      <Spinner
+        styleName={`primary ${sizeName}`}
+      />
+    );
+  }
+
+  renderPersonAvatar() {
     const {
       image,
       name,
@@ -32,74 +49,61 @@ class Avatar extends React.Component {
     if (image) {
       return (
         <Image
+          indicator={this.getSpinner()}
           style={[
             style.personAvatar,
             {
-              width: avatarSize,
-              height: avatarSize,
-              borderRadius: avatarSize / 2,
+              width: style.size,
+              height: style.size,
+              borderRadius: style.size / 2,
             },
           ]}
           source={{ uri: image }}
         />
       );
-    } else {
-      const nameParts = (name || '').split(' ');
-      let initials = '';
-      if (nameParts.length >= 1) {
-        initials += nameParts[0].charAt(0);
-        if (nameParts.length > 1) {
-          initials += nameParts[nameParts.length - 1].charAt(0);
-        }
-      }
-      const textSize = avatarSize > 50 ? 'title' : 'body';
-
-      return (
-        <View
-          style={[
-            style.personAvatar,
-            {
-              width: avatarSize,
-              height: avatarSize,
-              borderRadius: avatarSize / 2,
-            },
-          ]}
-        >
-          <Text styleName={`bold inverse ${textSize}`}>
-            {initials.toUpperCase()}
-          </Text>
-        </View>
-      );
     }
+
+    const nameParts = (name || '').split(' ');
+    let initials = '';
+    if (nameParts.length >= 1) {
+      initials += nameParts[0].charAt(0);
+      if (nameParts.length > 1) {
+        initials += nameParts[nameParts.length - 1].charAt(0);
+      }
+    }
+    const textSize = style.size > 48 ? 'title' : 'body';
+
+    return (
+      <View
+        style={[
+          style.personAvatar,
+          {
+            width: style.size,
+            height: style.size,
+            borderRadius: style.size / 2,
+          },
+        ]}
+      >
+        <Text styleName={`bold inverse ${textSize}`}>
+          {initials.toUpperCase()}
+        </Text>
+      </View>
+    );
   }
 
   renderIconAvatar() {
-
+    return null;
   }
 
   render() {
-    const {
-      kind,
-      size,
-    } = this.props;
-
-    let avatarSize;
-    switch (size) {
-      case 'large':
-        avatarSize = 84;
-        break;
-      default:
-        avatarSize = 40;
-        break;
-    }
+    const { kind } = this.props;
 
     const person = kind === 'person';
-
     if (person) {
-      return this.renderPersonAvatar(avatarSize);
+      return this.renderPersonAvatar();
     }
 
-    return this.renderIconAvatar(avatarSize);
+    return this.renderIconAvatar();
   }
 }
 

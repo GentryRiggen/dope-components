@@ -25,9 +25,24 @@ const getStyle = (colors, font) => ({
   },
   '.small': {
     size: 24,
+    container: {
+      height: 24,
+      width: 24,
+    },
+  },
+  '.normal': {
+    size: 48,
+    container: {
+      height: 48,
+      width: 48,
+    },
   },
   '.big': {
     size: 64,
+    container: {
+      height: 64,
+      width: 64,
+    },
   },
 
   container: {
@@ -35,7 +50,6 @@ const getStyle = (colors, font) => ({
     justifyContent: 'center',
     height: 48,
     width: 48,
-    padding: 8,
   },
   color: colors.primaryColor,
   size: 48,
