@@ -16,6 +16,7 @@ export default {
     Page: `${domain}.Page`,
     PieChart: `${domain}.PieChart`,
     RadioButton: `${domain}.RadioButton`,
+    Spinner: `${domain}.Spinner`,
     Tab: `${domain}.Tab`,
     TabBar: `${domain}.TabBar`,
     Text: `${domain}.Text`,

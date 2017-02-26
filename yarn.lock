@@ -3745,6 +3745,10 @@ react-native-actionsheet@^2.0.5:
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/react-native-actionsheet/-/react-native-actionsheet-2.0.5.tgz#dcb9df969cc44a45d9d5a92aa555ad72fc567201"
 
+react-native-image-progress@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/react-native-image-progress/-/react-native-image-progress-0.6.0.tgz#14614add12beaa247a052e5a52e6a9fee0fb8c67"
+
 react-native-keyboard-aware-scroll-view@^0.2.7:
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/react-native-keyboard-aware-scroll-view/-/react-native-keyboard-aware-scroll-view-0.2.7.tgz#dd344cec25284b6314f1cc9d1b75ba267483c6b6"
@@ -3760,6 +3764,10 @@ react-native-menu@^0.20.2:
 react-native-navigation-redux-helpers@^0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/react-native-navigation-redux-helpers/-/react-native-navigation-redux-helpers-0.5.0.tgz#2cfa39422c5a8973ab8037963473ca89bc7ce0c5"
+
+react-native-progress@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.2.0.tgz#86d756be5537c09936ac3d3c4e23710da590743c"
 
 react-native-scrollable-tab-view@^0.7.2:
   version "0.7.2"

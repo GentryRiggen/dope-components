@@ -109,7 +109,7 @@ class ComponentsListPage extends React.Component {
         },
       ],
     });
-    this.props.dispatch(executeSaga(navigateTo, this.props.componentsNavigation.key, routes.ROUTE_TEXT_INPUT));
+    // this.props.dispatch(executeSaga(navigateTo, this.props.componentsNavigation.key, routes.ROUTE_SPINNERS));
   }
 
 
