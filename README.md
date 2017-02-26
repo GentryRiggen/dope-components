@@ -1,4 +1,4 @@
-# NativeBase
+# Dope Components
 DOPE cross-platform UI components for React Native
 
 
