@@ -9,6 +9,7 @@ const getStyle = (colors) => ({
     width: null,
     backgroundColor: colors.pageBackgroundColor,
   },
+  statusBarStyle: colors.statusBarStyle,
   content: {
     flex: 1,
     backgroundColor: colors.pageBackgroundColor,

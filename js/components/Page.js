@@ -26,14 +26,12 @@ class Page extends React.Component {
       rightDisabled: React.PropTypes.bool,
     }),
     scrollable: React.PropTypes.bool,
-    statusBarStyle: React.PropTypes.oneOf(['default', 'light-content', 'dark-content']),
     style: React.PropTypes.any,
   };
 
   static defaultProps = {
     navBar: false,
     scrollable: false,
-    statusBarStyle: 'dark-content',
   };
 
   renderHeader() {
@@ -63,11 +61,8 @@ class Page extends React.Component {
   }
 
   render() {
-    const {
-      statusBarStyle,
-      style,
-    } = this.props;
-    StatusBar.setBarStyle(statusBarStyle, false);
+    const { style } = this.props;
+    StatusBar.setBarStyle(style.statusBarStyle, false);
 
     return (
       <View

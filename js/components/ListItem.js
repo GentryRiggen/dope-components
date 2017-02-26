@@ -6,7 +6,6 @@ import Constants from './lib/constants';
 import Text from './Text';
 import TouchableHighlight from './TouchableHighlight';
 import View from './View';
-import theme from './lib/theme';
 
 class ListItem extends React.Component {
   static propTypes = {
@@ -133,7 +132,7 @@ class ListItem extends React.Component {
         {...sortHandlers}
         style={style.listItem}
         onPress={onPress}
-        underlayColor={theme.colors.grey[200]}
+        underlayColor={style.underlayColor}
         delayLongPress={0}
       >
         <View style={style.container}>

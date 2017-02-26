@@ -23,6 +23,7 @@ class TabBar extends React.Component {
     } = this.props;
     if (index !== selectedIndex) {
       return {
+        ...style.content,
         position: 'absolute',
         bottom: -windowHeight * 2,
       };
@@ -34,7 +35,7 @@ class TabBar extends React.Component {
   renderTabViews() {
     return this.props.tabViews.map((view, index) => (
       <View
-        key={`tabView-${index}`}
+        key={index}
         style={this.getPageStyle(index)}
       >
         {view}

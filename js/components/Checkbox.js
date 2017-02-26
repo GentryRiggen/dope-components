@@ -3,54 +3,43 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 import Icon from './Icon';
-import theme from './lib/theme';
-import StyleSheet from './lib/StyleSheet';
 
-const { checkboxSize } = theme.dimensions;
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: theme.colors.white.full,
-    borderColor: theme.colors.primaryColor,
-    borderWidth: 2,
-    borderRadius: 3,
-    width: checkboxSize,
-    height: checkboxSize,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  checked: {
-    backgroundColor: theme.colors.primaryColor,
-  },
-});
+const Checkbox = ({ checked, onPress, style }) => {
+  let checkedContainer = <View />;
+  let checkboxStyle = style.container;
 
-const CheckBox = ({ checked, onPress }) => {
-  const checkedContainer = checked
-    ? (
+  if (checked) {
+    checkedContainer = (
       <Icon
         name="md-checkmark"
         size={20}
         styleName="regular inverse"
       />
-    )
-    : <View />;
-  const style = checked ? [styles.container, styles.checked] : styles.container;
+    );
+    checkboxStyle = {
+      ...style.container,
+      ...style.checked,
+    };
+  }
 
   return (
     <TouchableHighlight
-      style={style}
+      style={checkboxStyle}
       onPress={onPress}
-      underlayColor={theme.colors.primaryColor}
+      underlayColor="transparent"
     >
       {checkedContainer}
     </TouchableHighlight>
   );
 };
 
-CheckBox.propTypes = {
+Checkbox.propTypes = {
   checked: React.PropTypes.bool.isRequired,
   onPress: React.PropTypes.func.isRequired,
+  style: React.PropTypes.any.isRequired,
 };
 
-export default CheckBox;
+export default connectStyle(Constants.components.Checkbox)(Checkbox);

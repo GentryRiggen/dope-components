@@ -2,8 +2,10 @@ import Constants from './constants';
 import avatarStyle from '../Avatar.style';
 import barChartStyle from '../BarChart.style';
 import buttonStyle from '../Button.style';
+import checkboxStyle from '../Checkbox.style';
 import iconStyle from '../Icon.style';
 import lineChartStyle from '../LineChart.style';
+import listStyle from '../List.style';
 import listItemStyle from '../ListItem.style';
 import listSwipeButtonStyle from '../ListSwipeButton.style';
 import navBarStyle from '../NavBar.style';
@@ -399,6 +401,9 @@ const colors = {
   get tabBarUnSelectedColor() {
     return this.grey[500];
   },
+
+  // MISC
+  statusBarStyle: 'dark-content',
 };
 
 const dimensions = {
@@ -438,8 +443,10 @@ export const getTheme = (options = theme) => ({
   [Constants.components.Avatar]: getStyle(avatarStyle, options),
   [Constants.components.BarChart]: getStyle(barChartStyle, options),
   [Constants.components.Button]: getStyle(buttonStyle, options),
+  [Constants.components.Checkbox]: getStyle(checkboxStyle, options),
   [Constants.components.Icon]: getStyle(iconStyle, options),
   [Constants.components.LineChart]: getStyle(lineChartStyle, options),
+  [Constants.components.List]: getStyle(listStyle, options),
   [Constants.components.ListItem]: getStyle(listItemStyle, options),
   [Constants.components.ListSwipeButton]: getStyle(listSwipeButtonStyle, options),
   [Constants.components.NavBar]: getStyle(navBarStyle, options),

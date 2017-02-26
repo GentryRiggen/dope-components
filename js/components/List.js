@@ -4,24 +4,13 @@ import {
   RefreshControl,
   View,
 } from 'react-native';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 import SortableListView from 'react-native-sortable-listview';
 import Icon from './Icon';
 import ListItem from './ListItem';
 import Spinner from './Spinner';
-import StyleSheet from './lib/StyleSheet';
-import theme from './lib/theme';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  fetchingMore: {
-    height: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
 const noOp = () => null;
 
 class List extends React.Component {
@@ -35,6 +24,7 @@ class List extends React.Component {
     isSorting: React.PropTypes.bool,
     sortOrder: React.PropTypes.array,
     onRowMoved: React.PropTypes.func,
+    style: React.PropTypes.any.isRequired,
   };
 
   static defaultProps = {
@@ -67,13 +57,14 @@ class List extends React.Component {
     const {
       onRefreshRequested,
       isRefreshing,
+      style,
     } = this.props;
     if (onRefreshRequested !== noOp) {
       return (
         <RefreshControl
           refreshing={isRefreshing}
           onRefresh={onRefreshRequested}
-          tintColor={theme.colors.primaryColor}
+          tintColor={style.refreshColor}
         />
       );
     }
@@ -83,7 +74,11 @@ class List extends React.Component {
 
   renderFetchingMore() {
     if (this.props.isFetchingMore) {
-      return <View style={styles.fetchingMore}><Spinner /></View>;
+      return (
+        <View style={this.props.style.fetchingMore}>
+          <Spinner />
+        </View>
+      );
     }
 
     return null;
@@ -101,13 +96,9 @@ class List extends React.Component {
     } = this.props;
 
     if (isSorting) {
-      console.log('Rendering sortable list view');
       return (
         <SortableListView
-          style={[
-            { flex: 1 },
-            style,
-          ]}
+          style={{ flex: 1 }}
           data={dataSource}
           order={sortOrder}
           onRowMoved={(e) => {
@@ -135,7 +126,7 @@ class List extends React.Component {
     }
 
     return (
-      <View style={styles.container}>
+      <View style={style.container}>
         <ListView
           dataSource={this.state.dataSource}
           renderRow={rowData => <ListItem {...rowData} />}
@@ -150,4 +141,4 @@ class List extends React.Component {
   }
 }
 
-export default List;
+export default connectStyle(Constants.components.List)(List);

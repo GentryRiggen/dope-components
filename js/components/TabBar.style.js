@@ -6,9 +6,10 @@ const getStyle = (colors, font, dimensions) => ({
   },
   content: {
     flex: 1,
-    backgroundColor: colors.white.full,
-    paddingBottom: dimensions.tabBarHeight,
+    backgroundColor: colors.pageBackgroundColor,
+    marginBottom: dimensions.tabBarHeight,
   },
+  tabBarHeight: dimensions.tabBarHeight,
   footer: {
     flex: 1,
     flexDirection: 'row',

@@ -1,8 +1,10 @@
-const getStyle = (colors, font) => ({
+const getStyle = (colors) => ({
   listItem: {
     backgroundColor: colors.pageBackgroundColor,
   },
+  underlayColor: colors.pageBackgroundColor,
   container: {
+    backgroundColor: 'transparent',
     paddingLeft: 16,
   },
   innerContainer: {

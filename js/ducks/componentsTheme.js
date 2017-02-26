@@ -61,11 +61,12 @@ const componentsTheme = (state = initialState, action) => {
           secondaryLightTextColor: isInDarkMode ? colors.grey[500] : colors.black[600],
           disabledLightTextColor: isInDarkMode ? colors.grey[700] : colors.black[400],
 
-          pageBackgroundColor: isInDarkMode ? colors.white.full : colors.black[900],
+          pageBackgroundColor: isInDarkMode ? colors.white.full : colors.black[700],
           navBarBackgroundColor: isInDarkMode ? colors.grey[50] : colors.black[800],
           headerTitleTextColor: isInDarkMode ? colors.black[700] : colors.grey[50],
           headerTextColor: isInDarkMode ? colors.black[700] : colors.grey[50],
           tabBarBackgroundColor: isInDarkMode ? colors.grey[50] : colors.black[800],
+          statusBarStyle: isInDarkMode ? 'dark-content' : 'light-content',
         },
       };
       return {
