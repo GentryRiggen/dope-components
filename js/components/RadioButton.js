@@ -3,46 +3,19 @@ import {
   TouchableHighlight,
   View,
 } from 'react-native';
-import theme from './lib/theme';
-import StyleSheet from './lib/StyleSheet';
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 
-const { radioButtonSize } = theme.dimensions;
-const innerButtonSize = radioButtonSize - 8;
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: theme.colors.white.full,
-    borderColor: theme.colors.primaryColor,
-    borderRadius: radioButtonSize / 2,
-    borderWidth: 2,
-    width: radioButtonSize,
-    height: radioButtonSize,
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  innerButton: {
-    width: innerButtonSize,
-    height: innerButtonSize,
-    borderRadius: innerButtonSize / 2,
-  },
-  checked: {
-    backgroundColor: theme.colors.primaryColor,
-  },
-  unChecked: {
-    backgroundColor: theme.colors.white.full,
-  },
-});
-
-const RadioButton = ({ checked, onPress }) => {
+const RadioButton = ({ checked, onPress, style }) => {
   const checkedContainer = checked
-    ? <View style={[styles.innerButton, styles.checked]} />
-    : <View style={[styles.innerButton, styles.unChecked]} />;
+    ? <View style={{ ...style.innerButton, ...style.checked }} />
+    : <View style={{ ...style.innerButton, ...style.unChecked }} />;
 
   return (
     <TouchableHighlight
-      style={styles.container}
+      style={style.container}
       onPress={onPress}
-      underlayColor={theme.colors.primaryColor}
+      underlayColor="transparent"
     >
       {checkedContainer}
     </TouchableHighlight>
@@ -52,6 +25,7 @@ const RadioButton = ({ checked, onPress }) => {
 RadioButton.propTypes = {
   checked: React.PropTypes.bool.isRequired,
   onPress: React.PropTypes.func.isRequired,
+  style: React.PropTypes.any.isRequired,
 };
 
-export default RadioButton;
+export default connectStyle(Constants.components.RadioButton)(RadioButton);

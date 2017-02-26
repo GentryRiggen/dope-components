@@ -15,6 +15,7 @@ export default {
     NavBar: `${domain}.NavBar`,
     Page: `${domain}.Page`,
     PieChart: `${domain}.PieChart`,
+    RadioButton: `${domain}.RadioButton`,
     Tab: `${domain}.Tab`,
     TabBar: `${domain}.TabBar`,
     Text: `${domain}.Text`,

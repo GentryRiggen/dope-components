@@ -11,6 +11,7 @@ import listSwipeButtonStyle from '../ListSwipeButton.style';
 import navBarStyle from '../NavBar.style';
 import pageStyle from '../Page.style';
 import pieChartStyle from '../PieChart.style';
+import radioButtonStyle from '../RadioButton.style';
 import tabStyle from '../Tab.style';
 import tabBarStyle from '../TabBar.style';
 import textStyle from '../Text.style';
@@ -452,6 +453,7 @@ export const getTheme = (options = theme) => ({
   [Constants.components.NavBar]: getStyle(navBarStyle, options),
   [Constants.components.Page]: getStyle(pageStyle, options),
   [Constants.components.PieChart]: getStyle(pieChartStyle, options),
+  [Constants.components.RadioButton]: getStyle(radioButtonStyle, options),
   [Constants.components.Tab]: getStyle(tabStyle, options),
   [Constants.components.TabBar]: getStyle(tabBarStyle, options),
   [Constants.components.Text]: getStyle(textStyle, options),
