@@ -4,7 +4,7 @@ import { navigateBack } from '../ducks/navigationReducer';
 import {
   Page,
   Picker,
-} from '../components';
+} from 'dope-components';
 
 class PickersPage extends React.Component {
   constructor(props) {

@@ -9,7 +9,7 @@ import {
   Page,
   StyleSheet,
   theme,
-} from '../components';
+} from 'dope-components';
 
 class ListItemsPage extends React.Component {
   constructor(props) {

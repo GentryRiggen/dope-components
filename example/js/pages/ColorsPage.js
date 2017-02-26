@@ -6,7 +6,7 @@ import {
   Page,
   Picker,
   Text,
-} from '../components';
+} from 'dope-components';
 import {
   toggleDarkMode,
   updateColor,

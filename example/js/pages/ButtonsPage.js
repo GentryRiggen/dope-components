@@ -6,7 +6,7 @@ import {
   Page,
   StyleSheet,
   theme,
-} from '../components';
+} from 'dope-components';
 import { navigateBack } from '../ducks/navigationReducer';
 
 const styles = StyleSheet.create({

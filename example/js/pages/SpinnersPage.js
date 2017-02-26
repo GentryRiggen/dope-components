@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Spinner,
   theme,
-} from '../components';
+} from 'dope-components';
 
 class SpinnersPage extends React.Component {
   renderSpinners() {

@@ -7,7 +7,7 @@ import {
   Page,
   StyleSheet,
   Text,
-} from '../components';
+} from 'dope-components';
 
 class AvatarsPage extends React.Component {
   render() {

@@ -7,7 +7,7 @@ import {
   StyleSheet,
   TextInput,
   theme,
-} from '../components';
+} from 'dope-components';
 
 class TextInputsPage extends React.Component {
   constructor(props) {

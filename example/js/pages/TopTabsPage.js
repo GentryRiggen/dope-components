@@ -10,7 +10,7 @@ import {
   StyleSheet,
   Text,
   TopTabs,
-} from '../components';
+} from 'dope-components';
 
 const styles = StyleSheet.create({
   container: {

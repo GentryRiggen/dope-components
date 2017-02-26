@@ -5,7 +5,7 @@ import {
   Checkbox,
   List,
   Page,
-} from '../components';
+} from 'dope-components';
 
 class CheckBoxesPage extends React.Component {
   constructor(props) {

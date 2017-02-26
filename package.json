@@ -1,5 +1,6 @@
 {
   "name": "dopecomponents",
+  "description": "dopecomponents for react native.",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -9,16 +10,12 @@
   "dependencies": {
     "@shoutem/theme": "^0.8.10",
     "art": "^0.10.1",
-    "axios": "^0.15.3",
     "d3": "^4.6.0",
     "d3-array": "^1.0.2",
     "d3-scale": "^1.0.4",
     "d3-shape": "^1.0.4",
-    "moment": "^2.17.1",
     "q": "^1.4.1",
     "ramda": "^0.22.1",
-    "react": "15.4.1",
-    "react-native": "0.41.0",
     "react-native-actionsheet": "^2.0.5",
     "react-native-image-progress": "^0.6.0",
     "react-native-keyboard-aware-scroll-view": "^0.2.7",
@@ -28,12 +25,10 @@
     "react-native-scrollable-tab-view": "^0.7.2",
     "react-native-sortable-listview": "^0.1.1",
     "react-native-swipeout": "git+https://github.com/magrinj/react-native-swipeout",
-    "react-native-vector-icons": "^4.0.0",
-    "react-redux": "^5.0.1",
-    "redux": "^3.6.0",
-    "redux-saga": "^0.13.0",
-    "redux-thunk": "^2.2.0",
-    "remote-redux-devtools": "^0.5.7"
+    "react-native-vector-icons": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react-native": ">=0.20.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
@@ -43,14 +38,6 @@
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.9.0",
-    "jest": "18.0.0",
-    "react-test-renderer": "15.4.1"
-  },
-  "jest": {
-    "preset": "react-native",
-    "transformIgnorePatterns": [
-      "node_modules/(?!native-base)/"
-    ]
+    "eslint-plugin-react": "^6.9.0"
   }
 }

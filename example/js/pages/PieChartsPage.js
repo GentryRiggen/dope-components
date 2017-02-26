@@ -6,7 +6,7 @@ import {
   Page,
   Text,
   PieChart,
-} from '../components';
+} from 'dope-components';
 import { navigateBack } from '../ducks/navigationReducer';
 
 const randomDate = (start, end) => {

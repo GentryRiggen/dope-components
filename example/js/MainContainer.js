@@ -4,7 +4,7 @@ import { StyleProvider } from '@shoutem/theme';
 import {
   Tab,
   TabBar,
-} from './components';
+} from 'dope-components';
 import ComponentsNavigator from './Navigator';
 import ColorsPage from './pages/ColorsPage';
 import TypographyPage from './pages/TypographyPage';

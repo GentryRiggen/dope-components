@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import {
   List,
   Page,
-} from '../components';
+} from 'dope-components';
 import { executeSaga } from '../ducks/saga';
 import { navigateTo } from '../sagas/navigation';
 import * as routes from '../ducks/routes';

@@ -1,7 +1,8 @@
 import {
   theme,
   getTheme,
-} from '../components';
+} from 'dope-components';
+console.log(theme);
 
 const myTheme = {
   ...theme,

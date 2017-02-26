@@ -8,7 +8,7 @@ import {
   Modal,
   StyleSheet,
   Text,
-} from '../components';
+} from 'dope-components';
 
 const styles = StyleSheet.create({
   container: {

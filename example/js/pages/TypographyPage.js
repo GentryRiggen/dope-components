@@ -4,7 +4,7 @@ import {
   Page,
   Text,
   theme,
-} from '../components';
+} from 'dope-components';
 
 class TypographyPage extends React.Component {
   render() {

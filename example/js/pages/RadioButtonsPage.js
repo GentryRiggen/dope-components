@@ -5,7 +5,7 @@ import {
   List,
   Page,
   RadioButton,
-} from '../components';
+} from 'dope-components';
 
 class RadioButtonsPage extends React.Component {
   constructor(props) {

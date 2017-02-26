@@ -5,7 +5,7 @@ import { navigateBack } from '../ducks/navigationReducer';
 import {
   Page,
   Text,
-} from '../components';
+} from 'dope-components';
 
 const options = ['Option 1', 'Option 2', 'Cancel'];
 const MenuOptionsPage = ({ dispatch, navigation }) => (
