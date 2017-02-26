@@ -7,7 +7,7 @@ import { toggleDarkMode } from './ducks/componentsTheme';
 
 const store = configureStore();
 store.runSaga(rootSagas);
-store.dispatch(toggleDarkMode());
+// store.dispatch(toggleDarkMode());
 
 
 const App = () => (

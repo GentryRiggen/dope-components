@@ -1,4 +1,4 @@
-const getStyle = (colors, font, dimensions) => ({
+const getStyle = (colors, font) => ({
   '.regular': {
     fontFamily: font.fontFamilyRegular,
     color: colors.darkTextColor,

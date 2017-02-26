@@ -15,6 +15,7 @@ import radioButtonStyle from '../RadioButton.style';
 import tabStyle from '../Tab.style';
 import tabBarStyle from '../TabBar.style';
 import textStyle from '../Text.style';
+import textInputStyle from '../TextInput.style';
 import topTabsStyle from '../TopTabs.style';
 import touchableHighlightStyle from '../TouchableHighlight.style';
 import viewStyle from '../View.style';
@@ -457,6 +458,7 @@ export const getTheme = (options = theme) => ({
   [Constants.components.Tab]: getStyle(tabStyle, options),
   [Constants.components.TabBar]: getStyle(tabBarStyle, options),
   [Constants.components.Text]: getStyle(textStyle, options),
+  [Constants.components.TextInput]: getStyle(textInputStyle, options),
   [Constants.components.TopTabs]: getStyle(topTabsStyle, options),
   [Constants.components.TouchableHighlight]: getStyle(touchableHighlightStyle, options),
   [Constants.components.View]: getStyle(viewStyle, options),

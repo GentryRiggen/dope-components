@@ -3,26 +3,8 @@ import {
   TextInput as NativeTextInput,
   View,
 } from 'react-native';
-import StyleSheet from './lib/StyleSheet';
-import theme from './lib/theme';
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'column',
-  },
-  input: {
-    fontFamily: theme.font.fontFamilyRegular,
-    fontSize: theme.font.fontSizeBody,
-  },
-  border: {
-    height: 1,
-    backgroundColor: theme.colors.grey[300],
-  },
-  focusedBorder: {
-    height: 2,
-    backgroundColor: theme.colors.grey[600],
-  },
-});
+import { connectStyle } from '@shoutem/theme';
+import Constants from './lib/constants';
 
 class TextInput extends React.Component {
   static propTypes = {
@@ -31,6 +13,7 @@ class TextInput extends React.Component {
     onChangeText: React.PropTypes.func.isRequired,
     disabled: React.PropTypes.bool,
     multiline: React.PropTypes.bool,
+    style: React.PropTypes.any.isRequired,
   };
 
   static defaultProps = {
@@ -46,10 +29,6 @@ class TextInput extends React.Component {
     };
   }
 
-  setNativeProps(props) {
-    this.refs['TEXT_INPUT_REF'].setNativeProps(props);
-  }
-
   onFocus() {
     return () => this.setState({ focused: true });
   }
@@ -58,29 +37,43 @@ class TextInput extends React.Component {
     return () => this.setState({ focused: false });
   }
 
+  setNativeProps(nativeProps) {
+    this.component.setNativeProps(nativeProps);
+  }
+
   render() {
     const {
       disabled,
       multiline,
+      onChangeText,
       placeholder,
       style,
       value,
     } = this.props;
-    const borderStyle = this.state.focused ? styles.focusedBorder : styles.border;
+    const borderStyle = this.state.focused ? style.focusedBorder : style.border;
     const height = multiline ? 80 : 40;
 
     return (
-      <View style={[styles.container, { height }]}>
+      <View
+        style={{
+          ...style.container,
+          height,
+        }}
+      >
         <NativeTextInput
-          ref="TEXT_INPUT_REF"
-          style={[ styles.input, { height: height - 4 }, style ]}
+          ref={component => this.component = component}
+          style={{
+            ...style.input,
+            height: height - 4,
+          }}
           editable={!disabled}
           multiline={multiline}
           placeholder={placeholder}
+          placeholderTextColor={style.placeholderTextColor}
           value={value}
           onFocus={this.onFocus()}
           onBlur={this.onBlur()}
-          {...this.props}
+          onChangeText={onChangeText}
         />
 
         <View style={borderStyle} />
@@ -89,4 +82,4 @@ class TextInput extends React.Component {
   }
 }
 
-export default TextInput;
+export default connectStyle(Constants.components.TextInput)(TextInput);

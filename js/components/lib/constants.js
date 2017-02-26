@@ -19,6 +19,7 @@ export default {
     Tab: `${domain}.Tab`,
     TabBar: `${domain}.TabBar`,
     Text: `${domain}.Text`,
+    TextInput: `${domain}.TextInput`,
     TopTabs: `${domain}.TopTabs`,
     TouchableHighlight: `${domain}.TouchableHighlight`,
     View: `${domain}.View`,
