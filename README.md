@@ -28,3 +28,5 @@ Include dope-components into your React Native project.
 yarn add git+https://github.com/GentryRiggen/dope-components
 ```
 
+TODO
+- Add roboto font
