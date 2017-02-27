@@ -29,4 +29,4 @@ yarn add git+https://github.com/GentryRiggen/dope-components
 ```
 
 TODO
-- Add roboto font
+- Add roboto font (https://fonts.google.com/specimen/Roboto?selection.family=Roboto) (https://medium.com/@dabit3/adding-custom-fonts-to-react-native-b266b41bff7f#.w446x9i9z)
